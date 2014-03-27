@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LYSecondViewController : UIViewController
+@interface LYRankViewController : UIViewController
 
 @end

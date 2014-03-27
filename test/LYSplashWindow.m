@@ -11,13 +11,13 @@
 #import "LYGlobalSettings.h"
 #import "ASIFormDataRequest.h"
 #import "LYUtility.h"
-
+#import "LYMainWindowViewController.h"
 
 
 @implementation LYSplashWindow
 @synthesize m_oActivityProgressbar;
 @synthesize m_oImageView;
-@synthesize m_oListAllPlantsItem;
+@synthesize m_oLoginData;
 @synthesize m_pResponseData;
 @synthesize m_oRequest;
 
@@ -344,9 +344,9 @@ UITextField * g_pTextPassword = nil;
 	
 	NSError *error = nil;
 	SBJSON *json = [[SBJSON new] autorelease];
-	self.m_oListAllPlantsItem = [json objectWithString:responseString error:&error];
+	self.m_oLoginData = [json objectWithString:responseString error:&error];
     NSString * lpError = nil;
-	if (![LYUtility IsReturnDataValid:self.m_oListAllPlantsItem apError:&lpError])
+	if (![LYUtility IsReturnDataValid:self.m_oLoginData apError:&lpError])
 	{
         BOOL isNetworkError = NO;
         //1.网络等错误
@@ -362,7 +362,7 @@ UITextField * g_pTextPassword = nil;
             
         }else
         {
-            [self alertWrongLogin];
+            [self alertWrongLogin:lpError];
             [self.m_oLoginTableView setHidden:NO];
             [LYGlobalSettings SetSettingString:SETTING_KEY_LOGIN apVal:@"0"];
         }
@@ -370,11 +370,30 @@ UITextField * g_pTextPassword = nil;
     }
 	else
     {
+        id lpVal = [self.m_oLoginData objectForKey:@"val"];
+        if ([lpVal isKindOfClass:[NSDictionary class]])
+        {
+             lpVal = [lpVal objectForKey:@"user_token"];
+            if ([lpVal isKindOfClass:[NSString class]])
+            {
+                [LYGlobalSettings SetSettingString:SETTING_KEY_USER_TOKEN apVal:lpVal];
+                [LYGlobalSettings SetSettingString:SETTING_KEY_LOGIN apVal:@"1"];
+                [self.m_oLoginTableView setHidden:YES];
+                [self navigateToMainWindow];
+                return;
+            }
+
+        }
         
-        [LYGlobalSettings SetSettingString:SETTING_KEY_USER_TOKEN apVal:@"1"];
-        [LYGlobalSettings SetSettingString:SETTING_KEY_LOGIN apVal:@"1"];
-        [self.m_oLoginTableView setHidden:YES];
-        [self navigateToPlantView];
+        
+        {
+            [self alertWrongLogin:@"网络错误"];
+            [self.m_oLoginTableView setHidden:NO];
+            [LYGlobalSettings SetSettingString:SETTING_KEY_LOGIN apVal:@"0"];
+
+        }
+        
+
 	}
     [responseString release];
     self.m_pResponseData  = nil;
@@ -400,9 +419,9 @@ UITextField * g_pTextPassword = nil;
 }
 
 #pragma mark 错误提醒
-- (void) alertWrongLogin
+- (void) alertWrongLogin:(NSString *) apError
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"登陆错误" message:nil
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"登陆错误" message:apError
 												   delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil, nil];
     alert.tag = 0;
     [alert show];
@@ -427,7 +446,7 @@ UITextField * g_pTextPassword = nil;
         {
             if ([self IsLogin])
             {
-                [self navigateToPlantView];
+                [self navigateToMainWindow];
                 
             }else
             {
@@ -455,31 +474,36 @@ UITextField * g_pTextPassword = nil;
 
 #pragma mark 导航到设备
 
-- (void) navigateToPlantView
+- (void) navigateToMainWindow
 {
     self.m_oActivityProgressbar.hidesWhenStopped = TRUE;
     label.text = @"";
     [self.m_oActivityProgressbar stopAnimating];
     
     //2. load view
-    if (nil == self->m_pPlantViewController)
+    if (nil == self->m_pMainWindow)
     {
-/**
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard"
+
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main_iPhone"
                                                                  bundle: nil];
         
         
-        LYTabBarViewController  *lpviewController = (LYTabBarViewController *)[mainStoryboard
-                                                                               instantiateViewControllerWithIdentifier: @"tabbar"];
+        UIViewController  *lpviewController = (UIViewController *)[mainStoryboard
+                                                                               instantiateViewControllerWithIdentifier: @"MainWindow"];
         
-        lpviewController.m_oListView = self.m_oListAllPlantsItem;
-        
-        lpviewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        
-        [self presentViewController:lpviewController animated:YES completion:nil];
-        
-        [UIView commitAnimations];
-   */
+        if ([lpviewController isKindOfClass:[LYMainWindowViewController class]])
+        {
+            
+            LYMainWindowViewController * lpController = (LYMainWindowViewController*)lpviewController;
+            
+            lpController.m_oLoginData = self.m_oLoginData;
+            
+            lpviewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            
+            [self presentViewController:lpviewController animated:YES completion:nil];
+            
+            [UIView commitAnimations];
+        }
         return;
     }
 }

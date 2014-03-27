@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C78B16918E42B5900E95004 /* LYMainWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C78B16818E42B5900E95004 /* LYMainWindowViewController.m */; };
+		4C78B17018E432D400E95004 /* guess.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C78B16F18E432D400E95004 /* guess.png */; };
+		4C78B17218E4349600E95004 /* rank.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C78B17118E4349600E95004 /* rank.png */; };
+		4C78B17418E435AC00E95004 /* security.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C78B17318E435AC00E95004 /* security.png */; };
+		4C78B17618E4365800E95004 /* buddy.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C78B17518E4365800E95004 /* buddy.png */; };
+		4C78B17818E4365F00E95004 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C78B17718E4365F00E95004 /* account.png */; };
 		4C81C25618E02C4100B69C1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C81C25518E02C4100B69C1A /* Foundation.framework */; };
 		4C81C25818E02C4100B69C1A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C81C25718E02C4100B69C1A /* CoreGraphics.framework */; };
 		4C81C25A18E02C4100B69C1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C81C25918E02C4100B69C1A /* UIKit.framework */; };
@@ -15,8 +21,8 @@
 		4C81C26618E02C4100B69C1A /* LYAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C81C26518E02C4100B69C1A /* LYAppDelegate.m */; };
 		4C81C26918E02C4100B69C1A /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C81C26718E02C4100B69C1A /* Main_iPhone.storyboard */; };
 		4C81C26C18E02C4100B69C1A /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C81C26A18E02C4100B69C1A /* Main_iPad.storyboard */; };
-		4C81C26F18E02C4100B69C1A /* LYFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C81C26E18E02C4100B69C1A /* LYFirstViewController.m */; };
-		4C81C27218E02C4100B69C1A /* LYSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C81C27118E02C4100B69C1A /* LYSecondViewController.m */; };
+		4C81C26F18E02C4100B69C1A /* LYGuessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C81C26E18E02C4100B69C1A /* LYGuessViewController.m */; };
+		4C81C27218E02C4100B69C1A /* LYRankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C81C27118E02C4100B69C1A /* LYRankViewController.m */; };
 		4C81C27418E02C4100B69C1A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C81C27318E02C4100B69C1A /* Images.xcassets */; };
 		4C81C27B18E02C4100B69C1A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C81C27A18E02C4100B69C1A /* XCTest.framework */; };
 		4C81C27C18E02C4100B69C1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C81C25518E02C4100B69C1A /* Foundation.framework */; };
@@ -111,6 +117,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C78B16718E42B5900E95004 /* LYMainWindowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYMainWindowViewController.h; sourceTree = "<group>"; };
+		4C78B16818E42B5900E95004 /* LYMainWindowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYMainWindowViewController.m; sourceTree = "<group>"; };
+		4C78B16F18E432D400E95004 /* guess.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guess.png; sourceTree = "<group>"; };
+		4C78B17118E4349600E95004 /* rank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rank.png; sourceTree = "<group>"; };
+		4C78B17318E435AC00E95004 /* security.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = security.png; sourceTree = "<group>"; };
+		4C78B17518E4365800E95004 /* buddy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buddy.png; sourceTree = "<group>"; };
+		4C78B17718E4365F00E95004 /* account.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = account.png; sourceTree = "<group>"; };
 		4C81C25218E02C4100B69C1A /* finger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = finger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C81C25518E02C4100B69C1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4C81C25718E02C4100B69C1A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -123,10 +136,10 @@
 		4C81C26518E02C4100B69C1A /* LYAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYAppDelegate.m; sourceTree = "<group>"; };
 		4C81C26818E02C4100B69C1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		4C81C26B18E02C4100B69C1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		4C81C26D18E02C4100B69C1A /* LYFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYFirstViewController.h; sourceTree = "<group>"; };
-		4C81C26E18E02C4100B69C1A /* LYFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYFirstViewController.m; sourceTree = "<group>"; };
-		4C81C27018E02C4100B69C1A /* LYSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYSecondViewController.h; sourceTree = "<group>"; };
-		4C81C27118E02C4100B69C1A /* LYSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYSecondViewController.m; sourceTree = "<group>"; };
+		4C81C26D18E02C4100B69C1A /* LYGuessViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYGuessViewController.h; sourceTree = "<group>"; };
+		4C81C26E18E02C4100B69C1A /* LYGuessViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYGuessViewController.m; sourceTree = "<group>"; };
+		4C81C27018E02C4100B69C1A /* LYRankViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYRankViewController.h; sourceTree = "<group>"; };
+		4C81C27118E02C4100B69C1A /* LYRankViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYRankViewController.m; sourceTree = "<group>"; };
 		4C81C27318E02C4100B69C1A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4C81C27918E02C4100B69C1A /* fingerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fingerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C81C27A18E02C4100B69C1A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -284,6 +297,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C78B16A18E4309C00E95004 /* tray */ = {
+			isa = PBXGroup;
+			children = (
+				4C78B17718E4365F00E95004 /* account.png */,
+				4C78B17518E4365800E95004 /* buddy.png */,
+				4C78B17318E435AC00E95004 /* security.png */,
+				4C78B17118E4349600E95004 /* rank.png */,
+				4C78B16F18E432D400E95004 /* guess.png */,
+			);
+			path = tray;
+			sourceTree = "<group>";
+		};
 		4C81C24918E02C4100B69C1A = {
 			isa = PBXGroup;
 			children = (
@@ -328,12 +353,14 @@
 				4CA47E4718E0777500E83A9F /* Thirdparty */,
 				4C81C26418E02C4100B69C1A /* LYAppDelegate.h */,
 				4C81C26518E02C4100B69C1A /* LYAppDelegate.m */,
+				4C78B16718E42B5900E95004 /* LYMainWindowViewController.h */,
+				4C78B16818E42B5900E95004 /* LYMainWindowViewController.m */,
 				4C81C26718E02C4100B69C1A /* Main_iPhone.storyboard */,
 				4C81C26A18E02C4100B69C1A /* Main_iPad.storyboard */,
-				4C81C26D18E02C4100B69C1A /* LYFirstViewController.h */,
-				4C81C26E18E02C4100B69C1A /* LYFirstViewController.m */,
-				4C81C27018E02C4100B69C1A /* LYSecondViewController.h */,
-				4C81C27118E02C4100B69C1A /* LYSecondViewController.m */,
+				4C81C26D18E02C4100B69C1A /* LYGuessViewController.h */,
+				4C81C26E18E02C4100B69C1A /* LYGuessViewController.m */,
+				4C81C27018E02C4100B69C1A /* LYRankViewController.h */,
+				4C81C27118E02C4100B69C1A /* LYRankViewController.m */,
 				4C81C27318E02C4100B69C1A /* Images.xcassets */,
 				4C81C25C18E02C4100B69C1A /* Supporting Files */,
 			);
@@ -580,6 +607,7 @@
 		4CA47F0318E081D000E83A9F /* img */ = {
 			isa = PBXGroup;
 			children = (
+				4C78B16A18E4309C00E95004 /* tray */,
 				4CD0627918E4116E0088C210 /* Default-568h@2x.png */,
 				4CD0627718E411440088C210 /* Default-568h@2x.psd */,
 				4CA47F0418E081D000E83A9F /* Default.png */,
@@ -698,6 +726,7 @@
 				4CA47EF118E0777500E83A9F /* save.png in Resources */,
 				4CA47EED18E0777500E83A9F /* purple_gradient@2x.png in Resources */,
 				4C81C26C18E02C4100B69C1A /* Main_iPad.storyboard in Resources */,
+				4C78B17218E4349600E95004 /* rank.png in Resources */,
 				4CA47F0618E081D000E83A9F /* Default.png in Resources */,
 				4CA47EE418E0777500E83A9F /* gear@2x.png in Resources */,
 				4CA47EE018E0777500E83A9F /* CloseButton@2x.png in Resources */,
@@ -709,15 +738,18 @@
 				4CA47EF718E0777500E83A9F /* yellow_gradient@2x.png in Resources */,
 				4CA47EF418E0777500E83A9F /* Text@2x.png in Resources */,
 				4CA47EF618E0777500E83A9F /* wave.png in Resources */,
+				4C78B17018E432D400E95004 /* guess.png in Resources */,
 				4CA47EDB18E0777500E83A9F /* actions@2x.png in Resources */,
 				4CA47EE818E0777500E83A9F /* instinctivecode_logo.png in Resources */,
 				4CA47EE918E0777500E83A9F /* instinctivecode_logo@2x.png in Resources */,
 				4CA47EDE18E0777500E83A9F /* CloseButton.png in Resources */,
 				4CA47EDD18E0777500E83A9F /* blue_gradient@2x.png in Resources */,
 				4CD0627818E411440088C210 /* Default-568h@2x.psd in Resources */,
+				4C78B17618E4365800E95004 /* buddy.png in Resources */,
 				4CA47EF018E0777500E83A9F /* reset.png in Resources */,
 				4CA47EDF18E0777500E83A9F /* CloseButton.psd in Resources */,
 				4CA47EF518E0777500E83A9F /* twitter@2x.png in Resources */,
+				4C78B17818E4365F00E95004 /* account.png in Resources */,
 				4CA47EEC18E0777500E83A9F /* orange_gradient@2x.png in Resources */,
 				4CA47EDC18E0777500E83A9F /* black_gradient@2x.png in Resources */,
 				4CA47EE518E0777500E83A9F /* green_gradient@2x.png in Resources */,
@@ -727,6 +759,7 @@
 				4CA47EE118E0777500E83A9F /* drawdot.png in Resources */,
 				4C81C26018E02C4100B69C1A /* InfoPlist.strings in Resources */,
 				4CA47EEB18E0777500E83A9F /* magnifier@2x.png in Resources */,
+				4C78B17418E435AC00E95004 /* security.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,7 +778,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C81C26F18E02C4100B69C1A /* LYFirstViewController.m in Sources */,
+				4C81C26F18E02C4100B69C1A /* LYGuessViewController.m in Sources */,
 				4C81C26218E02C4100B69C1A /* main.m in Sources */,
 				4CA47EC018E0777500E83A9F /* ASIHTTPRequest.m in Sources */,
 				4CA47ECE18E0777500E83A9F /* ASIS3ObjectRequest.m in Sources */,
@@ -765,8 +798,9 @@
 				4CA47E4418E0687900E83A9F /* LYBHUtility.m in Sources */,
 				4CA47ECB18E0777500E83A9F /* ASIS3Bucket.m in Sources */,
 				4CA47EBD18E0777500E83A9F /* ASIDataDecompressor.m in Sources */,
+				4C78B16918E42B5900E95004 /* LYMainWindowViewController.m in Sources */,
 				4CA47ED218E0777500E83A9F /* NSObject+SBJSON.m in Sources */,
-				4C81C27218E02C4100B69C1A /* LYSecondViewController.m in Sources */,
+				4C81C27218E02C4100B69C1A /* LYRankViewController.m in Sources */,
 				4CA47EBF18E0777500E83A9F /* ASIFormDataRequest.m in Sources */,
 				4CA47E3B18E0666900E83A9F /* LYLoginCell.m in Sources */,
 				4CA47EBB18E0777500E83A9F /* ASIAuthenticationDialog.m in Sources */,

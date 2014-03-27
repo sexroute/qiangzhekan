@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LYFirstViewController : UIViewController
+@interface LYGuessViewController : UIViewController
 
 @end

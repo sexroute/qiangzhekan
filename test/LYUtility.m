@@ -184,7 +184,7 @@
                 lbRet = YES;
             }
             
-            if (nil != loRet)
+            if (!lbRet)
             {
                 id lpError = [obj objectForKey:@"error"];
                 if (nil != lpError && [lpError isKindOfClass:[NSString class]])

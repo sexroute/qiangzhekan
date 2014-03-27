@@ -6,13 +6,13 @@
 //  Copyright (c) 2014年 zhao. All rights reserved.
 //
 
-#import "LYSecondViewController.h"
+#import "LYRankViewController.h"
 
-@interface LYSecondViewController ()
+@interface LYRankViewController ()
 
 @end
 
-@implementation LYSecondViewController
+@implementation LYRankViewController
 
 - (void)viewDidLoad
 {

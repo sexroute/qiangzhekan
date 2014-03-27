@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
- 
+
 #import "LYLoginCell.h"
 #import "LYGlobalSettings.h"
 #import "Thirdparty/ASIHTTPRequest/ASIFormDataRequest.h"
@@ -16,8 +16,8 @@
 @interface LYSplashWindow : UIViewController<UIAlertViewDelegate,UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate> {
 	IBOutlet UILabel *label;
 	NSMutableData * m_pResponseData;
-    NSMutableArray *m_oListAllPlantsItem;
-    UIViewController * m_pPlantViewController;
+    NSDictionary *m_oLoginData;
+    UIViewController * m_pMainWindow;
     
     
 }
@@ -35,7 +35,7 @@
 @property (retain, nonatomic) IBOutlet UIView *m_oLogginButton;
 @property (retain,nonatomic) NSMutableData * m_pResponseData;
 
-@property (retain, nonatomic) IBOutlet NSMutableArray *m_oListAllPlantsItem;
+@property (retain, nonatomic) NSDictionary *m_oLoginData;
 @property (retain,nonatomic) ASIFormDataRequest * m_oRequest;
 @end
 

@@ -6,13 +6,13 @@
 //  Copyright (c) 2014年 zhao. All rights reserved.
 //
 
-#import "LYFirstViewController.h"
+#import "LYGuessViewController.h"
 
-@interface LYFirstViewController ()
+@interface LYGuessViewController ()
 
 @end
 
-@implementation LYFirstViewController
+@implementation LYGuessViewController
 
 - (void)viewDidLoad
 {
