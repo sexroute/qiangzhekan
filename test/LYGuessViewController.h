@@ -15,5 +15,9 @@
 @property (retain, nonatomic) IBOutlet UIImageView *m_oUserIcon;
 @property (retain, nonatomic) IBOutlet UILabel *m_oUserName;
 @property (retain, nonatomic) IBOutlet UILabel *m_oUserMail;
+@property (retain, nonatomic) IBOutlet UIImageView *m_oImgUp;
+@property (retain, nonatomic) IBOutlet UIImageView *m_oImgDown;
+@property (retain, nonatomic) IBOutlet UILabel *m_oLblCountdown;
+
 - (void)initUI;
 @end

@@ -170,9 +170,12 @@
                     <tabBarItem key="tabBarItem" title="竞猜" image="guess.png" id="u1e-5L-l1D" userLabel="Tab Bar Item - guess"/>
                     <navigationItem key="navigationItem" title="竞猜" id="DSK-jo-OPf"/>
                     <connections>
+                        <outlet property="m_oImgDown" destination="7Ez-R9-Zwa" id="QAs-tD-bM1"/>
+                        <outlet property="m_oImgUp" destination="rTf-8E-UTM" id="dJb-5Y-gjM"/>
+                        <outlet property="m_oLblCountdown" destination="SL7-g1-EFT" id="mVP-LX-H0o"/>
                         <outlet property="m_oSymbolTitle" destination="Zhg-ve-WU7" id="bvI-WG-goo"/>
                         <outlet property="m_oSymbol_Price" destination="v8r-OD-Wwv" id="lmL-uS-JqB"/>
-                        <outlet property="m_oUserIcon" destination="Chm-id-edt" id="NkN-OG-qFq"/>
+                        <outlet property="m_oUserIcon" destination="Chm-id-edt" id="aMt-U8-xa4"/>
                         <outlet property="m_oUserMail" destination="7gH-AC-FOT" id="NUO-z6-tiB"/>
                         <outlet property="m_oUserName" destination="U8p-ZP-CwL" id="W1x-17-Yzw"/>
                     </connections>
