@@ -8,6 +8,7 @@
 
 #import "LYGlobalSettings.h"
 #import "LYUtility.h"
+#import "JSON.h"
 
 @implementation LYGlobalSettings
 
@@ -217,7 +218,23 @@ static NSString * databasePath = nil;
     return  ldblVal;
 }
 
-
++(NSDictionary *)GetJsonValue:(NSString *)apString
+{
+    NSDictionary * lpData = [NSDictionary dictionary];
+    if (![apString isKindOfClass:[NSString class]])
+    {
+        return  lpData;
+    }
+    
+    NSError *error = nil;
+	SBJSON *json = [[SBJSON new] autorelease];
+	id loData = [json objectWithString:apString error:&error];
+    if([loData isKindOfClass:[NSDictionary class]])
+    {
+        lpData = loData;
+    }
+    return  lpData;
+}
 
 +(BOOL) SetSettingString:(NSString*)apKey apVal:(NSString*)apVal
 {
@@ -229,7 +246,7 @@ static NSString * databasePath = nil;
         }
         BOOL lbRet = [LYGlobalSettings SetVal2Database:apKey :apVal];
         //assert(lbRet);
-        if (lbRet)
+        if (TRUE)
         {
             [g_pSettingsDic setObject:apVal forKey:(apKey)];
         }

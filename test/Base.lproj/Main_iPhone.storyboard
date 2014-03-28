@@ -107,7 +107,7 @@
         <!--First View Controller - Guess-->
         <scene sceneID="W3I-pn-N6e">
             <objects>
-                <viewController title="First" id="CZ4-MO-1fc" userLabel="First View Controller - Guess" customClass="LYGuessViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GuessWindow" title="First" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CZ4-MO-1fc" userLabel="First View Controller - Guess" customClass="LYGuessViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2VE-Yg-loa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

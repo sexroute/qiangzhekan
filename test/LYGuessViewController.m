@@ -7,21 +7,44 @@
 //
 
 #import "LYGuessViewController.h"
-
+#import "LYMainWindowViewController.h"
+#import "LYGlobalSettings.h"
 @interface LYGuessViewController ()
 
 @end
 
 @implementation LYGuessViewController
+@synthesize m_oLoginData;
+@synthesize m_strSymbolTitle;
+@synthesize m_strUserName;
+@synthesize m_strUserMail;
+@synthesize m_strUserUserIcon;
+@synthesize m_dbl_Symbol_price;
+@synthesize m_strTimeCountDown;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self ResetUserData];
+    [self ResetSymbolData];
     [self initUI];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
+-(void)ResetUserData
+{
+    self.m_strUserName = [[NSString alloc]initWithFormat:@"未登录"];
+    self.m_strUserMail = [[NSString alloc]initWithFormat:@""];
+    self.m_oUserIcon.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"du" ofType:@"png"]];
+}
+
+-(void)ResetSymbolData
+{
+    self.m_strSymbolTitle = [[NSString alloc] initWithFormat:@"竞猜-没有数据"];
+    self.m_dbl_Symbol_price = 0.0;
+    self.m_strTimeCountDown = [[NSString alloc] initWithFormat:@"00:00:00"];
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -31,7 +54,6 @@
 - (void)dealloc {
     [_m_oSymbolTitle release];
     [_m_oSymbol_Price release];
-    [_m_oNavigationBar release];
     [_m_oUserIcon release];
     [_m_oUserName release];
     [_m_oUserMail release];
@@ -40,14 +62,60 @@
     [_m_oLblCountdown release];
     [super dealloc];
 }
+- (BOOL) ParseSymbolData:(NSDictionary *) apData
+{
+    BOOL lbRet = FALSE;
+    if([apData isKindOfClass:[NSDictionary class]])
+    {
+        id loValue = [apData objectForKey:@"val"];
+        if ([loValue isKindOfClass:[NSDictionary class]])
+        {
+            loValue = [loValue objectForKey:@"symbol"];
+            if ([loValue isKindOfClass:[NSDictionary class]])
+            {
+                NSDictionary * lpSymbol = (NSDictionary *)loValue;
+                id loSymbolValue = [lpSymbol objectForKey:@"symbol_name"];
+                if ([loSymbolValue isKindOfClass:[NSString class]])
+                {
+                   self.m_strSymbolTitle = [[NSString alloc] initWithFormat:@"%@",(NSString *)loSymbolValue];
+                    loSymbolValue = [lpSymbol objectForKey:@"symbol_current_value"];
+                    if ([loSymbolValue isKindOfClass:[NSString class]])
+                        
+                    {
+                        self.m_dbl_Symbol_price = [(NSString*)loSymbolValue doubleValue];
+                        lbRet = TRUE;
+                    }
+                }
+            }
+        }
+       
+    }
+     return lbRet;
+}
 - (void) initUI
 {
 
     //1.status bar
-    [self setNeedsStatusBarAppearanceUpdate];
+    [self setNeedsStatusBarAppearanceUpdate];    
     
-    //2.prepare up and down img
+    //2.prepare data
+    self.m_oLoginData = [LYGlobalSettings GetJsonValue:[LYGlobalSettings GetSettingString:SETTING_KEY_SERVER_LOGININFO] ];
     
+    BOOL lbParseSucceed = [self ParseSymbolData:self.m_oLoginData];
+    if (!lbParseSucceed)
+    {
+        self.m_oImgDown.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down_gray" ofType:@"png"]];
+        self.m_oImgUp.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up_gray" ofType:@"png"]];
+  
+    }else
+    {
+        self.m_oImgDown.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down" ofType:@"png"]];
+        self.m_oImgUp.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up" ofType:@"png"]];
+    }
+    
+    self.m_oLblCountdown.text = [[NSString alloc] initWithFormat:@"%@",self.m_strTimeCountDown];
+    self.m_oSymbol_Price.text = [[NSString alloc] initWithFormat:@"%.2f",self.m_dbl_Symbol_price];
+    self.m_oSymbolTitle.text = [[NSString alloc] initWithFormat:@"%@",self.m_strSymbolTitle];
 
 }
 

@@ -24,6 +24,7 @@
 +(BOOL) SetSettingDouble:(NSString*)apKey apVal:(double)adblVal;
 
 + (NSString *) GetPostDataPrefix;
++ (NSDictionary *) GetJsonValue:(NSString *)apString;
 
 @end
 
@@ -43,6 +44,7 @@
 #define SETTING_KEY_SELECTED_PLANT_TYPE          @"SELECTED_PLANT_TYPE"
 #define SETTING_KEY_STYLE                 @"STYLE"
 #define SETTING_KEY_USER_TOKEN         @"USER_TOKEN"
+#define SETTING_KEY_SERVER_LOGININFO        @"LOGIN_INFO"
 
 #pragma mark 诊断相关
 #define SETTING_DEAULT_FAULT @"对中不良"
@@ -51,4 +53,9 @@
 
 #define NETWORK_TIMEOUT 10
 #define DEFAULT_FONT_NAME @"Gill Sans"
+
+#pragma mark 服务端字段
+
+
+
 #endif

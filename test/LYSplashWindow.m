@@ -376,12 +376,13 @@ UITextField * g_pTextPassword = nil;
         if (isNetworkError)
         {
             [self alertLoadFailed];
-            
+            [LYGlobalSettings SetSettingString:SETTING_KEY_SERVER_LOGININFO apVal:@""];
         }else
         {
             [self alertWrongLogin:lpError];
             [self.m_oLoginTableView setHidden:NO];
             [LYGlobalSettings SetSettingString:SETTING_KEY_LOGIN apVal:@"0"];
+            [LYGlobalSettings SetSettingString:SETTING_KEY_SERVER_LOGININFO apVal:@""];
         }
         
     }
@@ -397,6 +398,7 @@ UITextField * g_pTextPassword = nil;
                 [LYGlobalSettings SetSettingString:SETTING_KEY_LOGIN apVal:@"1"];
                 [self.m_oLoginTableView setHidden:YES];
                 [self navigateToMainWindow];
+                [LYGlobalSettings SetSettingString:SETTING_KEY_SERVER_LOGININFO apVal:responseString];
                 return;
             }
 
@@ -407,6 +409,7 @@ UITextField * g_pTextPassword = nil;
             [self alertWrongLogin:@"网络错误"];
             [self.m_oLoginTableView setHidden:NO];
             [LYGlobalSettings SetSettingString:SETTING_KEY_LOGIN apVal:@"0"];
+            [LYGlobalSettings SetSettingString:SETTING_KEY_SERVER_LOGININFO apVal:@""];
 
         }
         
@@ -520,6 +523,8 @@ UITextField * g_pTextPassword = nil;
             [self presentViewController:lpviewController animated:YES completion:nil];
             
             [UIView commitAnimations];
+            
+            
         }
         return;
     }
