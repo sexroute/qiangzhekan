@@ -62,6 +62,48 @@
     [_m_oLblCountdown release];
     [super dealloc];
 }
+- (BOOL) ParseUserData:(NSDictionary *) apData
+{
+    BOOL lbRet = FALSE;
+    if([apData isKindOfClass:[NSDictionary class]])
+    {
+        id loValue = [apData objectForKey:@"val"];
+        if ([loValue isKindOfClass:[NSDictionary class]])
+        {
+            id loUserValue = [loValue objectForKey:@"user_name"];
+            if ([loUserValue isKindOfClass:[NSString class]])
+            {
+                self.m_strUserName =[[NSString alloc] initWithFormat:@"%@",(NSString *)loUserValue];
+                 loUserValue = [loValue objectForKey:@"user_email"];
+                if ([loUserValue isKindOfClass:[NSString class]])
+                {
+                    self.m_strUserMail =[[NSString alloc] initWithFormat:@"%@",(NSString *)loUserValue];
+                    loUserValue = [loValue objectForKey:@"user_avatar_url"];
+                    if ([loUserValue isKindOfClass:[NSString class]])
+                    {
+                        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:(NSString *)loUserValue]]];
+                        
+                        if (nil == image)
+                        {
+                             self.m_oUserIcon.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"du" ofType:@"png"]];
+                        }else
+                        {
+                             self.m_oUserIcon.image = image;
+                        }
+                        
+                    }else
+                    {
+                         self.m_oUserIcon.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"du" ofType:@"png"]];
+                    }
+                    lbRet = TRUE;
+                }
+            }
+        }
+        
+    }
+    return lbRet;
+
+}
 - (BOOL) ParseSymbolData:(NSDictionary *) apData
 {
     BOOL lbRet = FALSE;
@@ -112,10 +154,15 @@
         self.m_oImgDown.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down" ofType:@"png"]];
         self.m_oImgUp.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up" ofType:@"png"]];
     }
+
+    lbParseSucceed =  [self ParseUserData:self.m_oLoginData];
+
     
     self.m_oLblCountdown.text = [[NSString alloc] initWithFormat:@"%@",self.m_strTimeCountDown];
     self.m_oSymbol_Price.text = [[NSString alloc] initWithFormat:@"%.2f",self.m_dbl_Symbol_price];
     self.m_oSymbolTitle.text = [[NSString alloc] initWithFormat:@"%@",self.m_strSymbolTitle];
+    self.m_oUserName.text =[[NSString alloc] initWithFormat:@"%@",self.m_strUserName];
+    self.m_oUserMail.text =[[NSString alloc] initWithFormat:@"%@",self.m_strUserMail];
 
 }
 
