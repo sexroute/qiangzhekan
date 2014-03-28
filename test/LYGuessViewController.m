@@ -9,6 +9,7 @@
 #import "LYGuessViewController.h"
 #import "LYMainWindowViewController.h"
 #import "LYGlobalSettings.h"
+#import "JSON.h"
 @interface LYGuessViewController ()
 
 @end
@@ -24,6 +25,10 @@
 @synthesize m_nTransactionDirection;
 @synthesize m_bSymbolSucceed;
 @synthesize m_strSymbolReason;
+@synthesize m_strSymbolId;
+@synthesize m_oRequest;
+@synthesize responseData;
+@synthesize m_strTransactionId;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -68,6 +73,8 @@
     [_m_oImgUp release];
     [_m_oImgDown release];
     [_m_oLblCountdown release];
+    [m_oRequest release];
+    
     [super dealloc];
 }
 #pragma mark 解析json数据
@@ -122,15 +129,20 @@
          id loValue = [apData objectForKey:@"val"];
          if ([loValue isKindOfClass:[NSDictionary class]])
          {
-              id loTransValue = [loValue objectForKey:@"user_trans"];
-             if ([loTransValue isKindOfClass:[NSDictionary class]])
+               loValue = [loValue objectForKey:@"user_trans"];
+             if ([loValue isKindOfClass:[NSDictionary class]])
              {
-                 loTransValue = [loTransValue objectForKey:@"trans_direction"];
+                 id loTransValue = [loValue objectForKey:@"trans_direction"];
                   if ([loTransValue isKindOfClass:[NSString class]])
                   {
                       self.m_nTransactionDirection = [(NSString *)loTransValue intValue];
                       lnRet = self.m_nTransactionDirection;
                   }
+                 loTransValue = [loValue objectForKey:@"id"];
+                 if ([loTransValue isKindOfClass:[NSString class]])
+                 {
+                     self.m_strTransactionId = [[[NSString alloc] initWithFormat:@"%@",(NSString *)loTransValue]autorelease];
+                 }
              }
              
          }
@@ -160,6 +172,12 @@
                         self.m_dbl_Symbol_price = [(NSString*)loSymbolValue doubleValue];
                         lbRet = TRUE;
                     }
+                    
+                    loSymbolValue = [lpSymbol objectForKey:@"id"];
+                    if ([loSymbolValue isKindOfClass:[NSString class]])
+                    {
+                        self.m_strSymbolId = [[[NSString alloc] initWithFormat:@"%@",(NSString *)loSymbolValue]autorelease];
+                    }
                 }
             }
         }
@@ -177,7 +195,6 @@
     //2.prepare data
     NSString * lpResponseData = [LYGlobalSettings GetSettingString:SETTING_KEY_SERVER_LOGININFO];
     self.m_oLoginData = [LYGlobalSettings GetJsonValue: lpResponseData];
-    
     BOOL lbParseSucceed = [self ParseSymbolData:self.m_oLoginData];
     self.m_bSymbolSucceed = lbParseSucceed;
     
@@ -306,18 +323,120 @@
 #pragma mark Transaction
 -(void) doCloseRemoteTransaction
 {
+    [self PopulateIndicator];
+    self.responseData = [NSMutableData data];
     
+    NSString * lpPostData = [NSString stringWithFormat:@"user_token=%@&id=%@",[LYGlobalSettings GetSettingString:SETTING_KEY_USER_TOKEN],self.m_strTransactionId];
+    NSString * lpServerAddress = [NSString stringWithFormat:@"%@/index.php/Trans/close/",[LYGlobalSettings GetSettingString:SETTING_KEY_SERVER_ADDRESS]];
+    
+    NSURL* url = [NSURL URLWithString:lpServerAddress];
+    NSLog(@"%@",lpServerAddress);
+    
+   [self.m_oRequest setCachePolicy: ASIDoNotWriteToCacheCachePolicy | ASIDoNotReadFromCacheCachePolicy];
+    self.m_oRequest = [ASIFormDataRequest  requestWithURL:url];
+    [self.m_oRequest setRequestMethod:@"POST"];
+    [self.m_oRequest addRequestHeader:@"Content-Type" value:@"application/x-www-form-urlencoded"];
+    NSMutableData *requestBody = [[[NSMutableData alloc] initWithData:[lpPostData dataUsingEncoding:NSUTF8StringEncoding]] autorelease];
+    [self.m_oRequest appendPostData:requestBody];
+    [self.m_oRequest setDelegate:self];
+    [self.m_oRequest setTimeOutSeconds:NETWORK_TIMEOUT];
+   	[self.m_oRequest startAsynchronous];
+    
+    if (nil != HUD)
+    {
+        [HUD hide:YES afterDelay:0];
+    }
 }
 
 -(void) doBetUpTransaction
 {
+    [self PopulateIndicator];
+    self.responseData = [NSMutableData data];
     
+    NSString * lpPostData = [NSString stringWithFormat:@"user_token=%@&trans_amount=%d&id=%@&trans_symbol_id=%@&trans_direction=1",[LYGlobalSettings GetSettingString:SETTING_KEY_USER_TOKEN],10,self.m_strTransactionId,self.m_strSymbolId];
+    NSString * lpServerAddress = [NSString stringWithFormat:@"%@/index.php/Trans/add/",[LYGlobalSettings GetSettingString:SETTING_KEY_SERVER_ADDRESS]];
+    
+    NSURL* url = [NSURL URLWithString:lpServerAddress];
+    NSLog(@"%@",lpServerAddress);
+    
+    [self.m_oRequest setCachePolicy: ASIDoNotWriteToCacheCachePolicy | ASIDoNotReadFromCacheCachePolicy];
+    self.m_oRequest = [ASIFormDataRequest  requestWithURL:url];
+    [self.m_oRequest setRequestMethod:@"POST"];
+    [self.m_oRequest addRequestHeader:@"Content-Type" value:@"application/x-www-form-urlencoded"];
+    NSMutableData *requestBody = [[[NSMutableData alloc] initWithData:[lpPostData dataUsingEncoding:NSUTF8StringEncoding]] autorelease];
+    [self.m_oRequest appendPostData:requestBody];
+    [self.m_oRequest setDelegate:self];
+    [self.m_oRequest setTimeOutSeconds:NETWORK_TIMEOUT];
+   	[self.m_oRequest startAsynchronous];
+    
+    if (nil != HUD)
+    {
+        [HUD hide:YES afterDelay:0];
+    }
 }
 
 -(void) doBetDownTransaction
 {
+    [self PopulateIndicator];
+    self.responseData = [NSMutableData data];
     
+    NSString * lpPostData = [NSString stringWithFormat:@"user_token=%@&trans_amount=%d&id=%@&trans_symbol_id=%@&trans_direction=0",[LYGlobalSettings GetSettingString:SETTING_KEY_USER_TOKEN],10,self.m_strTransactionId,self.m_strSymbolId];
+    NSString * lpServerAddress = [NSString stringWithFormat:@"%@/index.php/Trans/add/",[LYGlobalSettings GetSettingString:SETTING_KEY_SERVER_ADDRESS]];
+    
+    NSURL* url = [NSURL URLWithString:lpServerAddress];
+    NSLog(@"%@",lpServerAddress);
+    
+    [self.m_oRequest setCachePolicy: ASIDoNotWriteToCacheCachePolicy | ASIDoNotReadFromCacheCachePolicy];
+    self.m_oRequest = [ASIFormDataRequest  requestWithURL:url];
+    [self.m_oRequest setRequestMethod:@"POST"];
+    [self.m_oRequest addRequestHeader:@"Content-Type" value:@"application/x-www-form-urlencoded"];
+    NSMutableData *requestBody = [[[NSMutableData alloc] initWithData:[lpPostData dataUsingEncoding:NSUTF8StringEncoding]] autorelease];
+    [self.m_oRequest appendPostData:requestBody];
+    [self.m_oRequest setDelegate:self];
+    [self.m_oRequest setTimeOutSeconds:NETWORK_TIMEOUT];
+   	[self.m_oRequest startAsynchronous];
+    
+    if (nil != HUD)
+    {
+        [HUD hide:YES afterDelay:0];
+    }
 }
+
+#pragma network response
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    // Use when fetching binary data
+    self.responseData =[NSMutableData dataWithData:[request responseData]] ;
+    
+    NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    
+    NSLog(responseString);
+
+    self.responseData = nil;
+    [LYGlobalSettings SetSettingString:SETTING_KEY_SERVER_LOGININFO apVal:responseString];
+    [responseString release];
+    
+    if (nil != HUD)
+    {
+        [HUD hide:YES afterDelay:0];
+    }
+    
+    [self initUI];
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    
+    self.responseData = nil;
+    if (nil!=HUD)
+    {
+        [HUD hide:YES];
+    }
+}
+
+
+
+
 
 #pragma mark 错误提醒
 - (void) alertWrongLogin:(NSString *) apError
@@ -366,12 +485,43 @@
 
 
 
-- (UIStatusBarStyle) preferredStatusBarStyle {
+- (UIStatusBarStyle) preferredStatusBarStyle
+{
     return UIStatusBarStyleLightContent;
 }
 
 
+#pragma mark hud
+- (void)OnHudCallBack
+{
+	// Do something usefull in here instead of sleeping ...
+    sleep(NETWORK_TIMEOUT*2);
+}
 
+- (void)hudWasHidden:(MBProgressHUD *)apHud
+{
+	// Remove HUD from screen when the HUD was hidded
+	[HUD removeFromSuperview];
+	[HUD release];
+	HUD = nil;
+    
+}
+
+- (void)PopulateIndicator
+{
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    
+	[self.navigationController.view addSubview:HUD];
+    
+	HUD.dimBackground = YES;
+    HUD.labelText = @"刷新中";
+	// Regiser for HUD callbacks so we can remove it from the window at the right time
+	HUD.delegate = self;
+	// Show the HUD while the provided method executes in a new thread
+	[HUD showWhileExecuting:@selector(OnHudCallBack) onTarget:self withObject:nil animated:YES];
+    [self.navigationController.view bringSubviewToFront:HUD];
+}
 
 
 @end

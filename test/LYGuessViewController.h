@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ASIFormDataRequest.h"
+#import "EGORefreshTableHeaderView.h"
+#import "MBProgressHUD.h"
 enum TRANS_ACTION_TYPE
 {
 	TRANS_NONE_TRANS        = -1,
@@ -14,10 +17,11 @@ enum TRANS_ACTION_TYPE
 	TRANS_BET_UP = 1           ,
 	   
 };
-@interface LYGuessViewController : UIViewController
+@interface LYGuessViewController : UIViewController<EGORefreshTableHeaderDelegate,MBProgressHUDDelegate>
 {
-    
+    MBProgressHUD *HUD;
 }
+- (void)OnHudCallBack;
 @property (retain, nonatomic) IBOutlet UILabel *m_oSymbolTitle;
 @property (retain, nonatomic) IBOutlet UILabel *m_oSymbol_Price;
 @property (retain, nonatomic) IBOutlet UIImageView *m_oUserIcon;
@@ -38,6 +42,10 @@ enum TRANS_ACTION_TYPE
 @property  int m_nTransactionDirection;
 @property  BOOL m_bSymbolSucceed;
 @property (retain,nonatomic) NSString * m_strSymbolReason;
+@property (retain,nonatomic) NSMutableData * responseData;
 
+@property (retain,nonatomic) ASIFormDataRequest * m_oRequest;
+@property (retain,nonatomic) NSString * m_strSymbolId;
+@property (retain,nonatomic) NSString * m_strTransactionId;
 - (void)initUI;
 @end

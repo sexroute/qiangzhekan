@@ -11,7 +11,7 @@
 
 #import "LYLoginCell.h"
 #import "LYGlobalSettings.h"
-#import "Thirdparty/ASIHTTPRequest/ASIFormDataRequest.h"
+#import "ASIFormDataRequest.h"
 #define IS_RETINA       ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] &&([UIScreen mainScreen].scale == 2.0))
 @interface LYSplashWindow : UIViewController<UIAlertViewDelegate,UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate> {
 	IBOutlet UILabel *label;
