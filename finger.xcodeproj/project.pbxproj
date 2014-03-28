@@ -105,6 +105,9 @@
 		4CD0627818E411440088C210 /* Default-568h@2x.psd in Resources */ = {isa = PBXBuildFile; fileRef = 4CD0627718E411440088C210 /* Default-568h@2x.psd */; };
 		4CD0627A18E4116E0088C210 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD0627918E4116E0088C210 /* Default-568h@2x.png */; };
 		4CF03B8818E54DCE00C3EC54 /* LYNavRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF03B8718E54DCE00C3EC54 /* LYNavRootViewController.m */; };
+		4CF03B8A18E556C300C3EC54 /* du.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF03B8918E556C300C3EC54 /* du.png */; };
+		4CF03B8C18E5595700C3EC54 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF03B8B18E5595700C3EC54 /* up.png */; };
+		4CF03B8E18E559D500C3EC54 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF03B8D18E559D500C3EC54 /* down.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -271,6 +274,9 @@
 		4CD0627918E4116E0088C210 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4CF03B8618E54DCE00C3EC54 /* LYNavRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYNavRootViewController.h; sourceTree = "<group>"; };
 		4CF03B8718E54DCE00C3EC54 /* LYNavRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYNavRootViewController.m; sourceTree = "<group>"; };
+		4CF03B8918E556C300C3EC54 /* du.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = du.png; path = test/img/du.png; sourceTree = SOURCE_ROOT; };
+		4CF03B8B18E5595700C3EC54 /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up.png; sourceTree = "<group>"; };
+		4CF03B8D18E559D500C3EC54 /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +309,7 @@
 		4C78B16A18E4309C00E95004 /* tray */ = {
 			isa = PBXGroup;
 			children = (
+				4CF03B8918E556C300C3EC54 /* du.png */,
 				4C78B17718E4365F00E95004 /* account.png */,
 				4C78B17518E4365800E95004 /* buddy.png */,
 				4C78B17318E435AC00E95004 /* security.png */,
@@ -620,6 +627,8 @@
 		4CA47F0318E081D000E83A9F /* img */ = {
 			isa = PBXGroup;
 			children = (
+				4CF03B8D18E559D500C3EC54 /* down.png */,
+				4CF03B8B18E5595700C3EC54 /* up.png */,
 				4C78B16A18E4309C00E95004 /* tray */,
 				4CD0627918E4116E0088C210 /* Default-568h@2x.png */,
 				4CD0627718E411440088C210 /* Default-568h@2x.psd */,
@@ -745,6 +754,7 @@
 				4C78B17218E4349600E95004 /* rank.png in Resources */,
 				4CA47F0618E081D000E83A9F /* Default.png in Resources */,
 				4CA47EE418E0777500E83A9F /* gear@2x.png in Resources */,
+				4CF03B8E18E559D500C3EC54 /* down.png in Resources */,
 				4CA47EE018E0777500E83A9F /* CloseButton@2x.png in Resources */,
 				4C81C27418E02C4100B69C1A /* Images.xcassets in Resources */,
 				4C81C26918E02C4100B69C1A /* Main_iPhone.storyboard in Resources */,
@@ -752,6 +762,7 @@
 				4CA47EE718E0777500E83A9F /* heart@2x.png in Resources */,
 				4CA47EE618E0777500E83A9F /* grey_gradient@2x.png in Resources */,
 				4CA47EF718E0777500E83A9F /* yellow_gradient@2x.png in Resources */,
+				4CF03B8C18E5595700C3EC54 /* up.png in Resources */,
 				4CA47EF418E0777500E83A9F /* Text@2x.png in Resources */,
 				4CA47EF618E0777500E83A9F /* wave.png in Resources */,
 				4C78B17018E432D400E95004 /* guess.png in Resources */,
@@ -770,6 +781,7 @@
 				4CA47EDC18E0777500E83A9F /* black_gradient@2x.png in Resources */,
 				4CA47EE518E0777500E83A9F /* green_gradient@2x.png in Resources */,
 				4CA47EEF18E0777500E83A9F /* remove_dot.png in Resources */,
+				4CF03B8A18E556C300C3EC54 /* du.png in Resources */,
 				4CA47EE218E0777500E83A9F /* ellipsis@2x.png in Resources */,
 				4CA47EE318E0777500E83A9F /* freq.png in Resources */,
 				4CA47EE118E0777500E83A9F /* drawdot.png in Resources */,
