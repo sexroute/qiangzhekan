@@ -344,7 +344,7 @@
     
     if (nil != HUD)
     {
-        [HUD hide:YES afterDelay:0];
+      //  [HUD hide:YES afterDelay:0];
     }
 }
 
@@ -371,7 +371,7 @@
     
     if (nil != HUD)
     {
-        [HUD hide:YES afterDelay:0];
+      //  [HUD hide:YES afterDelay:0];
     }
 }
 
@@ -398,7 +398,7 @@
     
     if (nil != HUD)
     {
-        [HUD hide:YES afterDelay:0];
+      //  [HUD hide:YES afterDelay:0];
     }
 }
 
@@ -416,12 +416,13 @@
     [LYGlobalSettings SetSettingString:SETTING_KEY_SERVER_LOGININFO apVal:responseString];
     [responseString release];
     
+
+    
+    [self initUI];
     if (nil != HUD)
     {
         [HUD hide:YES afterDelay:0];
     }
-    
-    [self initUI];
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
