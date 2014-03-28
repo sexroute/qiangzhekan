@@ -17,6 +17,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self initUI];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -25,5 +27,24 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)dealloc {
+    [_m_oSymbolTitle release];
+    [_m_oSymbol_Price release];
+    [_m_oNavigationBar release];
+    [super dealloc];
+}
+- (void) initUI
+{
+
+    //1.status bar
+    [self setNeedsStatusBarAppearanceUpdate];
+
+}
+
+- (UIStatusBarStyle) preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 
 @end

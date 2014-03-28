@@ -104,6 +104,7 @@
 		4CA47F0718E081D000E83A9F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CA47F0518E081D000E83A9F /* Default@2x.png */; };
 		4CD0627818E411440088C210 /* Default-568h@2x.psd in Resources */ = {isa = PBXBuildFile; fileRef = 4CD0627718E411440088C210 /* Default-568h@2x.psd */; };
 		4CD0627A18E4116E0088C210 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD0627918E4116E0088C210 /* Default-568h@2x.png */; };
+		4CF03B8818E54DCE00C3EC54 /* LYNavRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF03B8718E54DCE00C3EC54 /* LYNavRootViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -268,6 +269,8 @@
 		4CA47F0518E081D000E83A9F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4CD0627718E411440088C210 /* Default-568h@2x.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Default-568h@2x.psd"; sourceTree = "<group>"; };
 		4CD0627918E4116E0088C210 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		4CF03B8618E54DCE00C3EC54 /* LYNavRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYNavRootViewController.h; sourceTree = "<group>"; };
+		4CF03B8718E54DCE00C3EC54 /* LYNavRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYNavRootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +312,17 @@
 			path = tray;
 			sourceTree = "<group>";
 		};
+		4C78B17918E4383F00E95004 /* guess */ = {
+			isa = PBXGroup;
+			children = (
+				4C81C26D18E02C4100B69C1A /* LYGuessViewController.h */,
+				4C81C26E18E02C4100B69C1A /* LYGuessViewController.m */,
+				4CF03B8618E54DCE00C3EC54 /* LYNavRootViewController.h */,
+				4CF03B8718E54DCE00C3EC54 /* LYNavRootViewController.m */,
+			);
+			name = guess;
+			sourceTree = "<group>";
+		};
 		4C81C24918E02C4100B69C1A = {
 			isa = PBXGroup;
 			children = (
@@ -347,6 +361,7 @@
 		4C81C25B18E02C4100B69C1A /* finger */ = {
 			isa = PBXGroup;
 			children = (
+				4C78B17918E4383F00E95004 /* guess */,
 				4CD0627D18E41FF90088C210 /* setting */,
 				4CD0627C18E4146D0088C210 /* login */,
 				4CA47EFA18E07CE300E83A9F /* lib */,
@@ -357,8 +372,6 @@
 				4C78B16818E42B5900E95004 /* LYMainWindowViewController.m */,
 				4C81C26718E02C4100B69C1A /* Main_iPhone.storyboard */,
 				4C81C26A18E02C4100B69C1A /* Main_iPad.storyboard */,
-				4C81C26D18E02C4100B69C1A /* LYGuessViewController.h */,
-				4C81C26E18E02C4100B69C1A /* LYGuessViewController.m */,
 				4C81C27018E02C4100B69C1A /* LYRankViewController.h */,
 				4C81C27118E02C4100B69C1A /* LYRankViewController.m */,
 				4C81C27318E02C4100B69C1A /* Images.xcassets */,
@@ -689,6 +702,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = zhao;
 				TargetAttributes = {
+					4C81C25118E02C4100B69C1A = {
+						DevelopmentTeam = DYZYXRKHG4;
+					};
 					4C81C27818E02C4100B69C1A = {
 						TestTargetID = 4C81C25118E02C4100B69C1A;
 					};
@@ -786,6 +802,7 @@
 				4CA47EC118E0777500E83A9F /* ASIInputStream.m in Sources */,
 				4CA47EC518E0777500E83A9F /* ASICloudFilesContainer.m in Sources */,
 				4CA47ED718E0777500E83A9F /* SBJsonWriter.m in Sources */,
+				4CF03B8818E54DCE00C3EC54 /* LYNavRootViewController.m in Sources */,
 				4CA47EC918E0777500E83A9F /* ASICloudFilesObjectRequest.m in Sources */,
 				4CA47EC418E0777500E83A9F /* ASICloudFilesCDNRequest.m in Sources */,
 				4CA47EF818E0777500E83A9F /* Reachability.m in Sources */,
@@ -896,6 +913,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -936,6 +954,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -960,6 +979,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "test/finger-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -974,6 +995,7 @@
 					user/lib,
 				);
 				PRODUCT_NAME = finger;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				WRAPPER_EXTENSION = app;
@@ -987,6 +1009,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "test/finger-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1001,6 +1025,7 @@
 					user/lib,
 				);
 				PRODUCT_NAME = finger;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				WRAPPER_EXTENSION = app;

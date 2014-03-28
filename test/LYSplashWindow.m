@@ -270,7 +270,24 @@ UITextField * g_pTextPassword = nil;
     frame.origin.x = self.m_oLoginTableView.frame.origin.x;
     frame.origin.y = self.m_oLoginTableView.frame.origin.y+self.m_oLoginTableView.frame.size.height+5;
     self.m_oLogginButton.frame = frame;
+    
+    
+    //4.navigation bar
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:(float)34/255.0 green:(float)(199)/255.0 blue:((float)253)/255.0 alpha:1.0]];
+    
+    
+    NSShadow *shadow = [[NSShadow alloc] init];
+    shadow.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
+    shadow.shadowOffset = CGSizeMake(0, 1);
+    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                           [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName,
+                                                           nil, NSShadowAttributeName,
+                                                           [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:21.0], NSFontAttributeName, nil]];
+    //5.status bar
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
 }
+
+
 - (void)handleSingleFingerEvent:(UITapGestureRecognizer *)sender
 {
     if (nil == g_pTextUserName.text)

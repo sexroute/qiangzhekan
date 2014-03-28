@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface LYGuessViewController : UIViewController
-
+@property (retain, nonatomic) IBOutlet UILabel *m_oSymbolTitle;
+@property (retain, nonatomic) IBOutlet UILabel *m_oSymbol_Price;
+@property (retain, nonatomic) IBOutlet UINavigationBar *m_oNavigationBar;
+- (void)initUI;
 @end

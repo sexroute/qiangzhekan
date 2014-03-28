@@ -4865,7 +4865,8 @@ static NSOperationQueue *sharedQueue = nil;
 	}
   
 	// RFC 2612 says max-age must override any Expires header
-	if (maxAge) {
+	if (maxAge)
+    {
 		return [[NSDate date] addTimeInterval:maxAge];
 	} else {
 		NSString *expires = [responseHeaders objectForKey:@"Expires"];
