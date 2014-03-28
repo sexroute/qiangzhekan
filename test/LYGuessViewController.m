@@ -32,7 +32,7 @@
     [self initUI];
 	// Do any additional setup after loading the view, typically from a nib.
 }
-
+#pragma mark 重置操作
 -(void)ResetTransactionData
 {
     self.m_nTransactionDirection = TRANS_NONE_TRANS;
@@ -70,6 +70,7 @@
     [_m_oLblCountdown release];
     [super dealloc];
 }
+#pragma mark 解析json数据
 - (BOOL) ParseUserData:(NSDictionary *) apData
 {
     BOOL lbRet = FALSE;
@@ -166,6 +167,7 @@
     }
      return lbRet;
 }
+#pragma mark 初始化UI
 - (void) initUI
 {
 
@@ -232,74 +234,144 @@
     self.m_oSymbolTitle.text = [[NSString alloc] initWithFormat:@"%@",self.m_strSymbolTitle];
     self.m_oUserName.text =[[NSString alloc] initWithFormat:@"%@",self.m_strUserName];
     self.m_oUserMail.text =[[NSString alloc] initWithFormat:@"%@",self.m_strUserMail];
+    
+    //4.增加涨跌按钮消息处理器
+
+    UITapGestureRecognizer *tapGestureTel = [[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleSingleFingerEvent:)]autorelease];
+    
+    self.m_oImgDown.userInteractionEnabled = YES;
+    [self.m_oImgDown addGestureRecognizer:tapGestureTel];
+    
+   UITapGestureRecognizer *tapGestureTel2 = [[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleSingleFingerEvent:)]autorelease];
+    self.m_oImgUp.userInteractionEnabled = YES;
+    [self.m_oImgUp addGestureRecognizer:tapGestureTel2];
+
 
 }
 
-- (UIImage *) convertToGreyscale:(UIImage *)i {
-    
-    int kRed = 1;
-    int kGreen = 2;
-    int kBlue = 4;
-    
-    int colors = kGreen | kBlue | kRed;
-    int m_width = i.size.width;
-    int m_height = i.size.height;
-    
-    uint32_t *rgbImage = (uint32_t *) malloc(m_width * m_height * sizeof(uint32_t));
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef context = CGBitmapContextCreate(rgbImage, m_width, m_height, 8, m_width * 4, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaNoneSkipLast);
-    CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
-    CGContextSetShouldAntialias(context, NO);
-    CGContextDrawImage(context, CGRectMake(0, 0, m_width, m_height), [i CGImage]);
-    CGContextRelease(context);
-    CGColorSpaceRelease(colorSpace);
-    
-    // now convert to grayscale
-    uint8_t *m_imageData = (uint8_t *) malloc(m_width * m_height);
-    for(int y = 0; y < m_height; y++) {
-        for(int x = 0; x < m_width; x++) {
-            uint32_t rgbPixel=rgbImage[y*m_width+x];
-            uint32_t sum=0,count=0;
-            if (colors & kRed) {sum += (rgbPixel>>24)&255; count++;}
-            if (colors & kGreen) {sum += (rgbPixel>>16)&255; count++;}
-            if (colors & kBlue) {sum += (rgbPixel>>8)&255; count++;}
-            m_imageData[y*m_width+x]=sum/count;
+#pragma mark 涨跌按钮点击操作
+
+- (void)handleSingleFingerEvent:(UITapGestureRecognizer *)sender
+{
+    if (!self.m_bSymbolSucceed)
+    {
+        [self alertWrongLogin:self.m_strSymbolReason];
+        return;
+    }else
+    {
+        if(sender.view == self.m_oImgUp)
+        {
+            if (self.m_nTransactionDirection == TRANS_BET_DOWN)
+            {
+                [self alertWrongLogin:[[NSString alloc] initWithFormat:@"已经选涨,未结算前不能改变选择"]];
+                return;
+            }
+            else if (self.m_nTransactionDirection == TRANS_BET_UP)
+                
+            {
+                UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"结算确认" message:@"确认要完成结算么?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil] autorelease];
+                alertView.tag = 1;
+                [alertView show];
+            }
+            else
+            {
+                UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"竞猜确认" message:@"确认猜涨么?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil] autorelease];
+                alertView.tag = 2;
+                [alertView show];
+            }
+        }else
+        if(sender.view == self.m_oImgDown)
+        {
+          if (self.m_nTransactionDirection == TRANS_BET_UP)
+          {
+                    [self alertWrongLogin:[[NSString alloc] initWithFormat:@"已经选涨,未结算前不能改变选择"]];
+                    return;
+           }
+          else if (self.m_nTransactionDirection == TRANS_BET_DOWN)
+                    
+          {
+                    UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"结算确认" message:@"确认要完成结算么?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil] autorelease];
+                    alertView.tag = 3;
+                    [alertView show];
+          }else
+          {
+              UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"竞猜确认" message:@"确认猜跌么?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil] autorelease];
+              alertView.tag = 4;
+              [alertView show];
+          }
         }
     }
-    free(rgbImage);
+}
+
+#pragma mark Transaction
+-(void) doCloseRemoteTransaction
+{
     
-    // convert from a gray scale image back into a UIImage
-    uint8_t *result = (uint8_t *) calloc(m_width * m_height *sizeof(uint32_t), 1);
+}
+
+-(void) doBetUpTransaction
+{
     
-    // process the image back to rgb
-    for(int i = 0; i < m_height * m_width; i++) {
-        result[i*4]=0;
-        int val=m_imageData[i];
-        result[i*4+1]=val;
-        result[i*4+2]=val;
-        result[i*4+3]=val;
+}
+
+-(void) doBetDownTransaction
+{
+    
+}
+
+#pragma mark 错误提醒
+- (void) alertWrongLogin:(NSString *) apError
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:apError
+												   delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil, nil];
+    alert.tag = 0;
+    [alert show];
+    [alert release];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 1)
+    {
+        //完成结算
+        if (buttonIndex == 1)
+        {
+            [self doCloseRemoteTransaction];
+        }
+    }else if(alertView.tag ==2)
+    {
+        //压涨
+        if (buttonIndex == 1)
+        {
+            [self doBetUpTransaction];
+        }
+    }else if(alertView.tag ==3)
+    {
+        //完成结算
+        if (buttonIndex == 1)
+        {
+            [self doCloseRemoteTransaction];
+        }
+    }
+    else if(alertView.tag ==4)
+    {
+        //压跌
+        if (buttonIndex == 1)
+        {
+            [self doBetDownTransaction];
+        }
     }
     
-    // create a UIImage
-    colorSpace = CGColorSpaceCreateDeviceRGB();
-    context = CGBitmapContextCreate(result, m_width, m_height, 8, m_width * sizeof(uint32_t), colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaNoneSkipLast);
-    CGImageRef image = CGBitmapContextCreateImage(context);
-    CGContextRelease(context);
-    CGColorSpaceRelease(colorSpace);
-    UIImage *resultUIImage = [UIImage imageWithCGImage:image];
-    CGImageRelease(image);
-    
-    free(m_imageData);
-    
-    // make sure the data will be released by giving it to an autoreleased NSData
-    [NSData dataWithBytesNoCopy:result length:m_width * m_height];
-    
-    return resultUIImage;
 }
+
+
 
 - (UIStatusBarStyle) preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
+
+
+
 
 
 @end
