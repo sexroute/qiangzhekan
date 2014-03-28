@@ -110,6 +110,8 @@
 		4CF03B8E18E559D500C3EC54 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF03B8D18E559D500C3EC54 /* down.png */; };
 		4CF03B9218E55FA100C3EC54 /* up_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF03B9018E55FA100C3EC54 /* up_gray.png */; };
 		4CF03B9318E55FA100C3EC54 /* down_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF03B9118E55FA100C3EC54 /* down_gray.png */; };
+		4CF03B9918E5871B00C3EC54 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF03B9718E5871B00C3EC54 /* Icon.png */; };
+		4CF03B9A18E5871B00C3EC54 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF03B9818E5871B00C3EC54 /* Icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -281,6 +283,8 @@
 		4CF03B8D18E559D500C3EC54 /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = down.png; path = ../down.png; sourceTree = "<group>"; };
 		4CF03B9018E55FA100C3EC54 /* up_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = up_gray.png; path = test/img/up_gray.png; sourceTree = SOURCE_ROOT; };
 		4CF03B9118E55FA100C3EC54 /* down_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = down_gray.png; path = test/img/down_gray.png; sourceTree = SOURCE_ROOT; };
+		4CF03B9718E5871B00C3EC54 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		4CF03B9818E5871B00C3EC54 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -631,6 +635,8 @@
 		4CA47F0318E081D000E83A9F /* img */ = {
 			isa = PBXGroup;
 			children = (
+				4CF03B9718E5871B00C3EC54 /* Icon.png */,
+				4CF03B9818E5871B00C3EC54 /* Icon@2x.png */,
 				4CF03B8F18E55F8800C3EC54 /* guess */,
 				4C78B16A18E4309C00E95004 /* tray */,
 				4CD0627918E4116E0088C210 /* Default-568h@2x.png */,
@@ -767,6 +773,7 @@
 				4CF03B9318E55FA100C3EC54 /* down_gray.png in Resources */,
 				4CA47EED18E0777500E83A9F /* purple_gradient@2x.png in Resources */,
 				4C81C26C18E02C4100B69C1A /* Main_iPad.storyboard in Resources */,
+				4CF03B9A18E5871B00C3EC54 /* Icon@2x.png in Resources */,
 				4C78B17218E4349600E95004 /* rank.png in Resources */,
 				4CA47F0618E081D000E83A9F /* Default.png in Resources */,
 				4CA47EE418E0777500E83A9F /* gear@2x.png in Resources */,
@@ -794,6 +801,7 @@
 				4CA47EDF18E0777500E83A9F /* CloseButton.psd in Resources */,
 				4CA47EF518E0777500E83A9F /* twitter@2x.png in Resources */,
 				4C78B17818E4365F00E95004 /* account.png in Resources */,
+				4CF03B9918E5871B00C3EC54 /* Icon.png in Resources */,
 				4CA47EEC18E0777500E83A9F /* orange_gradient@2x.png in Resources */,
 				4CA47EDC18E0777500E83A9F /* black_gradient@2x.png in Resources */,
 				4CA47EE518E0777500E83A9F /* green_gradient@2x.png in Resources */,
