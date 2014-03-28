@@ -21,7 +21,9 @@
 @synthesize m_strUserUserIcon;
 @synthesize m_dbl_Symbol_price;
 @synthesize m_strTimeCountDown;
-
+@synthesize m_nTransactionDirection;
+@synthesize m_bSymbolSucceed;
+@synthesize m_strSymbolReason;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -31,11 +33,17 @@
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
+-(void)ResetTransactionData
+{
+    self.m_nTransactionDirection = TRANS_NONE_TRANS;
+}
+
 -(void)ResetUserData
 {
     self.m_strUserName = [[NSString alloc]initWithFormat:@"未登录"];
     self.m_strUserMail = [[NSString alloc]initWithFormat:@""];
     self.m_oUserIcon.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"du" ofType:@"png"]];
+    
 }
 
 -(void)ResetSymbolData
@@ -104,6 +112,30 @@
     return lbRet;
 
 }
+- (enum TRANS_ACTION_TYPE) ParseTransaction:(NSDictionary *) apData
+{
+    enum TRANS_ACTION_TYPE lnRet = TRANS_NONE_TRANS;
+    
+     if([apData isKindOfClass:[NSDictionary class]])
+     {
+         id loValue = [apData objectForKey:@"val"];
+         if ([loValue isKindOfClass:[NSDictionary class]])
+         {
+              id loTransValue = [loValue objectForKey:@"user_trans"];
+             if ([loTransValue isKindOfClass:[NSDictionary class]])
+             {
+                 loTransValue = [loTransValue objectForKey:@"trans_direction"];
+                  if ([loTransValue isKindOfClass:[NSString class]])
+                  {
+                      self.m_nTransactionDirection = [(NSString *)loTransValue intValue];
+                      lnRet = self.m_nTransactionDirection;
+                  }
+             }
+             
+         }
+     }
+    return lnRet;
+}
 - (BOOL) ParseSymbolData:(NSDictionary *) apData
 {
     BOOL lbRet = FALSE;
@@ -141,19 +173,56 @@
     [self setNeedsStatusBarAppearanceUpdate];    
     
     //2.prepare data
-    self.m_oLoginData = [LYGlobalSettings GetJsonValue:[LYGlobalSettings GetSettingString:SETTING_KEY_SERVER_LOGININFO] ];
+    NSString * lpResponseData = [LYGlobalSettings GetSettingString:SETTING_KEY_SERVER_LOGININFO];
+    self.m_oLoginData = [LYGlobalSettings GetJsonValue: lpResponseData];
     
     BOOL lbParseSucceed = [self ParseSymbolData:self.m_oLoginData];
-    if (!lbParseSucceed)
+    self.m_bSymbolSucceed = lbParseSucceed;
+    
+    //3.parse TransAction
+    self.m_nTransactionDirection = [self ParseTransaction:self.m_oLoginData];
+    
+    if (self.m_nTransactionDirection == (TRANS_NONE_TRANS))
     {
-        self.m_oImgDown.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down_gray" ofType:@"png"]];
-        self.m_oImgUp.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up_gray" ofType:@"png"]];
-  
+        if (!lbParseSucceed)
+        {
+            self.m_oImgDown.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down_gray" ofType:@"png"]];
+            self.m_oImgUp.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up_gray" ofType:@"png"]];
+            
+        }else
+        {
+            self.m_oImgDown.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down" ofType:@"png"]];
+            self.m_oImgUp.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up" ofType:@"png"]];
+        }
+        
+    }else if (self.m_nTransactionDirection == (TRANS_BET_DOWN))
+    {
+        
+        if (!lbParseSucceed)
+        {
+            self.m_oImgDown.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down_gray" ofType:@"png"]];
+            self.m_oImgUp.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up_gray" ofType:@"png"]];
+            
+        }else
+        {
+            self.m_oImgDown.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down_selected" ofType:@"png"]];
+            self.m_oImgUp.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up_gray" ofType:@"png"]];
+        }
     }else
     {
-        self.m_oImgDown.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down" ofType:@"png"]];
-        self.m_oImgUp.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up" ofType:@"png"]];
+        if (!lbParseSucceed)
+        {
+            self.m_oImgDown.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down_gray" ofType:@"png"]];
+            self.m_oImgUp.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up_gray" ofType:@"png"]];
+            
+        }else
+        {
+            self.m_oImgDown.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down_gray" ofType:@"png"]];
+            self.m_oImgUp.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up_selected" ofType:@"png"]];
+        }
     }
+
+
 
     lbParseSucceed =  [self ParseUserData:self.m_oLoginData];
 

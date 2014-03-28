@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+enum TRANS_ACTION_TYPE
+{
+	TRANS_NONE_TRANS        = -1,
+    TRANS_BET_DOWN = 0           ,
+	TRANS_BET_UP = 1           ,
+	   
+};
 @interface LYGuessViewController : UIViewController
 {
     
@@ -29,6 +35,9 @@
 @property (retain, nonatomic) NSString *m_strUserUserIcon;
 @property (retain, nonatomic) NSString *m_strTimeCountDown;
 @property  double m_dbl_Symbol_price;
+@property  int m_nTransactionDirection;
+@property  BOOL m_bSymbolSucceed;
+@property (retain,nonatomic) NSString * m_strSymbolReason;
 
 - (void)initUI;
 @end
