@@ -149,11 +149,36 @@
      }
     return lnRet;
 }
-- (BOOL) ParseSymbolData:(NSDictionary *) apData
+- (int) ParseResponse:(NSDictionary *) apData apError:(NSString**)apError
 {
-    BOOL lbRet = FALSE;
+    int lbRet = -1;
     if([apData isKindOfClass:[NSDictionary class]])
     {
+        id loRet =[apData objectForKey:@"ret"];
+        if([loRet isKindOfClass:[NSDictionary class]])
+        {
+            id loRetCode = [loRet objectForKey:@"error_code"];
+            lbRet = [loRetCode intValue];
+            *apError = (NSString*)[loRet objectForKey:@"error"];
+            return  lbRet;
+            
+        }
+    }
+    return lbRet;
+}
+- (int) ParseSymbolData:(NSDictionary *) apData
+{
+    int lbRet = -1;
+    if([apData isKindOfClass:[NSDictionary class]])
+    {
+        id loRet =[apData objectForKey:@"ret"];
+        if([loRet isKindOfClass:[NSDictionary class]])
+        {
+            loRet = [loRet objectForKey:@"error_code"];
+            lbRet = [loRet intValue];
+          
+            
+        }
         id loValue = [apData objectForKey:@"val"];
         if ([loValue isKindOfClass:[NSDictionary class]])
         {
@@ -170,7 +195,7 @@
                         
                     {
                         self.m_dbl_Symbol_price = [(NSString*)loSymbolValue doubleValue];
-                        lbRet = TRUE;
+                       // lbRet = TRUE;
                     }
                     
                     loSymbolValue = [lpSymbol objectForKey:@"id"];
@@ -194,12 +219,18 @@
     
     //2.prepare data
     NSString * lpResponseData = [LYGlobalSettings GetSettingString:SETTING_KEY_SERVER_LOGININFO];
-    self.m_oLoginData = [LYGlobalSettings GetJsonValue: lpResponseData];
-    BOOL lbParseSucceed = [self ParseSymbolData:self.m_oLoginData];
+    NSDictionary * loRet = [LYGlobalSettings GetJsonValue: lpResponseData];
+
+    int lnParseSucceed = [self ParseSymbolData:loRet];
+    BOOL lbParseSucceed = (lnParseSucceed==0);
     self.m_bSymbolSucceed = lbParseSucceed;
+    if (lbParseSucceed)
+    {
+        self.m_oLoginData = loRet;
+    }
     
     //3.parse TransAction
-    self.m_nTransactionDirection = [self ParseTransaction:self.m_oLoginData];
+    self.m_nTransactionDirection = [self ParseTransaction:loRet];
     
     if (self.m_nTransactionDirection == (TRANS_NONE_TRANS))
     {
@@ -411,18 +442,29 @@
     NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     
     NSLog(responseString);
-
+    
+    NSDictionary * loRet = [LYGlobalSettings GetJsonValue: responseString];
+    NSString * lpError = nil;
+    int lnRet = [self ParseResponse:loRet apError:&lpError];
     self.responseData = nil;
     [LYGlobalSettings SetSettingString:SETTING_KEY_SERVER_LOGININFO apVal:responseString];
     [responseString release];
     
-
     
-    [self initUI];
+    
+    if (lnRet !=0)
+    {
+        [self alertWrong:lpError];
+    }else
+    {
+        [self initUI];
+    }
+    
     if (nil != HUD)
     {
         [HUD hide:YES afterDelay:0];
     }
+
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
@@ -440,7 +482,7 @@
 
 
 #pragma mark 错误提醒
-- (void) alertWrongLogin:(NSString *) apError
+- (void) alertWrong:(NSString *) apError
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:apError
 												   delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil, nil];
