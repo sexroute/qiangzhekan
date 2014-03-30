@@ -525,7 +525,7 @@
     
     NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     
-    NSLog(responseString);
+    NSLog(@"%@",responseString);
     
     NSDictionary * loRet = [LYGlobalSettings GetJsonValue: responseString];
     NSString * lpError = nil;

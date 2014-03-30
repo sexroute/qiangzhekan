@@ -121,6 +121,7 @@ NSString *MGTileMenuDidSwitchToPageNotification;
 
 - (void)dealloc
 {
+    [super dealloc];
 	CGGradientRelease(_tileGradient);
 	CGGradientRelease(_selectionGradient);
 }

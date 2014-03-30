@@ -60,14 +60,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return 0;
 }
@@ -246,7 +244,7 @@
     
     NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     
-    NSLog(responseString);
+    NSLog(@"%@",responseString);
     
     NSDictionary * loRet = [LYGlobalSettings GetJsonValue: responseString];
     NSString * lpError = nil;
