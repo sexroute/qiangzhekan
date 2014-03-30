@@ -104,6 +104,7 @@
 		4CA47F0718E081D000E83A9F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CA47F0518E081D000E83A9F /* Default@2x.png */; };
 		4CAF56E318E5E107004EA04C /* up_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CAF56E118E5E107004EA04C /* up_selected.png */; };
 		4CAF56E418E5E107004EA04C /* down_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CAF56E218E5E107004EA04C /* down_selected.png */; };
+		4CAF56E918E82605004EA04C /* LYAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAF56E818E82605004EA04C /* LYAccountViewController.m */; };
 		4CD0627818E411440088C210 /* Default-568h@2x.psd in Resources */ = {isa = PBXBuildFile; fileRef = 4CD0627718E411440088C210 /* Default-568h@2x.psd */; };
 		4CD0627A18E4116E0088C210 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD0627918E4116E0088C210 /* Default-568h@2x.png */; };
 		4CF03B8818E54DCE00C3EC54 /* LYNavRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF03B8718E54DCE00C3EC54 /* LYNavRootViewController.m */; };
@@ -278,6 +279,8 @@
 		4CA47F0518E081D000E83A9F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4CAF56E118E5E107004EA04C /* up_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = up_selected.png; path = test/img/up_selected.png; sourceTree = SOURCE_ROOT; };
 		4CAF56E218E5E107004EA04C /* down_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = down_selected.png; path = test/img/down_selected.png; sourceTree = SOURCE_ROOT; };
+		4CAF56E718E82605004EA04C /* LYAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYAccountViewController.h; sourceTree = "<group>"; };
+		4CAF56E818E82605004EA04C /* LYAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYAccountViewController.m; sourceTree = "<group>"; };
 		4CD0627718E411440088C210 /* Default-568h@2x.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Default-568h@2x.psd"; sourceTree = "<group>"; };
 		4CD0627918E4116E0088C210 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4CF03B8618E54DCE00C3EC54 /* LYNavRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYNavRootViewController.h; sourceTree = "<group>"; };
@@ -380,6 +383,7 @@
 		4C81C25B18E02C4100B69C1A /* finger */ = {
 			isa = PBXGroup;
 			children = (
+				4CAF56E618E82525004EA04C /* account */,
 				4CAF56E518E813E1004EA04C /* rank */,
 				4C78B17918E4383F00E95004 /* guess */,
 				4CD0627D18E41FF90088C210 /* setting */,
@@ -661,6 +665,15 @@
 			path = img;
 			sourceTree = "<group>";
 		};
+		4CAF56E618E82525004EA04C /* account */ = {
+			isa = PBXGroup;
+			children = (
+				4CAF56E718E82605004EA04C /* LYAccountViewController.h */,
+				4CAF56E818E82605004EA04C /* LYAccountViewController.m */,
+			);
+			name = account;
+			sourceTree = "<group>";
+		};
 		4CD0627C18E4146D0088C210 /* login */ = {
 			isa = PBXGroup;
 			children = (
@@ -891,6 +904,7 @@
 				4CA47ED318E0777500E83A9F /* NSString+SBJSON.m in Sources */,
 				4CA47ECA18E0777500E83A9F /* ASICloudFilesRequest.m in Sources */,
 				4CA47ECC18E0777500E83A9F /* ASIS3BucketObject.m in Sources */,
+				4CAF56E918E82605004EA04C /* LYAccountViewController.m in Sources */,
 				4CA47EDA18E0777500E83A9F /* MGTileMenuView.m in Sources */,
 				4CA47E4318E0687900E83A9F /* LYUtility.m in Sources */,
 			);

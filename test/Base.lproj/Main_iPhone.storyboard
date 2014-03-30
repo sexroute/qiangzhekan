@@ -249,37 +249,127 @@
             </objects>
             <point key="canvasLocation" x="1149" y="342"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - 账号-->
         <scene sceneID="1Ue-Nn-enN">
             <objects>
                 <navigationController definesPresentationContext="YES" id="CBb-MO-opl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="7zt-2I-GPf"/>
+                    <tabBarItem key="tabBarItem" title="账号" image="account.png" id="7zt-2I-GPf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vXZ-aK-bai">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="OLV-il-nL1" kind="relationship" relationship="rootViewController" id="gqp-jS-UxT"/>
+                        <segue destination="WXD-Oc-PIe" kind="relationship" relationship="rootViewController" id="PbG-bk-4rG"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b0T-7W-3i8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="603" y="2045"/>
         </scene>
-        <!--View Controller - account-->
-        <scene sceneID="DNZ-XL-jrN">
+        <!--Account View Controller-->
+        <scene sceneID="eXF-Rq-xqr">
             <objects>
-                <viewController id="OLV-il-nL1" userLabel="View Controller - account" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="9Ge-0u-FuX">
+                <tableViewController id="WXD-Oc-PIe" customClass="LYAccountViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Uo6-8Y-ow0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="账号" image="account.png" id="Zfo-Wt-u9T" userLabel="Tab Bar Item - account"/>
-                    <navigationItem key="navigationItem" id="W6w-NI-KC4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ovt-jp-vzw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <scrollView key="tableFooterView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="4E4-wK-R1R">
+                            <rect key="frame" x="0.0" y="109" width="320" height="408"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="W5W-2X-vPw">
+                                    <rect key="frame" x="21" y="357" width="281" height="31"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="退出当前账号" backgroundImage="red_gradient.png">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                </button>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="总资产" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oWj-en-Jxj">
+                                    <rect key="frame" x="19" y="17" width="152" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="XgL-jU-XxK">
+                                    <rect key="frame" x="17" y="38" width="286" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="现金" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6mb-9A-Pjt">
+                                    <rect key="frame" x="19" y="84" width="152" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="9Ht-Nx-xqe">
+                                    <rect key="frame" x="18" y="105" width="286" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="交易中的资金价值" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cq7-tn-UXe">
+                                    <rect key="frame" x="17" y="152" width="152" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="hiP-sw-h4b">
+                                    <rect key="frame" x="17" y="173" width="286" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="原始投入" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9ka-Kp-lqZ">
+                                    <rect key="frame" x="19" y="218" width="152" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="7xM-9x-igh">
+                                    <rect key="frame" x="19" y="239" width="286" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昨日总资产" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OM9-Cj-z1k">
+                                    <rect key="frame" x="20" y="286" width="152" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="V3n-HL-ADa">
+                                    <rect key="frame" x="20" y="307" width="286" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
+                        </scrollView>
+                        <sections>
+                            <tableViewSection id="Zzm-1F-4ch">
+                                <cells/>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="WXD-Oc-PIe" id="hWK-oS-OeR"/>
+                            <outlet property="delegate" destination="WXD-Oc-PIe" id="HSs-GT-ArU"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="nfu-O1-MJt"/>
+                    <connections>
+                        <outlet property="m_oAmount" destination="7xM-9x-igh" id="rD1-yF-fXY"/>
+                        <outlet property="m_oBet" destination="hiP-sw-h4b" id="xD0-IU-dJX"/>
+                        <outlet property="m_oCash" destination="9Ht-Nx-xqe" id="pVx-la-Vsy"/>
+                        <outlet property="m_oLastAsset" destination="V3n-HL-ADa" id="fUM-6I-QEE"/>
+                        <outlet property="m_oQuit" destination="W5W-2X-vPw" id="uoN-WY-v9V"/>
+                        <outlet property="m_totalAsset" destination="XgL-jU-XxK" id="F4x-3L-kDG"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cii-ma-0N0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1142" y="2054"/>
+            <point key="canvasLocation" x="1120" y="2045"/>
         </scene>
         <!--Second View Controller - rank-->
         <scene sceneID="ot8-2e-RuS">
@@ -343,6 +433,7 @@
         <image name="du.png" width="44" height="45"/>
         <image name="guess.png" width="30" height="30"/>
         <image name="rank.png" width="30" height="30"/>
+        <image name="red_gradient.png" width="72" height="72"/>
         <image name="security.png" width="30" height="32"/>
         <image name="up.png" width="195" height="201"/>
     </resources>
