@@ -398,6 +398,9 @@
     [_m_oAmount release];
     [_m_oLastAsset release];
     [_m_oQuit release];
+    self.m_oRequest = nil;
+    self.m_oLoginData = nil;
+    
     [super dealloc];
 }
 @end

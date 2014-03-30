@@ -81,6 +81,19 @@
     [m_oRequest release];
     
     [_m_oTimer release];
+    
+    self.m_oLoginData = nil;
+    self.m_oTimerUpdate = nil;
+    self.m_oTimerCountDown = nil;
+    self.m_strSymbolId = nil;
+    self.m_strSymbolReason = nil;
+    self.m_strSymbolTitle = nil;
+    self.m_strTimeCountDown = nil;
+    self.m_strTransactionId = nil;
+    self.m_strUserMail = nil;
+    self.m_strUserName = nil;
+    self.m_strUserUserIcon = nil;
+    
     [super dealloc];
 }
 #pragma mark 解析json数据
