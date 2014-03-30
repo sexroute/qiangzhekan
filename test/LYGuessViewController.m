@@ -29,12 +29,17 @@
 @synthesize m_oRequest;
 @synthesize responseData;
 @synthesize m_strTransactionId;
+@synthesize m_oTimerCountDown;
+@synthesize m_oTimerUpdate;
+#pragma mark 初始化
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self ResetUserData];
     [self ResetSymbolData];
     [self initUI];
+    [self InitTimer];
+    [self onTimerCountDown];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 #pragma mark 重置操作
@@ -75,6 +80,7 @@
     [_m_oLblCountdown release];
     [m_oRequest release];
     
+    [_m_oTimer release];
     [super dealloc];
 }
 #pragma mark 解析json数据
@@ -352,6 +358,33 @@
 }
 
 #pragma mark Transaction
+-(void) doRefreshRemoteData:(BOOL)abHud
+{
+    if(abHud)
+    {
+        [self PopulateIndicator];
+    }
+    self.responseData = [NSMutableData data];
+    
+    NSString * lpPostData = [NSString stringWithFormat:@"user_token=%@",[LYGlobalSettings GetSettingString:SETTING_KEY_USER_TOKEN]];
+    NSString * lpServerAddress = [NSString stringWithFormat:@"%@/index.php/Trans/get/",[LYGlobalSettings GetSettingString:SETTING_KEY_SERVER_ADDRESS]];
+    
+    NSURL* url = [NSURL URLWithString:lpServerAddress];
+    NSLog(@"%@",lpServerAddress);
+    
+    [self.m_oRequest setCachePolicy: ASIDoNotWriteToCacheCachePolicy | ASIDoNotReadFromCacheCachePolicy];
+    self.m_oRequest = [ASIFormDataRequest  requestWithURL:url];
+    [self.m_oRequest setRequestMethod:@"POST"];
+    [self.m_oRequest addRequestHeader:@"Content-Type" value:@"application/x-www-form-urlencoded"];
+    NSMutableData *requestBody = [[[NSMutableData alloc] initWithData:[lpPostData dataUsingEncoding:NSUTF8StringEncoding]] autorelease];
+    [self.m_oRequest appendPostData:requestBody];
+    [self.m_oRequest setDelegate:self];
+    [self.m_oRequest setTimeOutSeconds:NETWORK_TIMEOUT];
+   	[self.m_oRequest startAsynchronous];
+    
+
+
+}
 -(void) doCloseRemoteTransaction
 {
     [self PopulateIndicator];
@@ -532,7 +565,82 @@
 {
     return UIStatusBarStyleLightContent;
 }
+#pragma mark timer
+-(void) InitTimer
+{
+    self.m_oTimerCountDown = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimerCountDown) userInfo:nil repeats:YES];
+    
+    self.m_oTimerUpdate = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(UpdateData) userInfo:nil repeats:YES];
+    
+}
+-(void)StartTimer
+{
+    if (nil!= self.m_oTimerCountDown)
+    {
+        [self.m_oTimerCountDown fire];
+    }
+    
+    if (nil!=self.m_oTimerUpdate)
+    {
+        [self.m_oTimerUpdate fire];
+    }
+}
+-(void)StopTimer
+{
+    if (nil!= self.m_oTimerCountDown)
+    {
+        [self.m_oTimerCountDown invalidate];
+    }
+    
+    if (nil!=self.m_oTimerUpdate)
+    {
+         [self.m_oTimerUpdate invalidate];
+    }
+}
+- (NSString *)stringFromTimeInterval:(NSTimeInterval)interval {
+    NSInteger ti = (NSInteger)interval;
+    NSInteger seconds = ti % 60;
+    NSInteger minutes = (ti / 60) % 60;
+    NSInteger hours = (ti / 3600);
+    return [NSString stringWithFormat:@"%02ld:%02ld:%02ld", (long)hours, (long)minutes, (long)seconds];
+}
+-(void)onTimerCountDown
+{
+    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
 
+
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateStyle:NSDateFormatterNoStyle];
+    NSString *dateFormat = [NSDateFormatter dateFormatFromTemplate:@"MM/dd/YYYY HH:mm:ss" options:0 locale:nil];
+    NSString *dateFormat2= [NSDateFormatter dateFormatFromTemplate:@"YYYY-MM-dd" options:0 locale:nil];
+    
+    [formatter setDateFormat:dateFormat2];
+    NSDate *Now = [NSDate date];
+    NSString * End1 = [formatter stringFromDate:Now];
+    
+   
+    [formatter setDateFormat:dateFormat];
+    NSLocale *locale = [NSLocale currentLocale];
+    [formatter setLocale:locale];
+    NSString *end = [[[NSString alloc ]initWithFormat:@"%@ 9:01:00",End1] autorelease];
+   
+    NSDate *End = [formatter dateFromString:end];
+    NSTimeInterval loDiff=  [End timeIntervalSinceNow];
+    if (loDiff>0)
+    {
+        NSString *intervalString = [self stringFromTimeInterval:loDiff];
+        NSString * lpData = [formatter stringFromDate:Now];
+        
+        [self.m_oTimer setText:intervalString];
+    }else
+    {
+        
+    }
+}
+-(void)UpdateData
+{
+    [self doRefreshRemoteData:FALSE];
+}
 
 #pragma mark hud
 - (void)OnHudCallBack
@@ -549,6 +657,8 @@
 	HUD = nil;
     
 }
+
+
 
 - (void)PopulateIndicator
 {

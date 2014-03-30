@@ -175,6 +175,7 @@
                         <outlet property="m_oLblCountdown" destination="SL7-g1-EFT" id="mVP-LX-H0o"/>
                         <outlet property="m_oSymbolTitle" destination="Zhg-ve-WU7" id="bvI-WG-goo"/>
                         <outlet property="m_oSymbol_Price" destination="v8r-OD-Wwv" id="lmL-uS-JqB"/>
+                        <outlet property="m_oTimer" destination="SL7-g1-EFT" id="ZF2-Av-aeO"/>
                         <outlet property="m_oUserIcon" destination="Chm-id-edt" id="aMt-U8-xa4"/>
                         <outlet property="m_oUserMail" destination="7gH-AC-FOT" id="NUO-z6-tiB"/>
                         <outlet property="m_oUserName" destination="U8p-ZP-CwL" id="W1x-17-Yzw"/>

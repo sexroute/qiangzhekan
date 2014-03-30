@@ -148,8 +148,8 @@
 		4C81C26B18E02C4100B69C1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		4C81C26D18E02C4100B69C1A /* LYGuessViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYGuessViewController.h; sourceTree = "<group>"; };
 		4C81C26E18E02C4100B69C1A /* LYGuessViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYGuessViewController.m; sourceTree = "<group>"; };
-		4C81C27018E02C4100B69C1A /* LYRankViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYRankViewController.h; sourceTree = "<group>"; };
-		4C81C27118E02C4100B69C1A /* LYRankViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYRankViewController.m; sourceTree = "<group>"; };
+		4C81C27018E02C4100B69C1A /* LYRankViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LYRankViewController.h; path = ../LYRankViewController.h; sourceTree = "<group>"; };
+		4C81C27118E02C4100B69C1A /* LYRankViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LYRankViewController.m; path = ../LYRankViewController.m; sourceTree = "<group>"; };
 		4C81C27318E02C4100B69C1A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4C81C27918E02C4100B69C1A /* fingerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fingerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C81C27A18E02C4100B69C1A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -380,6 +380,7 @@
 		4C81C25B18E02C4100B69C1A /* finger */ = {
 			isa = PBXGroup;
 			children = (
+				4CAF56E518E813E1004EA04C /* rank */,
 				4C78B17918E4383F00E95004 /* guess */,
 				4CD0627D18E41FF90088C210 /* setting */,
 				4CD0627C18E4146D0088C210 /* login */,
@@ -391,8 +392,6 @@
 				4C78B16818E42B5900E95004 /* LYMainWindowViewController.m */,
 				4C81C26718E02C4100B69C1A /* Main_iPhone.storyboard */,
 				4C81C26A18E02C4100B69C1A /* Main_iPad.storyboard */,
-				4C81C27018E02C4100B69C1A /* LYRankViewController.h */,
-				4C81C27118E02C4100B69C1A /* LYRankViewController.m */,
 				4C81C27318E02C4100B69C1A /* Images.xcassets */,
 				4C81C25C18E02C4100B69C1A /* Supporting Files */,
 			);
@@ -650,6 +649,16 @@
 			);
 			name = img;
 			path = test/img;
+			sourceTree = "<group>";
+		};
+		4CAF56E518E813E1004EA04C /* rank */ = {
+			isa = PBXGroup;
+			children = (
+				4C81C27018E02C4100B69C1A /* LYRankViewController.h */,
+				4C81C27118E02C4100B69C1A /* LYRankViewController.m */,
+			);
+			name = rank;
+			path = img;
 			sourceTree = "<group>";
 		};
 		4CD0627C18E4146D0088C210 /* login */ = {

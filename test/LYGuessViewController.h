@@ -32,6 +32,7 @@ enum TRANS_ACTION_TYPE
 @property (retain, nonatomic) IBOutlet UILabel *m_oLblCountdown;
 
 
+@property (retain, nonatomic) IBOutlet UILabel *m_oTimer;
 @property (retain, nonatomic) NSDictionary *m_oLoginData;
 @property (retain, nonatomic) NSString *m_strSymbolTitle;
 @property (retain, nonatomic) NSString *m_strUserName;
@@ -47,5 +48,7 @@ enum TRANS_ACTION_TYPE
 @property (retain,nonatomic) ASIFormDataRequest * m_oRequest;
 @property (retain,nonatomic) NSString * m_strSymbolId;
 @property (retain,nonatomic) NSString * m_strTransactionId;
+@property (retain,nonatomic) NSTimer *m_oTimerCountDown ;
+@property (retain,nonatomic) NSTimer *m_oTimerUpdate;
 - (void)initUI;
 @end
