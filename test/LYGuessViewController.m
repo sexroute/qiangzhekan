@@ -300,7 +300,58 @@
     self.m_oImgUp.userInteractionEnabled = YES;
     [self.m_oImgUp addGestureRecognizer:tapGestureTel2];
 
+    //5.下拉刷新
+    if (_refreshHeaderView == nil)
+    {
+        
+        int lnHeight =self.view.bounds.size.height;
+        int lnWidth = self.view.frame.size.width;
+        EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - lnHeight,lnWidth , lnHeight)];
+        view.delegate = self;
+        [self.view addSubview:view];
+        _refreshHeaderView = view;
+        [view release];
+        [_refreshHeaderView refreshLastUpdatedDate];
+         
+       
+    }
+}
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    // Return the number of rows in the section.
+      return 1;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100;
+}
+
+#pragma pull refesh
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+    
+    [self doRefreshRemoteData:TRUE];
+    //[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
+    
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
+    
+    return _reloading; // should return if data source model is reloading
+    
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
+    
+    return [NSDate date]; // should return date data source was last changed
+    
 }
 
 #pragma mark 涨跌按钮点击操作
@@ -622,19 +673,28 @@
     [formatter setDateFormat:dateFormat];
     NSLocale *locale = [NSLocale currentLocale];
     [formatter setLocale:locale];
-    NSString *end = [[[NSString alloc ]initWithFormat:@"%@ 9:01:00",End1] autorelease];
+    NSString *end = [[[NSString alloc ]initWithFormat:@"%@ 19:01:00",End1] autorelease];
    
     NSDate *End = [formatter dateFromString:end];
     NSTimeInterval loDiff=  [End timeIntervalSinceNow];
     if (loDiff>0)
     {
         NSString *intervalString = [self stringFromTimeInterval:loDiff];
-        NSString * lpData = [formatter stringFromDate:Now];
-        
         [self.m_oTimer setText:intervalString];
+        if (loDiff<3600)
+        {
+            UIColor *testColor1= [UIColor colorWithRed:240/255.0 green:0/255.0 blue:0/255.0 alpha:1];
+            [self.m_oTimer setTextColor:testColor1];
+        }else
+        {
+            UIColor *testColor1= [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1];
+            [self.m_oTimer setTextColor:testColor1];
+        }
     }else
     {
-        
+        [self.m_oTimer setText:@"00:00:00"];
+        UIColor *testColor1= [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1];
+        [self.m_oTimer setTextColor:testColor1];
     }
 }
 -(void)UpdateData

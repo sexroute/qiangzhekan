@@ -17,9 +17,11 @@ enum TRANS_ACTION_TYPE
 	TRANS_BET_UP = 1           ,
 	   
 };
-@interface LYGuessViewController : UIViewController<EGORefreshTableHeaderDelegate,MBProgressHUDDelegate>
+@interface LYGuessViewController : UIViewController<EGORefreshTableHeaderDelegate,MBProgressHUDDelegate,UITableViewDelegate , UITableViewDataSource>
 {
     MBProgressHUD *HUD;
+    EGORefreshTableHeaderView *_refreshHeaderView;
+    BOOL _reloading;
 }
 - (void)OnHudCallBack;
 @property (retain, nonatomic) IBOutlet UILabel *m_oSymbolTitle;
