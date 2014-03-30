@@ -28,7 +28,7 @@
         lpDate = [NSDate date];
     }else
     {
-        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        NSDateFormatter *df = [[[NSDateFormatter alloc] init]autorelease];
         [df setDateFormat:@"yyyy-MM-dd hh:mm:ss a"];
         lpDate = [df dateFromString: apDate];
     }
@@ -43,7 +43,7 @@
         return apStr;
     }
     
-    NSString * lpStr = [[apStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]copy];
+    NSString * lpStr = [[[apStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]copy]autorelease];
     
     return lpStr;
     
@@ -52,7 +52,7 @@
 +(NSString *) GetRequestDate:(NSDate *)apDate
 {
     NSLocale *locale = [NSLocale currentLocale];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init]autorelease];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
     [formatter setDateStyle:NSDateFormatterNoStyle];
     NSString *dateFormat = [NSDateFormatter dateFormatFromTemplate:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'" options:0 locale:nil];

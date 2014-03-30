@@ -48,11 +48,16 @@ static NSString * databasePath = nil;
             NSString *lstrInsertQuerySQL = [NSString stringWithFormat:@"INSERT OR REPLACE INTO SETTING (ID,VAL) VALUES(\"%@\",\"%@\")",apKey,apVal];
             
             const char *insert_stmt = [lstrInsertQuerySQL UTF8String];
-            sqlite3_prepare_v2(contactDB, insert_stmt, -1, &statement, NULL);
-            if (sqlite3_step(statement)==SQLITE_DONE)
+            if(sqlite3_prepare_v2(contactDB, insert_stmt, -1, &statement, NULL)==SQLITE_OK)
             {
-                lbRet = YES;
+                if (sqlite3_step(statement)==SQLITE_DONE)
+                {
+                    lbRet = YES;
+                }
+                 sqlite3_finalize(statement);
             }
+            
+            sqlite3_close(contactDB);
         }
         
         return  lbRet;

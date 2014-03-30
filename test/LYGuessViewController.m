@@ -50,17 +50,17 @@
 
 -(void)ResetUserData
 {
-    self.m_strUserName = [[NSString alloc]initWithFormat:@"未登录"];
-    self.m_strUserMail = [[NSString alloc]initWithFormat:@""];
-    self.m_oUserIcon.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"du" ofType:@"png"]];
+    self.m_strUserName = [[[NSString alloc]initWithFormat:@"未登录"]autorelease];
+    self.m_strUserMail = [[[NSString alloc]initWithFormat:@""]autorelease];
+    self.m_oUserIcon.image = [[[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"du" ofType:@"png"]]autorelease];
     
 }
 
 -(void)ResetSymbolData
 {
-    self.m_strSymbolTitle = [[NSString alloc] initWithFormat:@"竞猜-没有数据"];
+    self.m_strSymbolTitle = [[[NSString alloc] initWithFormat:@"竞猜-没有数据"]autorelease];
     self.m_dbl_Symbol_price = 0.0;
-    self.m_strTimeCountDown = [[NSString alloc] initWithFormat:@"00:00:00"];
+    self.m_strTimeCountDown = [[[NSString alloc] initWithFormat:@"00:00:00"]autorelease];
     
 }
 - (void)didReceiveMemoryWarning
@@ -95,11 +95,11 @@
             id loUserValue = [loValue objectForKey:@"user_name"];
             if ([loUserValue isKindOfClass:[NSString class]])
             {
-                self.m_strUserName =[[NSString alloc] initWithFormat:@"%@",(NSString *)loUserValue];
+                self.m_strUserName =[[[NSString alloc] initWithFormat:@"%@",(NSString *)loUserValue]autorelease];
                  loUserValue = [loValue objectForKey:@"user_email"];
                 if ([loUserValue isKindOfClass:[NSString class]])
                 {
-                    self.m_strUserMail =[[NSString alloc] initWithFormat:@"%@",(NSString *)loUserValue];
+                    self.m_strUserMail =[[[NSString alloc] initWithFormat:@"%@",(NSString *)loUserValue]autorelease];
                     loUserValue = [loValue objectForKey:@"user_avatar_url"];
                     if ([loUserValue isKindOfClass:[NSString class]])
                     {
@@ -107,7 +107,7 @@
                         
                         if (nil == image)
                         {
-                             self.m_oUserIcon.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"du" ofType:@"png"]];
+                             self.m_oUserIcon.image =[ [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"du" ofType:@"png"]]autorelease];
                         }else
                         {
                              self.m_oUserIcon.image = image;
@@ -115,7 +115,7 @@
                         
                     }else
                     {
-                         self.m_oUserIcon.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"du" ofType:@"png"]];
+                         self.m_oUserIcon.image = [[[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"du" ofType:@"png"]]autorelease];
                     }
                     lbRet = TRUE;
                 }
@@ -195,7 +195,7 @@
                 id loSymbolValue = [lpSymbol objectForKey:@"symbol_name"];
                 if ([loSymbolValue isKindOfClass:[NSString class]])
                 {
-                   self.m_strSymbolTitle = [[NSString alloc] initWithFormat:@"%@",(NSString *)loSymbolValue];
+                   self.m_strSymbolTitle = [[[NSString alloc] initWithFormat:@"%@",(NSString *)loSymbolValue]autorelease];
                     loSymbolValue = [lpSymbol objectForKey:@"symbol_current_value"];
                     if ([loSymbolValue isKindOfClass:[NSString class]])
                         
@@ -242,13 +242,13 @@
     {
         if (!lbParseSucceed)
         {
-            self.m_oImgDown.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down_gray" ofType:@"png"]];
-            self.m_oImgUp.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up_gray" ofType:@"png"]];
+            self.m_oImgDown.image = [[[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down_gray" ofType:@"png"]]autorelease];
+            self.m_oImgUp.image = [[[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up_gray" ofType:@"png"]]autorelease];
             
         }else
         {
-            self.m_oImgDown.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down" ofType:@"png"]];
-            self.m_oImgUp.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up" ofType:@"png"]];
+            self.m_oImgDown.image = [[[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down" ofType:@"png"]]autorelease];
+            self.m_oImgUp.image = [[[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up" ofType:@"png"]]autorelease];
         }
         
     }else if (self.m_nTransactionDirection == (TRANS_BET_DOWN))
@@ -256,25 +256,25 @@
         
         if (!lbParseSucceed)
         {
-            self.m_oImgDown.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down_gray" ofType:@"png"]];
-            self.m_oImgUp.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up_gray" ofType:@"png"]];
+            self.m_oImgDown.image = [[[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down_gray" ofType:@"png"]]autorelease];
+            self.m_oImgUp.image = [[[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up_gray" ofType:@"png"]]autorelease];
             
         }else
         {
-            self.m_oImgDown.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down_selected" ofType:@"png"]];
-            self.m_oImgUp.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up_gray" ofType:@"png"]];
+            self.m_oImgDown.image = [[[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down_selected" ofType:@"png"]]autorelease];
+            self.m_oImgUp.image = [[[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up_gray" ofType:@"png"]]autorelease];
         }
     }else
     {
         if (!lbParseSucceed)
         {
-            self.m_oImgDown.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down_gray" ofType:@"png"]];
-            self.m_oImgUp.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up_gray" ofType:@"png"]];
+            self.m_oImgDown.image = [[[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down_gray" ofType:@"png"]]autorelease];
+            self.m_oImgUp.image = [[[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up_gray" ofType:@"png"]]autorelease];
             
         }else
         {
-            self.m_oImgDown.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down_gray" ofType:@"png"]];
-            self.m_oImgUp.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up_selected" ofType:@"png"]];
+            self.m_oImgDown.image = [[[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"down_gray" ofType:@"png"]]autorelease];
+            self.m_oImgUp.image = [[[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"up_selected" ofType:@"png"]]autorelease];
         }
     }
 
@@ -283,11 +283,11 @@
     lbParseSucceed =  [self ParseUserData:self.m_oLoginData];
 
     
-    self.m_oLblCountdown.text = [[NSString alloc] initWithFormat:@"%@",self.m_strTimeCountDown];
-    self.m_oSymbol_Price.text = [[NSString alloc] initWithFormat:@"%.2f",self.m_dbl_Symbol_price];
-    self.m_oSymbolTitle.text = [[NSString alloc] initWithFormat:@"%@",self.m_strSymbolTitle];
-    self.m_oUserName.text =[[NSString alloc] initWithFormat:@"%@",self.m_strUserName];
-    self.m_oUserMail.text =[[NSString alloc] initWithFormat:@"%@",self.m_strUserMail];
+    self.m_oLblCountdown.text = [[[NSString alloc] initWithFormat:@"%@",self.m_strTimeCountDown]autorelease];
+    self.m_oSymbol_Price.text = [[[NSString alloc] initWithFormat:@"%.2f",self.m_dbl_Symbol_price]autorelease];
+    self.m_oSymbolTitle.text = [[[NSString alloc] initWithFormat:@"%@",self.m_strSymbolTitle]autorelease];
+    self.m_oUserName.text =[[[NSString alloc] initWithFormat:@"%@",self.m_strUserName]autorelease];
+    self.m_oUserMail.text =[[[NSString alloc] initWithFormat:@"%@",self.m_strUserMail]autorelease];
     
     //4.增加涨跌按钮消息处理器
 
@@ -368,7 +368,7 @@
         {
             if (self.m_nTransactionDirection == TRANS_BET_DOWN)
             {
-                [self alertWrong:[[NSString alloc] initWithFormat:@"已经选涨,未结算前不能改变选择"]];
+                [self alertWrong:[[[NSString alloc] initWithFormat:@"已经选涨,未结算前不能改变选择"]autorelease]];
                 return;
             }
             else if (self.m_nTransactionDirection == TRANS_BET_UP)
@@ -389,7 +389,7 @@
         {
           if (self.m_nTransactionDirection == TRANS_BET_UP)
           {
-                    [self alertWrong:[[NSString alloc] initWithFormat:@"已经选涨,未结算前不能改变选择"]];
+                    [self alertWrong:[[[NSString alloc] initWithFormat:@"已经选涨,未结算前不能改变选择"]autorelease]];
                     return;
            }
           else if (self.m_nTransactionDirection == TRANS_BET_DOWN)

@@ -276,7 +276,7 @@ UITextField * g_pTextPassword = nil;
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:(float)34/255.0 green:(float)(199)/255.0 blue:((float)253)/255.0 alpha:1.0]];
     
     
-    NSShadow *shadow = [[NSShadow alloc] init];
+    NSShadow *shadow = [[[NSShadow alloc] init]autorelease];
     shadow.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
     shadow.shadowOffset = CGSizeMake(0, 1);
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
@@ -355,7 +355,7 @@ UITextField * g_pTextPassword = nil;
 {
     self.m_pResponseData  =[NSMutableData dataWithData:[request responseData]] ;
     
-    NSString *responseString = [[NSString alloc] initWithData:self.m_pResponseData  encoding:NSUTF8StringEncoding];
+    NSString *responseString = [[[NSString alloc] initWithData:self.m_pResponseData  encoding:NSUTF8StringEncoding]autorelease];
 
 
 	
@@ -415,7 +415,6 @@ UITextField * g_pTextPassword = nil;
         
 
 	}
-    [responseString release];
     self.m_pResponseData  = nil;
 
 }
