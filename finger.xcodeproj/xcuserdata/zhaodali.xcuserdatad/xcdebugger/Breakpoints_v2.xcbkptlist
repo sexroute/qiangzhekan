@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "test/LYAccountViewController.m"
-            timestampString = "417870405.125924"
+            timestampString = "417870847.733285"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
             landmarkName = "-navigatToLogin"
             landmarkType = "5">
          </BreakpointContent>

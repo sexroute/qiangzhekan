@@ -176,6 +176,10 @@
                 NSDictionary * lpSymbol = (NSDictionary *)loValueAccount;
                 id loSymbolValue = [lpSymbol objectForKey:@"trans_amount"];
                 [self.m_oAmount setText:(NSString*)loSymbolValue];
+            }else
+            {
+                [self.m_oAmount setText:(NSString*)@"0"];
+
             }
         }
         
@@ -210,7 +214,7 @@
     if ([lpviewController isKindOfClass:[UIViewController class]])
     {
         
-        UIViewController * lpController = (UIViewController*)lpviewController;      
+        UIViewController * lpController = (UIViewController*)lpviewController;
         
         lpviewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         
