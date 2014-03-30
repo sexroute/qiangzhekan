@@ -303,7 +303,7 @@
 {
     if (!self.m_bSymbolSucceed)
     {
-        [self alertWrongLogin:self.m_strSymbolReason];
+        [self alertWrong:self.m_strSymbolReason];
         return;
     }else
     {
@@ -311,7 +311,7 @@
         {
             if (self.m_nTransactionDirection == TRANS_BET_DOWN)
             {
-                [self alertWrongLogin:[[NSString alloc] initWithFormat:@"已经选涨,未结算前不能改变选择"]];
+                [self alertWrong:[[NSString alloc] initWithFormat:@"已经选涨,未结算前不能改变选择"]];
                 return;
             }
             else if (self.m_nTransactionDirection == TRANS_BET_UP)
@@ -332,7 +332,7 @@
         {
           if (self.m_nTransactionDirection == TRANS_BET_UP)
           {
-                    [self alertWrongLogin:[[NSString alloc] initWithFormat:@"已经选涨,未结算前不能改变选择"]];
+                    [self alertWrong:[[NSString alloc] initWithFormat:@"已经选涨,未结算前不能改变选择"]];
                     return;
            }
           else if (self.m_nTransactionDirection == TRANS_BET_DOWN)
