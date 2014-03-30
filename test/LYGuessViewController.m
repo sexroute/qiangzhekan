@@ -673,7 +673,7 @@
     [formatter setDateFormat:dateFormat];
     NSLocale *locale = [NSLocale currentLocale];
     [formatter setLocale:locale];
-    NSString *end = [[[NSString alloc ]initWithFormat:@"%@ 19:01:00",End1] autorelease];
+    NSString *end = [[[NSString alloc ]initWithFormat:@"%@ 21:01:00",End1] autorelease];
    
     NSDate *End = [formatter dateFromString:end];
     NSTimeInterval loDiff=  [End timeIntervalSinceNow];
