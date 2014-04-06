@@ -252,7 +252,8 @@
     //3.parse TransAction
     self.m_nTransactionDirection = [self ParseTransaction:loRet];
     
-    if (self.m_nTransactionDirection == (TRANS_NONE_TRANS))
+   // if (self.m_nTransactionDirection == (TRANS_NONE_TRANS))
+    if(true)
     {
         if (!lbParseSucceed)
         {
@@ -380,44 +381,21 @@
     {
         if(sender.view == self.m_oImgUp)
         {
-            if (self.m_nTransactionDirection == TRANS_BET_DOWN)
-            {
-                [self alertWrong:[[[NSString alloc] initWithFormat:@"已经选涨,未结算前不能改变选择"]autorelease]];
-                return;
-            }
-            else if (self.m_nTransactionDirection == TRANS_BET_UP)
-                
-            {
-                UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"结算确认" message:@"确认要完成结算么?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil] autorelease];
-                alertView.tag = 1;
-                [alertView show];
-            }
-            else
-            {
+
+        
                 UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"竞猜确认" message:@"确认猜涨么?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil] autorelease];
                 alertView.tag = 2;
                 [alertView show];
-            }
+         
         }else
         if(sender.view == self.m_oImgDown)
         {
-          if (self.m_nTransactionDirection == TRANS_BET_UP)
-          {
-                    [self alertWrong:[[[NSString alloc] initWithFormat:@"已经选涨,未结算前不能改变选择"]autorelease]];
-                    return;
-           }
-          else if (self.m_nTransactionDirection == TRANS_BET_DOWN)
-                    
-          {
-                    UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"结算确认" message:@"确认要完成结算么?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil] autorelease];
-                    alertView.tag = 3;
-                    [alertView show];
-          }else
-          {
+          
+  
               UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"竞猜确认" message:@"确认猜跌么?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil] autorelease];
               alertView.tag = 4;
               [alertView show];
-          }
+          
         }
     }
 }

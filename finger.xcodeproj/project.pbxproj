@@ -22,7 +22,7 @@
 		4C81C26918E02C4100B69C1A /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C81C26718E02C4100B69C1A /* Main_iPhone.storyboard */; };
 		4C81C26C18E02C4100B69C1A /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C81C26A18E02C4100B69C1A /* Main_iPad.storyboard */; };
 		4C81C26F18E02C4100B69C1A /* LYGuessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C81C26E18E02C4100B69C1A /* LYGuessViewController.m */; };
-		4C81C27218E02C4100B69C1A /* LYRankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C81C27118E02C4100B69C1A /* LYRankViewController.m */; };
+		4C81C27218E02C4100B69C1A /* LYTransActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C81C27118E02C4100B69C1A /* LYTransActionViewController.m */; };
 		4C81C27418E02C4100B69C1A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C81C27318E02C4100B69C1A /* Images.xcassets */; };
 		4C81C27B18E02C4100B69C1A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C81C27A18E02C4100B69C1A /* XCTest.framework */; };
 		4C81C27C18E02C4100B69C1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C81C25518E02C4100B69C1A /* Foundation.framework */; };
@@ -105,6 +105,7 @@
 		4CAF56E318E5E107004EA04C /* up_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CAF56E118E5E107004EA04C /* up_selected.png */; };
 		4CAF56E418E5E107004EA04C /* down_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CAF56E218E5E107004EA04C /* down_selected.png */; };
 		4CAF56E918E82605004EA04C /* LYAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAF56E818E82605004EA04C /* LYAccountViewController.m */; };
+		4CCAD78318F117330027EC4F /* LYTransViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCAD78218F117330027EC4F /* LYTransViewControllerViewController.m */; };
 		4CD0627818E411440088C210 /* Default-568h@2x.psd in Resources */ = {isa = PBXBuildFile; fileRef = 4CD0627718E411440088C210 /* Default-568h@2x.psd */; };
 		4CD0627A18E4116E0088C210 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD0627918E4116E0088C210 /* Default-568h@2x.png */; };
 		4CF03B8818E54DCE00C3EC54 /* LYNavRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF03B8718E54DCE00C3EC54 /* LYNavRootViewController.m */; };
@@ -149,8 +150,8 @@
 		4C81C26B18E02C4100B69C1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		4C81C26D18E02C4100B69C1A /* LYGuessViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYGuessViewController.h; sourceTree = "<group>"; };
 		4C81C26E18E02C4100B69C1A /* LYGuessViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYGuessViewController.m; sourceTree = "<group>"; };
-		4C81C27018E02C4100B69C1A /* LYRankViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LYRankViewController.h; path = ../LYRankViewController.h; sourceTree = "<group>"; };
-		4C81C27118E02C4100B69C1A /* LYRankViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LYRankViewController.m; path = ../LYRankViewController.m; sourceTree = "<group>"; };
+		4C81C27018E02C4100B69C1A /* LYTransActionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LYTransActionViewController.h; path = ../LYTransActionViewController.h; sourceTree = "<group>"; };
+		4C81C27118E02C4100B69C1A /* LYTransActionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LYTransActionViewController.m; path = ../LYTransActionViewController.m; sourceTree = "<group>"; };
 		4C81C27318E02C4100B69C1A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4C81C27918E02C4100B69C1A /* fingerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fingerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C81C27A18E02C4100B69C1A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -281,6 +282,8 @@
 		4CAF56E218E5E107004EA04C /* down_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = down_selected.png; path = test/img/down_selected.png; sourceTree = SOURCE_ROOT; };
 		4CAF56E718E82605004EA04C /* LYAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYAccountViewController.h; sourceTree = "<group>"; };
 		4CAF56E818E82605004EA04C /* LYAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYAccountViewController.m; sourceTree = "<group>"; };
+		4CCAD78118F117330027EC4F /* LYTransViewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LYTransViewControllerViewController.h; path = test/LYTransViewControllerViewController.h; sourceTree = SOURCE_ROOT; };
+		4CCAD78218F117330027EC4F /* LYTransViewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LYTransViewControllerViewController.m; path = test/LYTransViewControllerViewController.m; sourceTree = SOURCE_ROOT; };
 		4CD0627718E411440088C210 /* Default-568h@2x.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Default-568h@2x.psd"; sourceTree = "<group>"; };
 		4CD0627918E4116E0088C210 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4CF03B8618E54DCE00C3EC54 /* LYNavRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYNavRootViewController.h; sourceTree = "<group>"; };
@@ -384,7 +387,7 @@
 			isa = PBXGroup;
 			children = (
 				4CAF56E618E82525004EA04C /* account */,
-				4CAF56E518E813E1004EA04C /* rank */,
+				4CAF56E518E813E1004EA04C /* trans */,
 				4C78B17918E4383F00E95004 /* guess */,
 				4CD0627D18E41FF90088C210 /* setting */,
 				4CD0627C18E4146D0088C210 /* login */,
@@ -655,13 +658,15 @@
 			path = test/img;
 			sourceTree = "<group>";
 		};
-		4CAF56E518E813E1004EA04C /* rank */ = {
+		4CAF56E518E813E1004EA04C /* trans */ = {
 			isa = PBXGroup;
 			children = (
-				4C81C27018E02C4100B69C1A /* LYRankViewController.h */,
-				4C81C27118E02C4100B69C1A /* LYRankViewController.m */,
+				4C81C27018E02C4100B69C1A /* LYTransActionViewController.h */,
+				4C81C27118E02C4100B69C1A /* LYTransActionViewController.m */,
+				4CCAD78118F117330027EC4F /* LYTransViewControllerViewController.h */,
+				4CCAD78218F117330027EC4F /* LYTransViewControllerViewController.m */,
 			);
-			name = rank;
+			name = trans;
 			path = img;
 			sourceTree = "<group>";
 		};
@@ -862,6 +867,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C81C26F18E02C4100B69C1A /* LYGuessViewController.m in Sources */,
+				4CCAD78318F117330027EC4F /* LYTransViewControllerViewController.m in Sources */,
 				4C81C26218E02C4100B69C1A /* main.m in Sources */,
 				4CA47EC018E0777500E83A9F /* ASIHTTPRequest.m in Sources */,
 				4CA47ECE18E0777500E83A9F /* ASIS3ObjectRequest.m in Sources */,
@@ -884,7 +890,7 @@
 				4CA47EBD18E0777500E83A9F /* ASIDataDecompressor.m in Sources */,
 				4C78B16918E42B5900E95004 /* LYMainWindowViewController.m in Sources */,
 				4CA47ED218E0777500E83A9F /* NSObject+SBJSON.m in Sources */,
-				4C81C27218E02C4100B69C1A /* LYRankViewController.m in Sources */,
+				4C81C27218E02C4100B69C1A /* LYTransActionViewController.m in Sources */,
 				4CA47EBF18E0777500E83A9F /* ASIFormDataRequest.m in Sources */,
 				4CA47E3B18E0666900E83A9F /* LYLoginCell.m in Sources */,
 				4CA47EBB18E0777500E83A9F /* ASIAuthenticationDialog.m in Sources */,

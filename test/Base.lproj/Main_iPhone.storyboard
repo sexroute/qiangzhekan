@@ -88,11 +88,11 @@
             </objects>
             <point key="canvasLocation" x="-895" y="469"/>
         </scene>
-        <!--Nav Root View Controller - Item-->
+        <!--Nav Root View Controller - 竞猜-->
         <scene sceneID="CBj-LT-Rzf">
             <objects>
                 <navigationController definesPresentationContext="YES" id="lNj-m6-X88" customClass="LYNavRootViewController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="34k-DI-Cvf"/>
+                    <tabBarItem key="tabBarItem" title="竞猜" image="guess.png" id="34k-DI-Cvf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iNt-Sz-cX6">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -371,32 +371,45 @@
             </objects>
             <point key="canvasLocation" x="1120" y="2045"/>
         </scene>
-        <!--Second View Controller - rank-->
-        <scene sceneID="ot8-2e-RuS">
+        <!--Trans Action View Controller-->
+        <scene sceneID="Iv2-Sn-msj">
             <objects>
-                <viewController storyboardIdentifier="RankView" title="Second" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QUy-BD-bpt" userLabel="Second View Controller - rank" customClass="LYRankViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gMD-aP-Fq6">
+                <tableViewController storyboardIdentifier="TransView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eiZ-gn-3bk" customClass="LYTransActionViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="AWr-7i-54R">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="战绩" image="rank.png" id="Z7h-1E-pvt" userLabel="Tab Bar Item - rank"/>
-                    <navigationItem key="navigationItem" id="IbK-9i-fYw"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3qq-4t-Ow8" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="0lR-Zb-Ndh">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0lR-Zb-Ndh" id="DgA-cn-Za6">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="eiZ-gn-3bk" id="NcM-wD-DMN"/>
+                            <outlet property="delegate" destination="eiZ-gn-3bk" id="FN7-6y-cvY"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="nTT-8c-GWE"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VTJ-fQ-rTC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1174" y="-504"/>
+            <point key="canvasLocation" x="1157" y="-504"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Trans View Controller View Controller - 战绩-->
         <scene sceneID="2e5-fd-XUh">
             <objects>
-                <navigationController definesPresentationContext="YES" id="jHk-YV-tmC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="d4w-Wk-6aV"/>
+                <navigationController storyboardIdentifier="TransNavView" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jHk-YV-tmC" customClass="LYTransViewControllerViewController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="1" title="战绩" image="rank.png" id="d4w-Wk-6aV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cd1-PL-SfH">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="QUy-BD-bpt" kind="relationship" relationship="rootViewController" id="foU-cM-fml"/>
+                        <segue destination="eiZ-gn-3bk" kind="relationship" relationship="rootViewController" id="YfZ-Ua-Q79"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NhX-uk-Bpg" userLabel="First Responder" sceneMemberID="firstResponder"/>

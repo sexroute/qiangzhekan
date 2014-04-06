@@ -6,13 +6,13 @@
 //  Copyright (c) 2014年 zhao. All rights reserved.
 //
 
-#import "LYRankViewController.h"
+#import "LYTransActionViewController.h"
 
-@interface LYRankViewController ()
+@interface LYTransActionViewController ()
 
 @end
 
-@implementation LYRankViewController
+@implementation LYTransActionViewController
 
 - (void)viewDidLoad
 {
