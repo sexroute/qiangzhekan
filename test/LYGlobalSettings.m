@@ -146,7 +146,7 @@ static NSString * databasePath = nil;
         
         // Build the path to the database file
         databasePath = [[NSString alloc] initWithString: [docsDir stringByAppendingPathComponent: @"Settings.db"]];
-        NSLog(@"Database path:%@",docsDir);
+        DLog(@"Database path:%@",docsDir);
         NSFileManager *filemgr = [NSFileManager defaultManager];
         
         if ([filemgr fileExistsAtPath:databasePath] == NO)
@@ -157,14 +157,14 @@ static NSString * databasePath = nil;
                 char *errMsg;
                 const char *sql_stmt = "CREATE TABLE IF NOT EXISTS SETTING(ID TEXT PRIMARY KEY , VAL TEXT)";
                 if (sqlite3_exec(contactDB, sql_stmt, NULL, NULL, &errMsg)!=SQLITE_OK) {
-                    NSLog(@"创建表失败\n");
+                    DLog(@"创建表失败\n");
                 }
                 
                 sqlite3_close(contactDB);
             }
             else
             {
-                NSLog(@"创建/打开数据库失败"); ;
+                DLog(@"创建/打开数据库失败"); ;
             }
         }
         

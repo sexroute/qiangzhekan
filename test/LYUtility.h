@@ -34,4 +34,10 @@ enum TIME_TYPE
 +(NSString *)GetRequestStr:(int) anType ;
 +(BOOL)IsReturnDataValid:(NSDictionary *) apData apError:(NSString **)apError;
 
+#ifdef DEBUG
+#define DLog( s, ... ) NSLog( @"<%p %@:(%d)> %@", self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#else
+#define DLog( s, ... )
+#endif
+
 @end

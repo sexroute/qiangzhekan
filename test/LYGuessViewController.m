@@ -10,6 +10,7 @@
 #import "LYMainWindowViewController.h"
 #import "LYGlobalSettings.h"
 #import "JSON.h"
+#import "LYUtility.h"
 @interface LYGuessViewController ()
 
 @end
@@ -434,7 +435,7 @@
     NSString * lpServerAddress = [NSString stringWithFormat:@"%@/index.php/Trans/get/",[LYGlobalSettings GetSettingString:SETTING_KEY_SERVER_ADDRESS]];
     
     NSURL* url = [NSURL URLWithString:lpServerAddress];
-    NSLog(@"%@",lpServerAddress);
+    DLog(@"%@",lpServerAddress);
     
     [self.m_oRequest setCachePolicy: ASIDoNotWriteToCacheCachePolicy | ASIDoNotReadFromCacheCachePolicy];
     self.m_oRequest = [ASIFormDataRequest  requestWithURL:url];
@@ -458,7 +459,7 @@
     NSString * lpServerAddress = [NSString stringWithFormat:@"%@/index.php/Trans/close/",[LYGlobalSettings GetSettingString:SETTING_KEY_SERVER_ADDRESS]];
     
     NSURL* url = [NSURL URLWithString:lpServerAddress];
-    NSLog(@"%@",lpServerAddress);
+    DLog(@"%@",lpServerAddress);
     
    [self.m_oRequest setCachePolicy: ASIDoNotWriteToCacheCachePolicy | ASIDoNotReadFromCacheCachePolicy];
     self.m_oRequest = [ASIFormDataRequest  requestWithURL:url];
@@ -485,7 +486,7 @@
     NSString * lpServerAddress = [NSString stringWithFormat:@"%@/index.php/Trans/add/",[LYGlobalSettings GetSettingString:SETTING_KEY_SERVER_ADDRESS]];
     
     NSURL* url = [NSURL URLWithString:lpServerAddress];
-    NSLog(@"%@",lpServerAddress);
+    DLog(@"%@",lpServerAddress);
     
     [self.m_oRequest setCachePolicy: ASIDoNotWriteToCacheCachePolicy | ASIDoNotReadFromCacheCachePolicy];
     self.m_oRequest = [ASIFormDataRequest  requestWithURL:url];
@@ -512,7 +513,7 @@
     NSString * lpServerAddress = [NSString stringWithFormat:@"%@/index.php/Trans/add/",[LYGlobalSettings GetSettingString:SETTING_KEY_SERVER_ADDRESS]];
     
     NSURL* url = [NSURL URLWithString:lpServerAddress];
-    NSLog(@"%@",lpServerAddress);
+    DLog(@"%@",lpServerAddress);
     
     [self.m_oRequest setCachePolicy: ASIDoNotWriteToCacheCachePolicy | ASIDoNotReadFromCacheCachePolicy];
     self.m_oRequest = [ASIFormDataRequest  requestWithURL:url];
@@ -538,7 +539,7 @@
     
     NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     
-    NSLog(@"%@",responseString);
+    DLog(@"%@",responseString);
     
     NSDictionary * loRet = [LYGlobalSettings GetJsonValue: responseString];
     NSString * lpError = nil;

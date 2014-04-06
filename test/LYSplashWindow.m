@@ -339,7 +339,7 @@ UITextField * g_pTextPassword = nil;
     NSString * lpServerAddress = [NSString stringWithFormat:@"%@/index.php/Reg/login/",[LYGlobalSettings GetSettingString:SETTING_KEY_SERVER_ADDRESS]];
     
     NSURL* url = [NSURL URLWithString:lpServerAddress];
-    NSLog(@"%@",lpServerAddress);
+    DLog(@"%@",lpServerAddress);
     
     self.m_oRequest = [ASIFormDataRequest  requestWithURL:url];
     [self.m_oRequest setRequestMethod:@"POST"];
@@ -357,7 +357,7 @@ UITextField * g_pTextPassword = nil;
     
     NSString *responseString = [[[NSString alloc] initWithData:self.m_pResponseData  encoding:NSUTF8StringEncoding]autorelease];
 
-
+    DLog(@"%@",responseString);
 	
 	NSError *error = nil;
 	SBJSON *json = [[SBJSON new] autorelease];
