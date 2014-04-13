@@ -38,6 +38,8 @@
     [_m_oBetValue release];
     [_m_oCurrentValue release];
     [_m_oTransactionTime release];
+    [_m_oTransactionStatus release];
+    [_m_ogain release];
     [super dealloc];
 }
 @end

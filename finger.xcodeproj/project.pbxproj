@@ -18,6 +18,7 @@
 		4C7D070418FA457600D251A1 /* guess_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C7D070118FA457600D251A1 /* guess_cancel.png */; };
 		4C7D070518FA457600D251A1 /* guess_win.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C7D070218FA457600D251A1 /* guess_win.png */; };
 		4C7D070918FA466800D251A1 /* LYGuessListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7D070818FA466800D251A1 /* LYGuessListTableViewCell.m */; };
+		4C7D070F18FA838100D251A1 /* LYTransConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7D070E18FA838100D251A1 /* LYTransConst.m */; };
 		4C81C25618E02C4100B69C1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C81C25518E02C4100B69C1A /* Foundation.framework */; };
 		4C81C25818E02C4100B69C1A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C81C25718E02C4100B69C1A /* CoreGraphics.framework */; };
 		4C81C25A18E02C4100B69C1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C81C25918E02C4100B69C1A /* UIKit.framework */; };
@@ -144,8 +145,10 @@
 		4C7D070018FA457600D251A1 /* guess_lose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guess_lose.png; sourceTree = "<group>"; };
 		4C7D070118FA457600D251A1 /* guess_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guess_cancel.png; sourceTree = "<group>"; };
 		4C7D070218FA457600D251A1 /* guess_win.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guess_win.png; sourceTree = "<group>"; };
-		4C7D070718FA466800D251A1 /* LYGuessListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYGuessListTableViewCell.h; sourceTree = "<group>"; };
-		4C7D070818FA466800D251A1 /* LYGuessListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYGuessListTableViewCell.m; sourceTree = "<group>"; };
+		4C7D070718FA466800D251A1 /* LYGuessListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LYGuessListTableViewCell.h; path = ../LYGuessListTableViewCell.h; sourceTree = "<group>"; };
+		4C7D070818FA466800D251A1 /* LYGuessListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LYGuessListTableViewCell.m; path = ../LYGuessListTableViewCell.m; sourceTree = "<group>"; };
+		4C7D070D18FA838100D251A1 /* LYTransConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LYTransConst.h; path = test/LYTransConst.h; sourceTree = SOURCE_ROOT; };
+		4C7D070E18FA838100D251A1 /* LYTransConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LYTransConst.m; path = test/LYTransConst.m; sourceTree = SOURCE_ROOT; };
 		4C81C25218E02C4100B69C1A /* finger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = finger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C81C25518E02C4100B69C1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4C81C25718E02C4100B69C1A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -161,7 +164,7 @@
 		4C81C26D18E02C4100B69C1A /* LYGuessViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYGuessViewController.h; sourceTree = "<group>"; };
 		4C81C26E18E02C4100B69C1A /* LYGuessViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYGuessViewController.m; sourceTree = "<group>"; };
 		4C81C27018E02C4100B69C1A /* LYTransActionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LYTransActionViewController.h; path = ../LYTransActionViewController.h; sourceTree = "<group>"; };
-		4C81C27118E02C4100B69C1A /* LYTransActionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LYTransActionViewController.m; path = ../LYTransActionViewController.m; sourceTree = "<group>"; };
+		4C81C27118E02C4100B69C1A /* LYTransActionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LYTransActionViewController.m; path = ../LYTransActionViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
 		4C81C27318E02C4100B69C1A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4C81C27918E02C4100B69C1A /* fingerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fingerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C81C27A18E02C4100B69C1A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -367,15 +370,6 @@
 			name = guess_list;
 			sourceTree = "<group>";
 		};
-		4C7D070618FA464900D251A1 /* guess_list */ = {
-			isa = PBXGroup;
-			children = (
-				4C7D070718FA466800D251A1 /* LYGuessListTableViewCell.h */,
-				4C7D070818FA466800D251A1 /* LYGuessListTableViewCell.m */,
-			);
-			name = guess_list;
-			sourceTree = "<group>";
-		};
 		4C81C24918E02C4100B69C1A = {
 			isa = PBXGroup;
 			children = (
@@ -414,7 +408,6 @@
 		4C81C25B18E02C4100B69C1A /* finger */ = {
 			isa = PBXGroup;
 			children = (
-				4C7D070618FA464900D251A1 /* guess_list */,
 				4CAF56E618E82525004EA04C /* account */,
 				4CAF56E518E813E1004EA04C /* trans */,
 				4C78B17918E4383F00E95004 /* guess */,
@@ -428,9 +421,9 @@
 				4C78B16818E42B5900E95004 /* LYMainWindowViewController.m */,
 				4C81C26718E02C4100B69C1A /* Main_iPhone.storyboard */,
 				4C81C26A18E02C4100B69C1A /* Main_iPad.storyboard */,
+				4C7D06FD18FA423800D251A1 /* guset_list_cell.xib */,
 				4C81C27318E02C4100B69C1A /* Images.xcassets */,
 				4C81C25C18E02C4100B69C1A /* Supporting Files */,
-				4C7D06FD18FA423800D251A1 /* guset_list_cell.xib */,
 			);
 			name = finger;
 			path = test;
@@ -691,10 +684,14 @@
 		4CAF56E518E813E1004EA04C /* trans */ = {
 			isa = PBXGroup;
 			children = (
+				4C7D070718FA466800D251A1 /* LYGuessListTableViewCell.h */,
+				4C7D070818FA466800D251A1 /* LYGuessListTableViewCell.m */,
 				4C81C27018E02C4100B69C1A /* LYTransActionViewController.h */,
 				4C81C27118E02C4100B69C1A /* LYTransActionViewController.m */,
 				4CCAD78118F117330027EC4F /* LYTransViewControllerViewController.h */,
 				4CCAD78218F117330027EC4F /* LYTransViewControllerViewController.m */,
+				4C7D070D18FA838100D251A1 /* LYTransConst.h */,
+				4C7D070E18FA838100D251A1 /* LYTransConst.m */,
 			);
 			name = trans;
 			path = img;
@@ -940,6 +937,7 @@
 				4CA47EC218E0777500E83A9F /* ASINetworkQueue.m in Sources */,
 				4CA47ED118E0777500E83A9F /* NVUIGradientButton.m in Sources */,
 				4CA47ED618E0777500E83A9F /* SBJsonParser.m in Sources */,
+				4C7D070F18FA838100D251A1 /* LYTransConst.m in Sources */,
 				4CA47EC818E0777500E83A9F /* ASICloudFilesObject.m in Sources */,
 				4CA47ED318E0777500E83A9F /* NSString+SBJSON.m in Sources */,
 				4CA47ECA18E0777500E83A9F /* ASICloudFilesRequest.m in Sources */,
