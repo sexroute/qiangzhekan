@@ -26,9 +26,10 @@
     self->m_nCurrentPage = 1;
     self->m_nLoadedItemCount = 0;
     self->_reloading = false;
-    [self LoadMoreData:TRUE];
     self.m_pTranslists = [[[NSMutableArray alloc]init]autorelease];
     [self InitUI];
+    [self LoadMoreData:TRUE];
+
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -44,11 +45,13 @@
     if (_refreshHeaderView == nil)
     {
         
-        EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
-        view.delegate = self;
-        [self.tableView addSubview:view];
-        _refreshHeaderView = view;
-        [view release];
+        _refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:
+                              CGRectMake(0.0f, 0.0f - self.view.bounds.size.height,
+                                         self.view.frame.size.width, self.view.bounds.size.height)];
+        _refreshHeaderView.delegate = self;
+        [self.tableView addSubview:_refreshHeaderView];
+        [_refreshHeaderView refreshLastUpdatedDate];
+
         
     }
     
