@@ -13,7 +13,11 @@
 		4C78B17418E435AC00E95004 /* security.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C78B17318E435AC00E95004 /* security.png */; };
 		4C78B17618E4365800E95004 /* buddy.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C78B17518E4365800E95004 /* buddy.png */; };
 		4C78B17818E4365F00E95004 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C78B17718E4365F00E95004 /* account.png */; };
-		4C7D06FE18FA423800D251A1 /* guset_list.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C7D06FD18FA423800D251A1 /* guset_list.xib */; };
+		4C7D06FE18FA423800D251A1 /* guset_list_cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C7D06FD18FA423800D251A1 /* guset_list_cell.xib */; };
+		4C7D070318FA457600D251A1 /* guess_lose.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C7D070018FA457600D251A1 /* guess_lose.png */; };
+		4C7D070418FA457600D251A1 /* guess_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C7D070118FA457600D251A1 /* guess_cancel.png */; };
+		4C7D070518FA457600D251A1 /* guess_win.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C7D070218FA457600D251A1 /* guess_win.png */; };
+		4C7D070918FA466800D251A1 /* LYGuessListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7D070818FA466800D251A1 /* LYGuessListTableViewCell.m */; };
 		4C81C25618E02C4100B69C1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C81C25518E02C4100B69C1A /* Foundation.framework */; };
 		4C81C25818E02C4100B69C1A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C81C25718E02C4100B69C1A /* CoreGraphics.framework */; };
 		4C81C25A18E02C4100B69C1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C81C25918E02C4100B69C1A /* UIKit.framework */; };
@@ -136,7 +140,12 @@
 		4C78B17318E435AC00E95004 /* security.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = security.png; sourceTree = "<group>"; };
 		4C78B17518E4365800E95004 /* buddy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buddy.png; sourceTree = "<group>"; };
 		4C78B17718E4365F00E95004 /* account.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = account.png; sourceTree = "<group>"; };
-		4C7D06FD18FA423800D251A1 /* guset_list.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = guset_list.xib; sourceTree = "<group>"; };
+		4C7D06FD18FA423800D251A1 /* guset_list_cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = guset_list_cell.xib; sourceTree = "<group>"; };
+		4C7D070018FA457600D251A1 /* guess_lose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guess_lose.png; sourceTree = "<group>"; };
+		4C7D070118FA457600D251A1 /* guess_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guess_cancel.png; sourceTree = "<group>"; };
+		4C7D070218FA457600D251A1 /* guess_win.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guess_win.png; sourceTree = "<group>"; };
+		4C7D070718FA466800D251A1 /* LYGuessListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYGuessListTableViewCell.h; sourceTree = "<group>"; };
+		4C7D070818FA466800D251A1 /* LYGuessListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYGuessListTableViewCell.m; sourceTree = "<group>"; };
 		4C81C25218E02C4100B69C1A /* finger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = finger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C81C25518E02C4100B69C1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4C81C25718E02C4100B69C1A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -348,6 +357,25 @@
 			name = guess;
 			sourceTree = "<group>";
 		};
+		4C7D06FF18FA43B100D251A1 /* guess_list */ = {
+			isa = PBXGroup;
+			children = (
+				4C7D070018FA457600D251A1 /* guess_lose.png */,
+				4C7D070118FA457600D251A1 /* guess_cancel.png */,
+				4C7D070218FA457600D251A1 /* guess_win.png */,
+			);
+			name = guess_list;
+			sourceTree = "<group>";
+		};
+		4C7D070618FA464900D251A1 /* guess_list */ = {
+			isa = PBXGroup;
+			children = (
+				4C7D070718FA466800D251A1 /* LYGuessListTableViewCell.h */,
+				4C7D070818FA466800D251A1 /* LYGuessListTableViewCell.m */,
+			);
+			name = guess_list;
+			sourceTree = "<group>";
+		};
 		4C81C24918E02C4100B69C1A = {
 			isa = PBXGroup;
 			children = (
@@ -386,6 +414,7 @@
 		4C81C25B18E02C4100B69C1A /* finger */ = {
 			isa = PBXGroup;
 			children = (
+				4C7D070618FA464900D251A1 /* guess_list */,
 				4CAF56E618E82525004EA04C /* account */,
 				4CAF56E518E813E1004EA04C /* trans */,
 				4C78B17918E4383F00E95004 /* guess */,
@@ -401,7 +430,7 @@
 				4C81C26A18E02C4100B69C1A /* Main_iPad.storyboard */,
 				4C81C27318E02C4100B69C1A /* Images.xcassets */,
 				4C81C25C18E02C4100B69C1A /* Supporting Files */,
-				4C7D06FD18FA423800D251A1 /* guset_list.xib */,
+				4C7D06FD18FA423800D251A1 /* guset_list_cell.xib */,
 			);
 			name = finger;
 			path = test;
@@ -646,6 +675,7 @@
 		4CA47F0318E081D000E83A9F /* img */ = {
 			isa = PBXGroup;
 			children = (
+				4C7D06FF18FA43B100D251A1 /* guess_list */,
 				4CF03B9718E5871B00C3EC54 /* Icon.png */,
 				4CF03B9818E5871B00C3EC54 /* Icon@2x.png */,
 				4CF03B8F18E55F8800C3EC54 /* guess */,
@@ -803,6 +833,7 @@
 				4CD0627A18E4116E0088C210 /* Default-568h@2x.png in Resources */,
 				4CA47EEA18E0777500E83A9F /* key@2x.png in Resources */,
 				4CA47EF118E0777500E83A9F /* save.png in Resources */,
+				4C7D070518FA457600D251A1 /* guess_win.png in Resources */,
 				4CF03B9318E55FA100C3EC54 /* down_gray.png in Resources */,
 				4CA47EED18E0777500E83A9F /* purple_gradient@2x.png in Resources */,
 				4C81C26C18E02C4100B69C1A /* Main_iPad.storyboard in Resources */,
@@ -811,6 +842,7 @@
 				4CA47F0618E081D000E83A9F /* Default.png in Resources */,
 				4CA47EE418E0777500E83A9F /* gear@2x.png in Resources */,
 				4CF03B8E18E559D500C3EC54 /* down.png in Resources */,
+				4C7D070318FA457600D251A1 /* guess_lose.png in Resources */,
 				4CA47EE018E0777500E83A9F /* CloseButton@2x.png in Resources */,
 				4C81C27418E02C4100B69C1A /* Images.xcassets in Resources */,
 				4C81C26918E02C4100B69C1A /* Main_iPhone.storyboard in Resources */,
@@ -824,10 +856,11 @@
 				4CA47EF618E0777500E83A9F /* wave.png in Resources */,
 				4C78B17018E432D400E95004 /* guess.png in Resources */,
 				4CA47EDB18E0777500E83A9F /* actions@2x.png in Resources */,
+				4C7D070418FA457600D251A1 /* guess_cancel.png in Resources */,
 				4CA47EE818E0777500E83A9F /* instinctivecode_logo.png in Resources */,
 				4CA47EE918E0777500E83A9F /* instinctivecode_logo@2x.png in Resources */,
 				4CA47EDE18E0777500E83A9F /* CloseButton.png in Resources */,
-				4C7D06FE18FA423800D251A1 /* guset_list.xib in Resources */,
+				4C7D06FE18FA423800D251A1 /* guset_list_cell.xib in Resources */,
 				4CAF56E418E5E107004EA04C /* down_selected.png in Resources */,
 				4CA47EDD18E0777500E83A9F /* blue_gradient@2x.png in Resources */,
 				4C78B17618E4365800E95004 /* buddy.png in Resources */,
@@ -898,6 +931,7 @@
 				4CA47EC718E0777500E83A9F /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
 				4CA47EBC18E0777500E83A9F /* ASIDataCompressor.m in Sources */,
 				4CA47EC318E0777500E83A9F /* ASIWebPageRequest.m in Sources */,
+				4C7D070918FA466800D251A1 /* LYGuessListTableViewCell.m in Sources */,
 				4CA47ED418E0777500E83A9F /* SBJSON.m in Sources */,
 				4CA47ED518E0777500E83A9F /* SBJsonBase.m in Sources */,
 				4CA47E3A18E0666900E83A9F /* LYSplashWindow.m in Sources */,
