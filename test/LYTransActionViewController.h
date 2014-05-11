@@ -27,6 +27,7 @@
     {
         REQUEST_TYPE_REFRESH = 1,
         REQUEST_TYPE_MORE = 2,
+        REQUEST_TYPE_CLOSE = 3,
     };
     EGORefreshTableHeaderView *_refreshHeaderView;
     MJRefreshHeaderView * m_pHeader;

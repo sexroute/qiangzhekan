@@ -526,7 +526,7 @@
     [LYGlobalSettings SetSettingString:SETTING_KEY_SERVER_LOGININFO apVal:responseString];
     [responseString release];
     
-    
+    [LYGlobalSettings SetSettingInt:SETTING_KEY_NEED_REFRESH apVal:1];
     
     if (lnRet !=0)
     {

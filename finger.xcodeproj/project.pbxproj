@@ -20,6 +20,7 @@
 		4C761D48191F4C1A0068BF54 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C761D3B191F4C1A0068BF54 /* MJRefreshFooterView.m */; };
 		4C761D49191F4C1A0068BF54 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C761D3D191F4C1A0068BF54 /* MJRefreshHeaderView.m */; };
 		4C761D4D191F68340068BF54 /* LYNewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C761D4C191F68340068BF54 /* LYNewsTableViewController.m */; };
+		4C761D4F191F92200068BF54 /* guess_win_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C761D4E191F92200068BF54 /* guess_win_gray.png */; };
 		4C78B16918E42B5900E95004 /* LYMainWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C78B16818E42B5900E95004 /* LYMainWindowViewController.m */; };
 		4C78B17018E432D400E95004 /* guess.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C78B16F18E432D400E95004 /* guess.png */; };
 		4C78B17218E4349600E95004 /* rank.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C78B17118E4349600E95004 /* rank.png */; };
@@ -172,6 +173,7 @@
 		4C761D3D191F4C1A0068BF54 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
 		4C761D4B191F68340068BF54 /* LYNewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYNewsTableViewController.h; sourceTree = "<group>"; };
 		4C761D4C191F68340068BF54 /* LYNewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYNewsTableViewController.m; sourceTree = "<group>"; };
+		4C761D4E191F92200068BF54 /* guess_win_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guess_win_gray.png; sourceTree = "<group>"; };
 		4C78B16718E42B5900E95004 /* LYMainWindowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYMainWindowViewController.h; sourceTree = "<group>"; };
 		4C78B16818E42B5900E95004 /* LYMainWindowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYMainWindowViewController.m; sourceTree = "<group>"; };
 		4C78B16F18E432D400E95004 /* guess.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guess.png; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 		4C7D06FF18FA43B100D251A1 /* guess_list */ = {
 			isa = PBXGroup;
 			children = (
+				4C761D4E191F92200068BF54 /* guess_win_gray.png */,
 				4C7D070018FA457600D251A1 /* guess_lose.png */,
 				4C7D070118FA457600D251A1 /* guess_cancel.png */,
 				4C7D070218FA457600D251A1 /* guess_win.png */,
@@ -954,6 +957,7 @@
 				4CA47EED18E0777500E83A9F /* purple_gradient@2x.png in Resources */,
 				4C81C26C18E02C4100B69C1A /* Main_iPad.storyboard in Resources */,
 				4CF03B9A18E5871B00C3EC54 /* Icon@2x.png in Resources */,
+				4C761D4F191F92200068BF54 /* guess_win_gray.png in Resources */,
 				4C78B17218E4349600E95004 /* rank.png in Resources */,
 				4CA47F0618E081D000E83A9F /* Default.png in Resources */,
 				4CA47EE418E0777500E83A9F /* gear@2x.png in Resources */,

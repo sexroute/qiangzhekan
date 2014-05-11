@@ -20,7 +20,17 @@
 @synthesize m_pHeader;
 @synthesize m_pFooter;
 #pragma mark init
+-(void )viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    int lnNeedRefresh = [LYGlobalSettings GetSettingInt:SETTING_KEY_NEED_REFRESH];
+    if (lnNeedRefresh>0)
+    {
+        [self RefreshData:TRUE];
+        [LYGlobalSettings SetSettingInt:SETTING_KEY_NEED_REFRESH apVal:0];
 
+    }
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -310,7 +320,10 @@
 
                     //7.收益
                     double ldblGain = (ldblCurrentValue - ldblBetValue)* lnDirection*ldblBetAmount*ldblBetRatio;
-                    
+                    if(abs(ldblGain)<0.01)
+                    {
+                        ldblGain = 0.0;
+                    }
                     cell.m_ogain.text = [NSString stringWithFormat:@"%.2f",ldblGain];
                     
       
@@ -433,38 +446,36 @@
     // Use when fetching binary data
     self.responseData =[NSMutableData dataWithData:[request responseData]] ;
     
-    if (request.tag == 3)
+    if (request.tag == REQUEST_TYPE_CLOSE)
     {
-        
+        [self RefreshData:FALSE];
     }else
     {
-    NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+      NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     
-    DLog(@"%@",responseString);
+      DLog(@"%@",responseString);
     
-    NSDictionary * loRet = [LYGlobalSettings GetJsonValue: responseString];
-    NSString * lpError = nil;
-    int lnRet = [self ParseResponseForMoreData:loRet apError:&lpError];
-    self.responseData = nil;
-    [LYGlobalSettings SetSettingString:SETTING_KEY_SERVER_LOGININFO apVal:responseString];
-    [responseString release];
-    if (lnRet !=0)
-    {
+      NSDictionary * loRet = [LYGlobalSettings GetJsonValue: responseString];
+      NSString * lpError = nil;
+      int lnRet = [self ParseResponseForMoreData:loRet apError:&lpError];
+      self.responseData = nil;
+      [LYGlobalSettings SetSettingString:SETTING_KEY_SERVER_LOGININFO apVal:responseString];
+      [responseString release];
+      if (lnRet !=0)
+      {
         [self alertWrong:lpError];
-    }else
-    {
+      }else
+      {
         
+      }
+        
+        if (nil != HUD)
+        {
+            [HUD hide:YES afterDelay:0];
+        }
+        [self doneLoadingTableViewData];
+        [self.tableView reloadData];
     }
-    }
-    
-    [self.m_oRequest removeTemporaryDownloadFile ];
-    
-    if (nil != HUD)
-    {
-        [HUD hide:YES afterDelay:0];
-    }
-    [self doneLoadingTableViewData];
-    [self.tableView reloadData];
 }
 
 -(int)ParseResponseForMoreData:(NSDictionary * )apData apError:(NSString**)apError

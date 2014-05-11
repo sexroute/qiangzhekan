@@ -45,6 +45,7 @@
 #define SETTING_KEY_STYLE                 @"STYLE"
 #define SETTING_KEY_USER_TOKEN         @"USER_TOKEN"
 #define SETTING_KEY_SERVER_LOGININFO        @"LOGIN_INFO"
+#define SETTING_KEY_NEED_REFRESH        @"NEED_REFRESH"
 
 #pragma mark 诊断相关
 #define SETTING_DEAULT_FAULT @"对中不良"
