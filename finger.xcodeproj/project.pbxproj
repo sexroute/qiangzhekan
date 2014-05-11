@@ -19,6 +19,7 @@
 		4C761D47191F4C1A0068BF54 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C761D39191F4C1A0068BF54 /* MJRefreshConst.m */; };
 		4C761D48191F4C1A0068BF54 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C761D3B191F4C1A0068BF54 /* MJRefreshFooterView.m */; };
 		4C761D49191F4C1A0068BF54 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C761D3D191F4C1A0068BF54 /* MJRefreshHeaderView.m */; };
+		4C761D4D191F68340068BF54 /* LYNewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C761D4C191F68340068BF54 /* LYNewsTableViewController.m */; };
 		4C78B16918E42B5900E95004 /* LYMainWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C78B16818E42B5900E95004 /* LYMainWindowViewController.m */; };
 		4C78B17018E432D400E95004 /* guess.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C78B16F18E432D400E95004 /* guess.png */; };
 		4C78B17218E4349600E95004 /* rank.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C78B17118E4349600E95004 /* rank.png */; };
@@ -169,6 +170,8 @@
 		4C761D3B191F4C1A0068BF54 /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
 		4C761D3C191F4C1A0068BF54 /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
 		4C761D3D191F4C1A0068BF54 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
+		4C761D4B191F68340068BF54 /* LYNewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYNewsTableViewController.h; sourceTree = "<group>"; };
+		4C761D4C191F68340068BF54 /* LYNewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYNewsTableViewController.m; sourceTree = "<group>"; };
 		4C78B16718E42B5900E95004 /* LYMainWindowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYMainWindowViewController.h; sourceTree = "<group>"; };
 		4C78B16818E42B5900E95004 /* LYMainWindowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYMainWindowViewController.m; sourceTree = "<group>"; };
 		4C78B16F18E432D400E95004 /* guess.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guess.png; sourceTree = "<group>"; };
@@ -441,6 +444,15 @@
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
+		4C761D4A191F679D0068BF54 /* news */ = {
+			isa = PBXGroup;
+			children = (
+				4C761D4B191F68340068BF54 /* LYNewsTableViewController.h */,
+				4C761D4C191F68340068BF54 /* LYNewsTableViewController.m */,
+			);
+			name = news;
+			sourceTree = "<group>";
+		};
 		4C78B16A18E4309C00E95004 /* tray */ = {
 			isa = PBXGroup;
 			children = (
@@ -513,6 +525,7 @@
 		4C81C25B18E02C4100B69C1A /* finger */ = {
 			isa = PBXGroup;
 			children = (
+				4C761D4A191F679D0068BF54 /* news */,
 				4CAF56E618E82525004EA04C /* account */,
 				4CAF56E518E813E1004EA04C /* trans */,
 				4C78B17918E4383F00E95004 /* guess */,
@@ -1054,6 +1067,7 @@
 				4CA47ED118E0777500E83A9F /* NVUIGradientButton.m in Sources */,
 				4C761D44191F4C1A0068BF54 /* MJAppDelegate.m in Sources */,
 				4CA47ED618E0777500E83A9F /* SBJsonParser.m in Sources */,
+				4C761D4D191F68340068BF54 /* LYNewsTableViewController.m in Sources */,
 				4C7D070F18FA838100D251A1 /* LYTransConst.m in Sources */,
 				4CA47EC818E0777500E83A9F /* ASICloudFilesObject.m in Sources */,
 				4CA47ED318E0777500E83A9F /* NSString+SBJSON.m in Sources */,

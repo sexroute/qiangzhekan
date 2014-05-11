@@ -185,37 +185,50 @@
             </objects>
             <point key="canvasLocation" x="1157" y="-1326"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Trans View Controller View Controller - 新闻-->
         <scene sceneID="55Z-Wg-TpO">
             <objects>
-                <navigationController definesPresentationContext="YES" id="5oI-nk-Ijc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="zLN-tN-Z21"/>
+                <navigationController definesPresentationContext="YES" id="5oI-nk-Ijc" customClass="LYTransViewControllerViewController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="新闻" image="security.png" id="zLN-tN-Z21"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="l2a-nx-Maw">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="NEv-7A-eRi" kind="relationship" relationship="rootViewController" id="SIi-fM-vTQ"/>
+                        <segue destination="Ftd-YV-EFD" kind="relationship" relationship="rootViewController" id="y0p-0q-wCd"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sBN-gd-Un0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="609" y="1226"/>
         </scene>
-        <!--View Controller - security-->
-        <scene sceneID="zEU-SR-1ve">
+        <!--News Table View Controller - 新闻-->
+        <scene sceneID="NXT-3n-dem">
             <objects>
-                <viewController id="NEv-7A-eRi" userLabel="View Controller - security" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="KqS-6p-H1P">
+                <tableViewController id="Ftd-YV-EFD" customClass="LYNewsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="rJl-aR-b46">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="新闻" image="security.png" id="aWe-7j-bOt" userLabel="Tab Bar Item - security"/>
-                    <navigationItem key="navigationItem" id="aHa-fp-sdk"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Snv-W1-w9V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="p7e-K9-ZEA">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p7e-K9-ZEA" id="DXa-ly-38l">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ftd-YV-EFD" id="Ik4-dQ-IHt"/>
+                            <outlet property="delegate" destination="Ftd-YV-EFD" id="1cv-TY-xwd"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="新闻" id="QXn-vp-0g6"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EDJ-z1-jbs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1126" y="1226"/>
+            <point key="canvasLocation" x="1082" y="1226"/>
         </scene>
         <!--View Controller - buddy-->
         <scene sceneID="irz-uU-LB8">
@@ -233,10 +246,10 @@
             </objects>
             <point key="canvasLocation" x="1149" y="342"/>
         </scene>
-        <!--Navigation Controller - 账号-->
+        <!--Trans View Controller View Controller - 账号-->
         <scene sceneID="1Ue-Nn-enN">
             <objects>
-                <navigationController definesPresentationContext="YES" id="CBb-MO-opl" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="CBb-MO-opl" customClass="LYTransViewControllerViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="账号" image="account.png" id="7zt-2I-GPf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vXZ-aK-bai">
                         <autoresizingMask key="autoresizingMask"/>
