@@ -9,6 +9,39 @@
 #import "LYTransConst.h"
 
 @implementation LYTransConst
++(BOOL) IsStatusPending:(int)anTransStatusCode
+{
+    switch (anTransStatusCode)
+    {
+        case STATUS_TRANS_ADD_PENDING :
+            
+        case STATUS_TRANS_CANCEL_PENDING :
+           
+        case STATUS_TRANS_CLOSE_PENDING :
+            return TRUE;
+            break;
+        default:
+            return FALSE;
+            break;
+    }
+
+}
++(BOOL) IsStatusFinish:(int)anTransStatusCode
+{
+    switch (anTransStatusCode)
+    {
+        case STATUS_TRANS_FAILED :
+            
+        case STATUS_TRANS_TRANS_CLOSE :
+            return TRUE;
+            break;
+        default:
+            return FALSE;
+            break;
+    }
+
+}
+
 +(NSString *)GetTransStatusReason:(int)anTransStatusCode
 {
     

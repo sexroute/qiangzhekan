@@ -227,10 +227,19 @@
         UIImageView * lpImagg = (UIImageView *)sender.view;
         int lnDataIndex = lpImagg.tag;
         id loTrans = [self.m_pTranslists objectAtIndex:lnDataIndex];
-        int lnTransStatus  = [[loTrans objectForKey:@"id"]integerValue];
-       
+        int lnTransId  = [[loTrans objectForKey:@"id"]integerValue];
+        int lnTransStatus =[[loTrans objectForKey:@"trans_status"]integerValue];
+        if ([LYTransConst IsStatusPending:lnTransStatus])
+        {
+            [self alertWrong:@"交易处理中，请稍候"];
+            return;
+        }else if ([LYTransConst IsStatusFinish:lnTransStatus])
+        {
+            [self alertWrong:@"交易已结束"];
+            return;
+        }
         UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"结算确认" message:@"确认结算么?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil] autorelease];
-        alertView.tag = lnTransStatus;
+        alertView.tag = lnTransId;
         [alertView show];
        
     }
@@ -276,9 +285,18 @@
                     {
                         cell.m_oBetTitle.text = [NSString stringWithFormat:@"%@",@"看跌:"];
                     }
+                    
+                    //8.交易状态
+                    int lnTransStatus = [[loTrans objectForKey:@"trans_status"]doubleValue];
+                    
                     //3.当前价
                     double ldblCurrentValue = [[loTrans objectForKey:@"symbol_current_value"]doubleValue];
                     cell.m_oCurrentValue.text = [NSString stringWithFormat:@"%.2f",ldblCurrentValue];
+                    
+                    if ([LYTransConst IsStatusFinish:lnTransStatus])
+                    {
+                        ldblCurrentValue = [[loTrans objectForKey:@"trans_finish_symbol_value"]doubleValue];
+                    }
                     
                     //4.下注价
                     double ldblBetValue = [[loTrans objectForKey:@"trans_symbol_value"]doubleValue];
@@ -288,13 +306,14 @@
                     double ldblBetAmount = [[loTrans objectForKey:@"trans_amount"]doubleValue];
                     //6.赔率
                     double ldblBetRatio = [[loTrans objectForKey:@"trans_ratio"]doubleValue];
+                    
+
                     //7.收益
                     double ldblGain = (ldblCurrentValue - ldblBetValue)* lnDirection*ldblBetAmount*ldblBetRatio;
                     
                     cell.m_ogain.text = [NSString stringWithFormat:@"%.2f",ldblGain];
                     
-                    //8.交易状态
-                    int lnTransStatus = [[loTrans objectForKey:@"trans_status"]doubleValue];
+      
                     
                     NSString * lpStatus = [LYTransConst GetTransStatusReason:lnTransStatus];
                     cell.m_oTransactionStatus.text = [NSString stringWithString:lpStatus];

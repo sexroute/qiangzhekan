@@ -23,4 +23,6 @@
    
 }
  +(NSString *)GetTransStatusReason:(int)anTransStatusCode;
++(BOOL) IsStatusPending:(int)anTransStatusCode;
++(BOOL) IsStatusFinish:(int)anTransStatusCode;
 @end

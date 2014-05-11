@@ -487,7 +487,7 @@
     [self PopulateIndicator];
     self.responseData = [NSMutableData data];
     
-    NSString * lpPostData = [NSString stringWithFormat:@"user_token=%@&trans_amount=%d&id=%@&trans_symbol_id=%@&trans_direction=0",[LYGlobalSettings GetSettingString:SETTING_KEY_USER_TOKEN],10,self.m_strTransactionId,self.m_strSymbolId];
+    NSString * lpPostData = [NSString stringWithFormat:@"user_token=%@&trans_amount=%d&id=%@&trans_symbol_id=%@&trans_direction=-1",[LYGlobalSettings GetSettingString:SETTING_KEY_USER_TOKEN],10,self.m_strTransactionId,self.m_strSymbolId];
     NSString * lpServerAddress = [NSString stringWithFormat:@"%@/index.php/Trans/add/",[LYGlobalSettings GetSettingString:SETTING_KEY_SERVER_ADDRESS]];
     
     NSURL* url = [NSURL URLWithString:lpServerAddress];
