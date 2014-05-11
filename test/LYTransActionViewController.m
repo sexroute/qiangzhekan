@@ -8,7 +8,7 @@
 
 #import "LYTransActionViewController.h"
 #import "LYGuessListTableViewCell.h"
-
+#include <stdlib.h>
 @interface LYTransActionViewController ()
 
 @end
@@ -17,6 +17,8 @@
 @synthesize responseData;
 @synthesize m_oRequest;
 @synthesize m_pTranslists;
+@synthesize m_pHeader;
+@synthesize m_pFooter;
 #pragma mark init
 
 - (void)viewDidLoad
@@ -39,25 +41,52 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) doCloseRemoteTransaction:(int)anTransID
+{
+    [self PopulateIndicator];
+    self.responseData = [NSMutableData data];
+    
+    NSString * lpPostData = [NSString stringWithFormat:@"user_token=%@&id=%d",[LYGlobalSettings GetSettingString:SETTING_KEY_USER_TOKEN],anTransID];
+    NSString * lpServerAddress = [NSString stringWithFormat:@"%@/index.php/Trans/close/",[LYGlobalSettings GetSettingString:SETTING_KEY_SERVER_ADDRESS]];
+    
+    NSURL* url = [NSURL URLWithString:lpServerAddress];
+    DLog(@"%@",lpServerAddress);
+    
+    [self.m_oRequest setCachePolicy: ASIDoNotWriteToCacheCachePolicy | ASIDoNotReadFromCacheCachePolicy];
+    self.m_oRequest = [ASIFormDataRequest  requestWithURL:url];
+    [self.m_oRequest setRequestMethod:@"POST"];
+    [self.m_oRequest addRequestHeader:@"Content-Type" value:@"application/x-www-form-urlencoded"];
+    NSMutableData *requestBody = [[[NSMutableData alloc] initWithData:[lpPostData dataUsingEncoding:NSUTF8StringEncoding]] autorelease];
+    [self.m_oRequest appendPostData:requestBody];
+    [self.m_oRequest setDelegate:self];
+    [self.m_oRequest setTimeOutSeconds:NETWORK_TIMEOUT];
+    self.m_oRequest.tag = 3;
+   	[self.m_oRequest startAsynchronous];
+    
+    if (nil != HUD)
+    {
+        //  [HUD hide:YES afterDelay:0];
+    }
+}
 -(void)InitUI
 {
     //1.拖拽刷新
-    if (_refreshHeaderView == nil)
+    if (self.m_pHeader == nil)
     {
-        
-        _refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:
-                              CGRectMake(0.0f, 0.0f - self.view.bounds.size.height,
-                                         self.view.frame.size.width, self.view.bounds.size.height)];
-        _refreshHeaderView.delegate = self;
-        [self.tableView addSubview:_refreshHeaderView];
-        [_refreshHeaderView refreshLastUpdatedDate];
-
-        
+        self.m_pHeader = [[MJRefreshHeaderView header]autorelease];
+        self.m_pHeader.scrollView = self.tableView;
+        self.m_pHeader.delegate = self;
+    }
+    
+    if (self.m_pFooter == nil)
+    {
+        self.m_pFooter = [[MJRefreshFooterView footer]autorelease];
+        self.m_pFooter.scrollView = self.tableView;
+        self.m_pFooter.delegate = self;
     }
     
     //4.navigation item
     
-    [_refreshHeaderView refreshLastUpdatedDate];
 }
 
 - (void)reloadTableViewDataSource{
@@ -74,13 +103,64 @@
 
 - (void)doneLoadingTableViewData
 {
+    if (self.m_pHeader)
+    {
+        [self.m_pHeader endRefreshing];
+    }
     
-    //  model should call this when its done loading
-    
-    _reloading = NO;
-    [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+    if (self.m_pFooter)
+    {
+        [self.m_pFooter endRefreshing];
+    }
     
 }
+
+#pragma mark - 刷新控件的代理方法
+#pragma mark 开始进入刷新状态
+- (void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView
+{
+    NSLog(@"%@----开始进入刷新状态", refreshView.class);
+    
+    // 1.添加假数据
+
+    
+    // 2.2秒后刷新表格UI
+    if (refreshView == self.m_pHeader)
+    {
+         [self RefreshData:TRUE];
+    }
+    else
+    {
+        [self LoadMoreData:TRUE];
+    }
+}
+
+#pragma mark 刷新完毕
+- (void)refreshViewEndRefreshing:(MJRefreshBaseView *)refreshView
+{
+    NSLog(@"%@----刷新完毕", refreshView.class);
+}
+
+#pragma mark 监听刷新状态的改变
+- (void)refreshView:(MJRefreshBaseView *)refreshView stateChange:(MJRefreshState)state
+{
+    switch (state) {
+        case MJRefreshStateNormal:
+            NSLog(@"%@----切换到：普通状态", refreshView.class);
+            break;
+            
+        case MJRefreshStatePulling:
+            NSLog(@"%@----切换到：松开即可刷新的状态", refreshView.class);
+            break;
+            
+        case MJRefreshStateRefreshing:
+            NSLog(@"%@----切换到：正在刷新状态", refreshView.class);
+            break;
+        default:
+            break;
+    }
+}
+
 
 #pragma mark -
 #pragma mark EGORefreshTableHeaderDelegate Methods
@@ -136,6 +216,24 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 78;
+}
+
+- (void)handleSingleFingerEvent:(UITapGestureRecognizer *)sender
+{
+    if ([sender.view isKindOfClass:[UIImageView class]])
+    {
+    
+        UIImageView * lpImagg = (UIImageView *)sender.view;
+        int lnDataIndex = lpImagg.tag;
+        id loTrans = [self.m_pTranslists objectAtIndex:lnDataIndex];
+        int lnTransStatus  = [[loTrans objectForKey:@"id"]integerValue];
+       
+        UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:@"结算确认" message:@"确认结算么?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil] autorelease];
+        alertView.tag = lnTransStatus;
+        [alertView show];
+       
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -200,11 +298,13 @@
                     NSString * lpStatus = [LYTransConst GetTransStatusReason:lnTransStatus];
                     cell.m_oTransactionStatus.text = [NSString stringWithString:lpStatus];
                     
-                   
+                    cell.m_oStatusIcon.userInteractionEnabled = YES;
+                    cell.m_oStatusIcon.tag = indexPath.row;
+                    UITapGestureRecognizer *tapGestureTel = [[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleSingleFingerEvent:)]autorelease];
+                   [cell.m_oStatusIcon addGestureRecognizer:tapGestureTel];
+                    
                     if (lnTransStatus != STATUS_TRANS_TRANS_CLOSE)
                     {
-
-                       
                         if (ldblGain == 0)
                         {
                             cell.m_ogain.textColor =  [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1];
@@ -245,6 +345,8 @@
                      NSString *   lpTransTime = [loTrans objectForKey:@"trans_start_time"];
                     cell.m_oTransactionTime.text = [NSString stringWithString:lpTransTime];
                     break;
+                    
+                    
                 }
             }
         }
@@ -277,7 +379,7 @@
     [self.m_oRequest appendPostData:requestBody];
     [self.m_oRequest setDelegate:self];
     [self.m_oRequest setTimeOutSeconds:NETWORK_TIMEOUT];
-   	[self.m_oRequest startAsynchronous];
+   	[self.m_oRequest startSynchronous];
     self.m_oRequest.tag = REQUEST_TYPE_MORE;
 }
 
@@ -288,20 +390,19 @@
         [self PopulateIndicator];
     }
     self.responseData = [NSMutableData data];
-    
-    NSString * lpPostData = [NSString stringWithFormat:@"user_token=%@&page_cur_pos=%d&page_count=%d",[LYGlobalSettings GetSettingString:SETTING_KEY_USER_TOKEN],self->m_nCurrentPage,(self->m_nLoadedItemCount)];
+    NSString * lpPostData = [NSString stringWithFormat:@"user_token=%@&page_cur_pos=%d&page_count=%d&r=%f",[LYGlobalSettings GetSettingString:SETTING_KEY_USER_TOKEN],self->m_nCurrentPage,(self->m_nLoadedItemCount>self->m_nPageSize?self->m_nLoadedItemCount:self->m_nPageSize),(arc4random_uniform(1000)/1000.0)];
     NSString * lpServerAddress = [NSString stringWithFormat:@"%@/index.php/Trans/listAll/",[LYGlobalSettings GetSettingString:SETTING_KEY_SERVER_ADDRESS]];
     
     NSURL* url = [NSURL URLWithString:lpServerAddress];
     DLog(@"%@",lpServerAddress);
     
-    [self.m_oRequest setCachePolicy: ASIDoNotWriteToCacheCachePolicy | ASIDoNotReadFromCacheCachePolicy];
     self.m_oRequest = [ASIFormDataRequest  requestWithURL:url];
     [self.m_oRequest setRequestMethod:@"POST"];
     [self.m_oRequest addRequestHeader:@"Content-Type" value:@"application/x-www-form-urlencoded"];
     NSMutableData *requestBody = [[[NSMutableData alloc] initWithData:[lpPostData dataUsingEncoding:NSUTF8StringEncoding]] autorelease];
     [self.m_oRequest appendPostData:requestBody];
     [self.m_oRequest setDelegate:self];
+    
     [self.m_oRequest setTimeOutSeconds:NETWORK_TIMEOUT];
    	[self.m_oRequest startAsynchronous];
     self.m_oRequest.tag = REQUEST_TYPE_REFRESH;
@@ -312,6 +413,11 @@
     // Use when fetching binary data
     self.responseData =[NSMutableData dataWithData:[request responseData]] ;
     
+    if (request.tag == 3)
+    {
+        
+    }else
+    {
     NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     
     DLog(@"%@",responseString);
@@ -329,6 +435,9 @@
     {
         
     }
+    }
+    
+    [self.m_oRequest removeTemporaryDownloadFile ];
     
     if (nil != HUD)
     {
@@ -437,11 +546,23 @@
     [alert release];
 }
 
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        [self doCloseRemoteTransaction:alertView.tag];
+    }
+   
+    
+}
+
 #pragma mark 析构
 - (void)viewDidUnload
 {
     self.m_oRequest = nil;
     self.m_pTranslists = nil;
+    self.m_pFooter =nil;
+    self.m_pHeader = nil;
     
 }
 
@@ -450,7 +571,8 @@
     self.m_pTranslists = nil;
     self.m_oRequest = nil;
     _refreshHeaderView = nil;
-     [super dealloc];
-    
+    self.m_pFooter =nil;
+    self.m_pHeader = nil;
+    [super dealloc];
 }
 @end

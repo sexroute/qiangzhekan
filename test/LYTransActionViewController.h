@@ -15,8 +15,9 @@
 #import "LYUtility.h"
 #import "LYTransConst.h"
 #import "EGORefreshTableHeaderView.h"
+#import "MJRefresh.h"
 
-@interface LYTransActionViewController : UITableViewController<EGORefreshTableHeaderDelegate,MBProgressHUDDelegate>
+@interface LYTransActionViewController : UITableViewController<MJRefreshBaseViewDelegate,MBProgressHUDDelegate>
 {
     MBProgressHUD *HUD;
     int m_nCurrentPage;
@@ -28,6 +29,8 @@
         REQUEST_TYPE_MORE = 2,
     };
     EGORefreshTableHeaderView *_refreshHeaderView;
+    MJRefreshHeaderView * m_pHeader;
+    MJRefreshFooterView * m_pFooter;
     BOOL _reloading;
 
 
@@ -35,5 +38,6 @@
 @property (retain,nonatomic) NSMutableData * responseData;
 @property (retain,nonatomic) ASIFormDataRequest * m_oRequest;
 @property (retain,nonatomic) NSMutableArray * m_pTranslists;
-
+@property (retain,nonatomic) MJRefreshHeaderView * m_pHeader;
+@property (retain,nonatomic) MJRefreshFooterView * m_pFooter;
 @end

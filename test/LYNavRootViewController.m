@@ -29,6 +29,7 @@
     // Do any additional setup after loading the view.
     //1.status bar
     [self setNeedsStatusBarAppearanceUpdate];
+    self.navigationController.title = @"战绩";
 }
 
 - (UIStatusBarStyle) preferredStatusBarStyle {

@@ -51,7 +51,7 @@
 #define SETTING_KEY_FAULT @"faults"
 #define SETTING_KEY_ADVICE @"advice"
 
-#define NETWORK_TIMEOUT 10
+#define NETWORK_TIMEOUT 30
 #define DEFAULT_FONT_NAME @"Gill Sans"
 
 #pragma mark 服务端字段
