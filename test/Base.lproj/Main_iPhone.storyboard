@@ -355,7 +355,7 @@
             </objects>
             <point key="canvasLocation" x="1120" y="2045"/>
         </scene>
-        <!--Trans Action View Controller-->
+        <!--Trans Action View Controller - 战绩-->
         <scene sceneID="Iv2-Sn-msj">
             <objects>
                 <tableViewController storyboardIdentifier="TransView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eiZ-gn-3bk" customClass="LYTransActionViewController" sceneMemberID="viewController">
@@ -368,7 +368,7 @@
                             <outlet property="delegate" destination="eiZ-gn-3bk" id="FN7-6y-cvY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="nTT-8c-GWE"/>
+                    <navigationItem key="navigationItem" title="战绩" id="NSo-8B-bn6"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VTJ-fQ-rTC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

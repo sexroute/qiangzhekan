@@ -133,6 +133,7 @@
 - (void) initUI
 {
     [self ParseAccountData:  [LYGlobalSettings GetJsonValue: [LYGlobalSettings GetSettingString:SETTING_KEY_SERVER_LOGININFO]]];
+    self.navigationItem.title = @"账号信息";
     
 }
 

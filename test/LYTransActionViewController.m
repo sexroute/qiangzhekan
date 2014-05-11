@@ -84,7 +84,8 @@
         self.m_pFooter.scrollView = self.tableView;
         self.m_pFooter.delegate = self;
     }
-    
+    self.navigationItem.title = @"战绩";
+    self.navigationController.title = @"战绩";
     //4.navigation item
     
 }
