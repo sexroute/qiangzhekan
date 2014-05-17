@@ -205,7 +205,7 @@ UITextField * g_pTextPassword = nil;
             self.m_oImageView.image = [UIImage imageNamed:@"Default-568h@2x.png"];
             frame =self.m_oLoginTableView.frame;
             frame.origin.x = self.m_oLoginTableView.frame.origin.x;
-            frame.origin.y = 240;
+            frame.origin.y = 160;
             self.m_oLoginTableView.frame = frame;
             break;
             
