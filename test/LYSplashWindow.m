@@ -144,12 +144,14 @@ UITextField * g_pTextPassword = nil;
 {
     return 40;
 }
-
+- (UIStatusBarStyle) preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
 
 #pragma mark 视图初始化
 - (void)viewDidLoad
 {
-    
+     [self setNeedsStatusBarAppearanceUpdate];
     [super viewDidLoad];
     [self InitUI];
     
