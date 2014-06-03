@@ -241,6 +241,8 @@
     //1.将登录状态设置为0
     [LYGlobalSettings SetSettingString:SETTING_KEY_USER_TOKEN apVal:@"0"];
     [LYGlobalSettings SetSettingString:SETTING_KEY_LOGIN apVal:@"0"];
+    [LYGlobalSettings SetSettingString:SETTING_KEY_USER apVal:@"0"];
+    [LYGlobalSettings SetSettingString:SETTING_KEY_PASSWORD apVal:@"0"];
     //2.导航至splash window
     [self navigatToLogin];
     
