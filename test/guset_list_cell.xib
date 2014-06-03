@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -80,6 +80,7 @@
                 <outlet property="m_oBetTitle" destination="J41-Sd-x5A" id="qOp-Wa-77b"/>
                 <outlet property="m_oBetValue" destination="oL0-2m-xJL" id="9An-mk-Z7F"/>
                 <outlet property="m_oCurrentValue" destination="aTY-fq-D8q" id="Loz-K0-HZa"/>
+                <outlet property="m_oCurrentValueTitle" destination="Kif-5p-HTe" id="4e6-Xb-TRF"/>
                 <outlet property="m_oStatusIcon" destination="9Ff-67-pJ7" id="uDu-5x-yhd"/>
                 <outlet property="m_oSymbolTitle" destination="n9H-5B-o4V" id="ssk-oj-BEz"/>
                 <outlet property="m_oTransactionStatus" destination="m5h-u6-V5H" id="yIB-cZ-oN8"/>

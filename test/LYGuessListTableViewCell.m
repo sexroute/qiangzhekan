@@ -40,6 +40,7 @@
     [_m_oTransactionTime release];
     [_m_oTransactionStatus release];
     [_m_ogain release];
+    [_m_oCurrentValueTitle release];
     [super dealloc];
 }
 @end

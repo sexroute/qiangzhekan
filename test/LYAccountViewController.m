@@ -29,6 +29,18 @@
     return self;
 }
 
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self doRefreshRemoteData:TRUE];
+    [self.m_totalAsset setUserInteractionEnabled:false];
+     [self.m_oCash setUserInteractionEnabled:false];
+     [self.m_oBet setUserInteractionEnabled:false];
+     [self.m_oAmount setUserInteractionEnabled:false];
+    [self.m_oLastAsset setUserInteractionEnabled:false];
+ 
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -45,11 +57,7 @@
     [self.m_oQuit addGestureRecognizer:tapGestureTel];
 
 }
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [self doRefreshRemoteData:TRUE];
-}
+
 
 - (void)didReceiveMemoryWarning
 {

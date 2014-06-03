@@ -17,5 +17,6 @@
 @property (retain, nonatomic) IBOutlet UILabel *m_oTransactionTime;
 @property (retain, nonatomic) IBOutlet UILabel *m_oTransactionStatus;
 @property (retain, nonatomic) IBOutlet UILabel *m_ogain;
+@property (retain, nonatomic) IBOutlet UILabel *m_oCurrentValueTitle;
 
 @end

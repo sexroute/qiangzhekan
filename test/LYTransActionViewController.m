@@ -301,12 +301,15 @@
                     
                     //3.当前价
                     double ldblCurrentValue = [[loTrans objectForKey:@"symbol_current_value"]doubleValue];
-                    cell.m_oCurrentValue.text = [NSString stringWithFormat:@"%.2f",ldblCurrentValue];
+                   
                     
                     if ([LYTransConst IsStatusFinish:lnTransStatus])
                     {
                         ldblCurrentValue = [[loTrans objectForKey:@"trans_finish_symbol_value"]doubleValue];
+                        cell.m_oCurrentValueTitle.text = @"结算价";
+                        
                     }
+                     cell.m_oCurrentValue.text = [NSString stringWithFormat:@"%.2f",ldblCurrentValue];
                     
                     //4.下注价
                     double ldblBetValue = [[loTrans objectForKey:@"trans_symbol_value"]doubleValue];
@@ -319,12 +322,12 @@
                     
 
                     //7.收益
-                    double ldblGain = (ldblCurrentValue - ldblBetValue)* lnDirection*ldblBetAmount*ldblBetRatio;
-                    if(abs(ldblGain)<0.01)
+                    double ldblGain = (ldblCurrentValue - ldblBetValue)/ldblBetValue* lnDirection*ldblBetAmount*ldblBetRatio;
+                    if(fabs(ldblGain)<=(double)0.0001)
                     {
                         ldblGain = 0.0;
                     }
-                    cell.m_ogain.text = [NSString stringWithFormat:@"%.2f",ldblGain];
+                    cell.m_ogain.text = [NSString stringWithFormat:@"%.2f",floor(ldblGain*100)/100.0];
                     
       
                     
