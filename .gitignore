@@ -16,3 +16,7 @@
 *.xcbkptlist
 
 *.xcscheme
+
+*.xcuserstate
+
+*.xcbkptlist

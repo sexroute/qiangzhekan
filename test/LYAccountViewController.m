@@ -166,27 +166,50 @@
             {
                 NSDictionary * lpSymbol = (NSDictionary *)loValueAccount;
                 id loSymbolValue = [lpSymbol objectForKey:@"account_cash"];
+                double ldblValueCash = [loSymbolValue doubleValue];
+                loSymbolValue = [NSString stringWithFormat:@"%.2f",ldblValueCash];
                 [self.m_oCash setText:(NSString*)loSymbolValue];
-                
-                loSymbolValue = [lpSymbol objectForKey:@"account_asset"];
-                 [self.m_totalAsset setText:(NSString*)loSymbolValue];
+
                 
                 loSymbolValue = [lpSymbol objectForKey:@"account_asset_last"];
+                double ldblAccount_asset_last = [loSymbolValue doubleValue];
+                loSymbolValue = [NSString stringWithFormat:@"%.2f",ldblAccount_asset_last];
                  [self.m_oLastAsset setText:(NSString*)loSymbolValue];
                 
                 loSymbolValue = [lpSymbol objectForKey:@"account_guess_asset"];
+                double ldblAccount_guess_asset = [loSymbolValue doubleValue];
+                loSymbolValue = [NSString stringWithFormat:@"%.2f",ldblAccount_guess_asset];
                  [self.m_oBet setText:(NSString*)loSymbolValue];
                 
+                loSymbolValue = [lpSymbol objectForKey:@"account_asset"];
+                double ldblaccount_asset = ldblValueCash+ldblAccount_guess_asset;
+                loSymbolValue = [NSString stringWithFormat:@"%.2f",ldblaccount_asset];
+                [self.m_totalAsset setText:(NSString*)loSymbolValue];
+                
             }
-            loValueAccount = [loValue objectForKey:@"user_trans"];
+            loValueAccount = [loValue objectForKey:@"account"];
             if ([loValueAccount isKindOfClass:[NSDictionary class]])
             {
                 NSDictionary * lpSymbol = (NSDictionary *)loValueAccount;
-                id loSymbolValue = [lpSymbol objectForKey:@"trans_amount"];
+                id loSymbolValue = [lpSymbol objectForKey:@"account_cash_in_guess"];
+                double ldblValue = [loSymbolValue doubleValue];
+                
+                if (ldblValue <= 0)
+                {
+                    
+                    
+                    loSymbolValue = [lpSymbol objectForKey:@"account_cash"];
+                    ldblValue = [loSymbolValue doubleValue];
+                    loSymbolValue = [NSString stringWithFormat:@"%.2f",ldblValue];
+                    [self.m_totalAsset setText:(NSString*)loSymbolValue];
+                    ldblValue = 0;
+
+                }
+                 loSymbolValue = [NSString stringWithFormat:@"%.2f",ldblValue];
                 [self.m_oAmount setText:(NSString*)loSymbolValue];
             }else
             {
-                [self.m_oAmount setText:(NSString*)@"0"];
+                [self.m_oAmount setText:(NSString*)@"0.00"];
 
             }
         }
