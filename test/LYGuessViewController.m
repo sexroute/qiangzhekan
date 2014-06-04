@@ -443,7 +443,7 @@
 }
 -(void) doCloseRemoteTransaction
 {
-    [self PopulateIndicator];
+    [self PopulateIndicatorForBet];
     self.responseData = [NSMutableData data];
     
     NSString * lpPostData = [NSString stringWithFormat:@"user_token=%@&id=%@",[LYGlobalSettings GetSettingString:SETTING_KEY_USER_TOKEN],self.m_strTransactionId];
@@ -471,7 +471,7 @@
 
 -(void) doBetUpTransaction
 {
-    [self PopulateIndicator];
+    [self PopulateIndicatorForBet];
     self.responseData = [NSMutableData data];
     
     NSString * lpPostData = [NSString stringWithFormat:@"user_token=%@&trans_amount=%d&id=%@&trans_symbol_id=%@&trans_direction=1",[LYGlobalSettings GetSettingString:SETTING_KEY_USER_TOKEN],10,self.m_strTransactionId,self.m_strSymbolId];
@@ -499,7 +499,7 @@
 
 -(void) doBetDownTransaction
 {
-    [self PopulateIndicator];
+    [self PopulateIndicatorForBet];
     self.responseData = [NSMutableData data];
     
     NSString * lpPostData = [NSString stringWithFormat:@"user_token=%@&trans_amount=%d&id=%@&trans_symbol_id=%@&trans_direction=-1",[LYGlobalSettings GetSettingString:SETTING_KEY_USER_TOKEN],10,self.m_strTransactionId,self.m_strSymbolId];
@@ -737,7 +737,21 @@
     
 }
 
-
+- (void)PopulateIndicatorForBet
+{
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    
+	[self.navigationController.view addSubview:HUD];
+    
+	HUD.dimBackground = YES;
+    HUD.labelText = @"交易中";
+	// Regiser for HUD callbacks so we can remove it from the window at the right time
+	HUD.delegate = self;
+	// Show the HUD while the provided method executes in a new thread
+	[HUD showWhileExecuting:@selector(OnHudCallBack) onTarget:self withObject:nil animated:YES];
+    [self.navigationController.view bringSubviewToFront:HUD];
+}
 
 - (void)PopulateIndicator
 {
