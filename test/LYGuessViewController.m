@@ -33,15 +33,27 @@
 @synthesize m_oTimerCountDown;
 @synthesize m_oTimerUpdate;
 #pragma mark 初始化
+-(void )viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self StopTimer];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self ResetUserData];
     [self ResetSymbolData];
     [self initUI];
-    [self InitTimer];
+   
     [self onTimerCountDown];
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+     [self InitTimer];
+    [self StartTimer];
 }
 #pragma mark 重置操作
 -(void)ResetTransactionData
@@ -422,6 +434,7 @@
     NSMutableData *requestBody = [[[NSMutableData alloc] initWithData:[lpPostData dataUsingEncoding:NSUTF8StringEncoding]] autorelease];
     [self.m_oRequest appendPostData:requestBody];
     [self.m_oRequest setDelegate:self];
+     self.m_oRequest.tag = 0;
     [self.m_oRequest setTimeOutSeconds:NETWORK_TIMEOUT];
    	[self.m_oRequest startAsynchronous];
     
@@ -446,6 +459,7 @@
     NSMutableData *requestBody = [[[NSMutableData alloc] initWithData:[lpPostData dataUsingEncoding:NSUTF8StringEncoding]] autorelease];
     [self.m_oRequest appendPostData:requestBody];
     [self.m_oRequest setDelegate:self];
+     self.m_oRequest.tag = 3;
     [self.m_oRequest setTimeOutSeconds:NETWORK_TIMEOUT];
    	[self.m_oRequest startAsynchronous];
     
@@ -473,6 +487,7 @@
     NSMutableData *requestBody = [[[NSMutableData alloc] initWithData:[lpPostData dataUsingEncoding:NSUTF8StringEncoding]] autorelease];
     [self.m_oRequest appendPostData:requestBody];
     [self.m_oRequest setDelegate:self];
+     self.m_oRequest.tag = 2;
     [self.m_oRequest setTimeOutSeconds:NETWORK_TIMEOUT];
    	[self.m_oRequest startAsynchronous];
     
@@ -500,6 +515,7 @@
     NSMutableData *requestBody = [[[NSMutableData alloc] initWithData:[lpPostData dataUsingEncoding:NSUTF8StringEncoding]] autorelease];
     [self.m_oRequest appendPostData:requestBody];
     [self.m_oRequest setDelegate:self];
+    self.m_oRequest.tag = 2;
     [self.m_oRequest setTimeOutSeconds:NETWORK_TIMEOUT];
    	[self.m_oRequest startAsynchronous];
     
@@ -530,9 +546,19 @@
     
     if (lnRet !=0)
     {
+        //no login
+        if (lnRet == 1)
+        {
+           // [self.m_oTimerUpdate invalidate];
+        }
+        
         [self alertWrong:lpError];
     }else
     {
+        if (self.m_oRequest.tag>0)
+        {
+            [self alertWrong:@"交易成功"];
+        }
         [self initUI];
     }
     
@@ -649,6 +675,7 @@
 }
 -(void)onTimerCountDown
 {
+   
     NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
 
 
@@ -665,7 +692,7 @@
     [formatter setDateFormat:dateFormat];
     NSLocale *locale = [NSLocale currentLocale];
     [formatter setLocale:locale];
-    NSString *end = [[[NSString alloc ]initWithFormat:@"%@ 21:01:00",End1] autorelease];
+    NSString *end = [[[NSString alloc ]initWithFormat:@"%@ 23:01:00",End1] autorelease];
    
     NSDate *End = [formatter dateFromString:end];
     NSTimeInterval loDiff=  [End timeIntervalSinceNow];

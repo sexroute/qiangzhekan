@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "test/LYGuessViewController.m"
-            timestampString = "423497487.401253"
+            timestampString = "423501801.757287"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "727"
-            endingLineNumber = "727"
+            startingLineNumber = "754"
+            endingLineNumber = "754"
             landmarkName = "-PopulateIndicator"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "test/LYGuessViewController.m"
-            timestampString = "423496662.085727"
+            timestampString = "423501801.757287"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "642"
-            endingLineNumber = "642"
+            startingLineNumber = "668"
+            endingLineNumber = "668"
             landmarkName = "-StopTimer"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "test/LYGuessViewController.m"
-            timestampString = "423496568.014481"
+            timestampString = "423501801.757287"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "503"
-            endingLineNumber = "503"
+            startingLineNumber = "519"
+            endingLineNumber = "519"
             landmarkName = "-doBetDownTransaction"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "test/LYGuessViewController.m"
-            timestampString = "423496568.014481"
+            timestampString = "423501801.757287"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "502"
-            endingLineNumber = "502"
+            startingLineNumber = "517"
+            endingLineNumber = "517"
             landmarkName = "-doBetDownTransaction"
             landmarkType = "5">
          </BreakpointContent>
@@ -336,6 +336,22 @@
             startingLineNumber = "360"
             endingLineNumber = "360"
             landmarkName = "-requestFinished:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "test/LYGuessViewController.m"
+            timestampString = "423501815.569368"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "-viewDidDisappear:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
