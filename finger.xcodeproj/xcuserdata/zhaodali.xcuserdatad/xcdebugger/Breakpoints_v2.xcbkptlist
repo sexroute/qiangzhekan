@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "test/LYGuessViewController.m"
-            timestampString = "423501801.757287"
+            timestampString = "423583084.825661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "754"
-            endingLineNumber = "754"
+            startingLineNumber = "768"
+            endingLineNumber = "768"
             landmarkName = "-PopulateIndicator"
             landmarkType = "5">
          </BreakpointContent>
