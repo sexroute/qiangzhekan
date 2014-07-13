@@ -303,7 +303,11 @@ static NSString * databasePath = nil;
         [LYGlobalSettings InitDatabase];
         
         //2.初始化远程连接地址
+#ifdef DEBUG
+        [g_pSettingsDic setObject:@"http://qiangzhekan.sinaapp.com" forKey:(SETTING_KEY_SERVER_ADDRESS)];
+#else
         [g_pSettingsDic setObject:@"https://qiangzhekan.sinaapp.com" forKey:(SETTING_KEY_SERVER_ADDRESS)];
+#endif
         [g_pSettingsDic setObject:@"222.199.224.145" forKey:(SETTING_KEY_MIDDLE_WARE_IP)];
         [g_pSettingsDic setObject:@"7005" forKey:(SETTING_KEY_MIDDLE_WARE_PORT)];
         [g_pSettingsDic setObject:@"1" forKey:(SETTING_KEY_SERVERTYPE)];

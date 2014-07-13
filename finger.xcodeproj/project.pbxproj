@@ -135,6 +135,7 @@
 		4CF03B9318E55FA100C3EC54 /* down_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF03B9118E55FA100C3EC54 /* down_gray.png */; };
 		4CF03B9918E5871B00C3EC54 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF03B9718E5871B00C3EC54 /* Icon.png */; };
 		4CF03B9A18E5871B00C3EC54 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF03B9818E5871B00C3EC54 /* Icon@2x.png */; };
+		4CF3C34C1940B8A800EBBFC4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CF3C34B1940B8A800EBBFC4 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -347,6 +348,7 @@
 		4CF03B9118E55FA100C3EC54 /* down_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = down_gray.png; path = test/img/down_gray.png; sourceTree = SOURCE_ROOT; };
 		4CF03B9718E5871B00C3EC54 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		4CF03B9818E5871B00C3EC54 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		4CF3C34B1940B8A800EBBFC4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = finger/Images.xcassets; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -544,6 +546,7 @@
 				4C81C26A18E02C4100B69C1A /* Main_iPad.storyboard */,
 				4C7D06FD18FA423800D251A1 /* guset_list_cell.xib */,
 				4C81C27318E02C4100B69C1A /* Images.xcassets */,
+				4CF3C34B1940B8A800EBBFC4 /* Images.xcassets */,
 				4C81C25C18E02C4100B69C1A /* Supporting Files */,
 			);
 			name = finger;
@@ -961,6 +964,7 @@
 				4C78B17218E4349600E95004 /* rank.png in Resources */,
 				4CA47F0618E081D000E83A9F /* Default.png in Resources */,
 				4CA47EE418E0777500E83A9F /* gear@2x.png in Resources */,
+				4CF3C34C1940B8A800EBBFC4 /* Images.xcassets in Resources */,
 				4CF03B8E18E559D500C3EC54 /* down.png in Resources */,
 				4C7D070318FA457600D251A1 /* guess_lose.png in Resources */,
 				4CA47EE018E0777500E83A9F /* CloseButton@2x.png in Resources */,
@@ -1154,7 +1158,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1174,7 +1178,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1194,7 +1198,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1206,8 +1210,9 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1277,7 +1282,7 @@
 		4C81C28E18E02C4100B69C1A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/test.app/test";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/finger.app/finger";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1299,7 +1304,7 @@
 		4C81C28F18E02C4100B69C1A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/test.app/test";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/finger.app/finger";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

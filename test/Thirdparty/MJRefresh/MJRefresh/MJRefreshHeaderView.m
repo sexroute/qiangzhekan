@@ -18,7 +18,7 @@
 
 + (instancetype)header
 {
-    return [[MJRefreshHeaderView alloc] init];
+    return [[[MJRefreshHeaderView alloc] init]autorelease];
 }
 
 #pragma mark - UIScrollView相关

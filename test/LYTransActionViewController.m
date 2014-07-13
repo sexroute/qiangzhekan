@@ -302,10 +302,17 @@
                     //3.当前价
                     double ldblCurrentValue = [[loTrans objectForKey:@"symbol_current_value"]doubleValue];
                    
-                    
+                    if (fabs(ldblCurrentValue)<=(double)0.01)
+                    {
+                        ldblCurrentValue = 0.01;
+                    }
                     if ([LYTransConst IsStatusFinish:lnTransStatus])
                     {
                         ldblCurrentValue = [[loTrans objectForKey:@"trans_finish_symbol_value"]doubleValue];
+                        if (fabs(ldblCurrentValue)<=(double)0.01)
+                        {
+                            ldblCurrentValue = 0.01;
+                        }
                         cell.m_oCurrentValueTitle.text = @"结算价";
                         
                     }
@@ -313,6 +320,10 @@
                     
                     //4.下注价
                     double ldblBetValue = [[loTrans objectForKey:@"trans_symbol_value"]doubleValue];
+                    if (fabs(ldblBetValue)<=(double)0.01)
+                    {
+                        ldblBetValue = 0.01;
+                    }
                     cell.m_oBetValue.text = [NSString stringWithFormat:@"%.2f",ldblBetValue];
                     
                     //5.下注额度
@@ -320,10 +331,13 @@
                     //6.赔率
                     double ldblBetRatio = [[loTrans objectForKey:@"trans_ratio"]doubleValue];
                     
+                    
 
                     //7.收益
-                    double ldblGain = (ldblCurrentValue - ldblBetValue)/ldblBetValue* lnDirection*ldblBetAmount*ldblBetRatio;
-                    if(fabs(ldblGain)<=(double)0.0001)
+                    double ldbldiff =ldblCurrentValue - ldblBetValue;
+                    double ldblGain = ldbldiff/ldblBetValue* lnDirection*ldblBetAmount*ldblBetRatio;
+                    
+                    if(fabs(ldblGain)<=(double)0.01)
                     {
                         ldblGain = 0.0;
                     }

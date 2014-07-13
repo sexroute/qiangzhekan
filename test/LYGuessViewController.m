@@ -72,7 +72,7 @@
 -(void)ResetSymbolData
 {
     self.m_strSymbolTitle = [[[NSString alloc] initWithFormat:@"竞猜-没有数据"]autorelease];
-    self.m_dbl_Symbol_price = 0.0;
+    self.m_dbl_Symbol_price = 0.01;
     self.m_strTimeCountDown = [[[NSString alloc] initWithFormat:@"00:00:00"]autorelease];
     
 }
@@ -227,6 +227,10 @@
                         
                     {
                         self.m_dbl_Symbol_price = [(NSString*)loSymbolValue doubleValue];
+                        if (fabs(self.m_dbl_Symbol_price)<0.01)
+                        {
+                            self.m_dbl_Symbol_price = 0.01;
+                        }
                        // lbRet = TRUE;
                     }
                     
