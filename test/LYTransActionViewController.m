@@ -314,6 +314,7 @@
                             ldblCurrentValue = 0.01;
                         }
                         cell.m_oCurrentValueTitle.text = @"结算价";
+                        cell.backgroundColor = [[UIColor lightGrayColor]autorelease];
                         
                     }
                      cell.m_oCurrentValue.text = [NSString stringWithFormat:@"%.2f",ldblCurrentValue];
