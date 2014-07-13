@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C3A0BAA1972840C00424865 /* finger.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C3A0BA91972840C00424865 /* finger.xib */; };
 		4C761D3E191F4C1A0068BF54 /* MJCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C761D25191F4C1A0068BF54 /* MJCollectionViewController.m */; };
 		4C761D3F191F4C1A0068BF54 /* MJNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C761D27191F4C1A0068BF54 /* MJNavigationController.m */; };
 		4C761D40191F4C1A0068BF54 /* MJSampleIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C761D29191F4C1A0068BF54 /* MJSampleIndexViewController.m */; };
@@ -127,6 +128,7 @@
 		4CAF56E918E82605004EA04C /* LYAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAF56E818E82605004EA04C /* LYAccountViewController.m */; };
 		4CCAD78318F117330027EC4F /* LYTransViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCAD78218F117330027EC4F /* LYTransViewControllerViewController.m */; };
 		4CD0627A18E4116E0088C210 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD0627918E4116E0088C210 /* Default-568h@2x.png */; };
+		4CD526E719729932007FDF18 /* LYWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD526E519729932007FDF18 /* LYWebViewController.m */; };
 		4CF03B8818E54DCE00C3EC54 /* LYNavRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF03B8718E54DCE00C3EC54 /* LYNavRootViewController.m */; };
 		4CF03B8A18E556C300C3EC54 /* du.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF03B8918E556C300C3EC54 /* du.png */; };
 		4CF03B8C18E5595700C3EC54 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF03B8B18E5595700C3EC54 /* up.png */; };
@@ -149,6 +151,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C3A0BA91972840C00424865 /* finger.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = finger.xib; sourceTree = SOURCE_ROOT; };
 		4C761D24191F4C1A0068BF54 /* MJCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJCollectionViewController.h; sourceTree = "<group>"; };
 		4C761D25191F4C1A0068BF54 /* MJCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJCollectionViewController.m; sourceTree = "<group>"; };
 		4C761D26191F4C1A0068BF54 /* MJNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJNavigationController.h; sourceTree = "<group>"; };
@@ -339,6 +342,8 @@
 		4CCAD78118F117330027EC4F /* LYTransViewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LYTransViewControllerViewController.h; path = test/LYTransViewControllerViewController.h; sourceTree = SOURCE_ROOT; };
 		4CCAD78218F117330027EC4F /* LYTransViewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LYTransViewControllerViewController.m; path = test/LYTransViewControllerViewController.m; sourceTree = SOURCE_ROOT; };
 		4CD0627918E4116E0088C210 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		4CD526E519729932007FDF18 /* LYWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYWebViewController.m; sourceTree = "<group>"; };
+		4CD526E619729932007FDF18 /* LYWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYWebViewController.h; sourceTree = "<group>"; };
 		4CF03B8618E54DCE00C3EC54 /* LYNavRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYNavRootViewController.h; sourceTree = "<group>"; };
 		4CF03B8718E54DCE00C3EC54 /* LYNavRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYNavRootViewController.m; sourceTree = "<group>"; };
 		4CF03B8918E556C300C3EC54 /* du.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = du.png; path = test/img/du.png; sourceTree = SOURCE_ROOT; };
@@ -451,6 +456,8 @@
 		4C761D4A191F679D0068BF54 /* news */ = {
 			isa = PBXGroup;
 			children = (
+				4CD526E519729932007FDF18 /* LYWebViewController.m */,
+				4CD526E619729932007FDF18 /* LYWebViewController.h */,
 				4C761D4B191F68340068BF54 /* LYNewsTableViewController.h */,
 				4C761D4C191F68340068BF54 /* LYNewsTableViewController.m */,
 			);
@@ -548,6 +555,7 @@
 				4C81C27318E02C4100B69C1A /* Images.xcassets */,
 				4CF3C34B1940B8A800EBBFC4 /* Images.xcassets */,
 				4C81C25C18E02C4100B69C1A /* Supporting Files */,
+				4C3A0BA91972840C00424865 /* finger.xib */,
 			);
 			name = finger;
 			path = test;
@@ -999,6 +1007,7 @@
 				4CA47EDC18E0777500E83A9F /* black_gradient@2x.png in Resources */,
 				4CA47EE518E0777500E83A9F /* green_gradient@2x.png in Resources */,
 				4CA47EEF18E0777500E83A9F /* remove_dot.png in Resources */,
+				4C3A0BAA1972840C00424865 /* finger.xib in Resources */,
 				4CF03B8A18E556C300C3EC54 /* du.png in Resources */,
 				4CA47EE218E0777500E83A9F /* ellipsis@2x.png in Resources */,
 				4CA47EE318E0777500E83A9F /* freq.png in Resources */,
@@ -1060,6 +1069,7 @@
 				4CA47E3B18E0666900E83A9F /* LYLoginCell.m in Sources */,
 				4C761D41191F4C1A0068BF54 /* MJTableViewController.m in Sources */,
 				4CA47EBB18E0777500E83A9F /* ASIAuthenticationDialog.m in Sources */,
+				4CD526E719729932007FDF18 /* LYWebViewController.m in Sources */,
 				4CA47ED818E0777500E83A9F /* MBProgressHUD.m in Sources */,
 				4CA47EC718E0777500E83A9F /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
 				4CA47EBC18E0777500E83A9F /* ASIDataCompressor.m in Sources */,

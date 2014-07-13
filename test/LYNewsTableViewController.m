@@ -7,6 +7,15 @@
 //
 
 #import "LYNewsTableViewController.h"
+#import "LYWebViewController.h"
+@interface NEWS()
+@end
+
+@implementation NEWS
+
+@synthesize m_pNewsContent;
+@synthesize m_pNewsUrl;
+@end
 
 @interface LYNewsTableViewController ()
 
@@ -14,6 +23,7 @@
 
 @implementation LYNewsTableViewController
 
+@synthesize m_pNewslists;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -26,7 +36,23 @@
 
 - (void)InitUI
 {
+    if (nil == self.m_pNewslists)
+    {
+        NEWS * lpNews = [[[NEWS alloc]init]autorelease];
+        lpNews.m_pNewsContent = @"伦敦白银定盘价原有机制将被新电子化系统取代";
+        lpNews.m_pNewsUrl = @"http://finance.sina.com.cn/money/nmetal/20140711/225319681780.shtml";
+        
+        
 
+        self.m_pNewslists = [NSMutableArray arrayWithObject:lpNews];
+        
+        lpNews = [[[NEWS alloc]init]autorelease];
+        lpNews.m_pNewsContent = @"兆丰恒业：多方面消息刺激 银价突破性上涨";
+        lpNews.m_pNewsUrl = @"http://finance.sina.com.cn/money/nmetal/20140711/162319679904.shtml";
+        
+        [self.m_pNewslists addObject:lpNews];
+    }
+   
 }
 
 - (void)viewDidLoad
@@ -38,6 +64,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
     [self InitUI];
 }
 
@@ -49,30 +76,84 @@
 
 #pragma mark - Table view data source
 
+#pragma mark table implement
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+    
     // Return the number of rows in the section.
-    return 0;
+    return [self.m_pNewslists count];
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 78;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"NewsTransView";
+ 
+    UITableViewCell * lpCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
     
-    // Configure the cell...
+    if (nil == lpCell)
+    {
+        NSInteger i= indexPath.row;
+        if (i>=[self.m_pNewslists count])
+        {
+            assert(false);
+            lpCell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"]autorelease];
+            return lpCell;
+        }
+        lpCell=[[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"] autorelease];
+        lpCell.tag = i;
+        lpCell.textLabel.text = ((NEWS *)[self.m_pNewslists objectAtIndex:i]).m_pNewsContent;
+    }
     
-    return cell;
+//    UITapGestureRecognizer *tapGestureTel = [[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleSingleFingerEvent:)]autorelease];
+//    
+//     [lpCell addGestureRecognizer:tapGestureTel];
+    
+    return lpCell;
 }
-*/
+
+- (void)tableView:(UITableView *)atableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main_iPhone"
+                                                             bundle: nil];
+    
+    
+    LYWebViewController  *WebViewController = (LYWebViewController *)[mainStoryboard
+                                                               instantiateViewControllerWithIdentifier: @"LYWebViewController"];
+
+    
+    //And do here code for passing URL to  WebViewController
+           int lnDataIndex = indexPath.row;
+           NSString * lpStrUrl = ((NEWS *)[self.m_pNewslists objectAtIndex:lnDataIndex]).m_pNewsUrl;
+    WebViewController.m_pNewsUrl =lpStrUrl;
+   [self.navigationController pushViewController:WebViewController  animated:NO];
+    
+    
+}
+
+//- (void)handleSingleFingerEvent:(UITapGestureRecognizer *)sender
+//{
+//    if ([sender.view isKindOfClass:[UITableViewCell class]])
+//    {
+//        int lnDataIndex = sender.view.tag;
+//        NSString * lpStrUrl = ((NEWS *)[self.m_pNewslists objectAtIndex:lnDataIndex]).m_pNewsUrl;
+//        
+//        WebViewController *WebViewController = [[TrackViewController alloc] initWithNibName:@"WebViewController" bundle:nil];
+//    }
+//    
+//}
+//
 
 /*
 // Override to support conditional editing of the table view.

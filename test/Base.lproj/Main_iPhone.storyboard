@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="VPG-6q-AdR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="VPG-6q-AdR">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -204,31 +204,40 @@
         <!--News Table View Controller - 新闻-->
         <scene sceneID="NXT-3n-dem">
             <objects>
-                <tableViewController id="Ftd-YV-EFD" customClass="LYNewsTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="NewsTransView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ftd-YV-EFD" customClass="LYNewsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="rJl-aR-b46">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="p7e-K9-ZEA">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p7e-K9-ZEA" id="DXa-ly-38l">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="Ftd-YV-EFD" id="Ik4-dQ-IHt"/>
-                            <outlet property="delegate" destination="Ftd-YV-EFD" id="1cv-TY-xwd"/>
+                            <outlet property="dataSource" destination="Ftd-YV-EFD" id="OA2-bq-t0y"/>
+                            <outlet property="delegate" destination="Ftd-YV-EFD" id="hBV-94-m8N"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="新闻" id="QXn-vp-0g6"/>
+                    <size key="freeformSize" width="320" height="568"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDJ-z1-jbs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1082" y="1226"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="EQF-fv-1u2">
+            <objects>
+                <viewController storyboardIdentifier="LYWebViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7U8-eR-nIm" customClass="LYWebViewController" sceneMemberID="viewController">
+                    <webView key="view" contentMode="scaleToFill" id="L39-fV-Fl2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </webView>
+                    <navigationItem key="navigationItem" id="2Ue-ws-cox"/>
+                    <connections>
+                        <outlet property="m_pView" destination="L39-fV-Fl2" id="hiQ-Uy-JXp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b9k-pm-u3H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1510" y="1226"/>
         </scene>
         <!--View Controller - buddy-->
         <scene sceneID="irz-uU-LB8">

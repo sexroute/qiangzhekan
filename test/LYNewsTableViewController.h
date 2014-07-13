@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LYNewsTableViewController : UITableViewController
 
+@interface LYNewsTableViewController : UITableViewController
+@property (retain,nonatomic) NSMutableArray * m_pNewslists;
+@end
+
+
+
+@interface NEWS : NSObject
+@property (retain,nonatomic) NSString * m_pNewsContent;
+@property (retain,nonatomic) NSString * m_pNewsUrl;
 @end
